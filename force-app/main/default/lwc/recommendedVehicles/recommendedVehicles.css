@@ -1,0 +1,47 @@
+.vehicle-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.vehicle-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    border-bottom: 1px solid #dddbda;
+    padding-bottom: 0.75rem;
+}
+
+.vehicle-media {
+    flex: 0 0 auto;
+}
+
+.vehicle-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.vehicle-image {
+    width: 64px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 0.25rem;
+}
+
+.vehicle-fallback-icon {
+    --sds-c-icon-color-foreground-default: rgb(1, 118, 211);
+}
+
+.vehicle-name {
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.vehicle-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.vehicle-link:hover {
+    text-decoration: underline;
+}

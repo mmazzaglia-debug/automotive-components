@@ -1,0 +1,20 @@
+.progress-ring {
+    transform: scale(4) translate(1em,1em);
+    margin-top: 1%;
+    margin-left: -27%;
+
+}
+.container {
+    background-color: #ffff;
+    padding: 16px;
+    font-style: normal;
+   }
+   
+   .title-service {
+    font-weight: 700;
+    font-size: 16px;
+   }
+   
+   .heading-pad {
+    margin-bottom: 16px;
+   }

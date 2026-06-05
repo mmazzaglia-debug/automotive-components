@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Vehicle_Highlights</fullName>
+    <fields>Auto_Vehicle_Image__c</fields>
+    <fields>Name</fields>
+    <fields>CurrentOwnerId</fields>
+    <fields>VehicleIdentificationNumber</fields>
+    <fields>EngineNumber</fields>
+    <fields>LastOdometerReading</fields>
+    <label>Vehicle Highlights</label>
+</CompactLayout>

@@ -1,0 +1,39 @@
+{
+  "appPageId" : "1e4d6659-0826-4bf2-a237-43ecbc3624af",
+  "componentName" : "siteforce:dynamicLayout",
+  "dataProviders" : [ ],
+  "id" : "ee174e5e-d061-4aa3-8ca6-e4a2bfe412d7",
+  "label" : "Asset Lending Proposal Rehashing",
+  "regions" : [ {
+    "id" : "b2f5759a-9312-4794-9635-4157050da165",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "direction" : "ltr",
+        "display" : "Display OmniScript on page",
+        "inlineVariant" : "brand",
+        "language" : "Multi-Language",
+        "subType" : "RehashingExperience",
+        "theme" : "lightning",
+        "type" : "AssetLending"
+      },
+      "componentName" : "runtime_omnistudio:omniscript",
+      "id" : "c636a3ee-703f-4c46-9ddf-828f2ec9d5db",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "8f03fae9-fa88-49f5-a513-079b7dd49c37",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "e92428c7-5189-41a3-a78d-54325c139690",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "rehashing-experience"
+}

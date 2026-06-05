@@ -1,0 +1,39 @@
+{
+  "appPageId" : "1e4d6659-0826-4bf2-a237-43ecbc3624af",
+  "componentName" : "siteforce:dynamicLayout",
+  "dataProviders" : [ ],
+  "id" : "dddb2706-556d-40a9-8df7-9b3ff34957ad",
+  "label" : "Asset Lending App Form Product Redirect Page",
+  "regions" : [ {
+    "id" : "5a28fbc5-9381-4143-80e6-f9ca9a0de510",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "direction" : "ltr",
+        "display" : "Display OmniScript on page",
+        "inlineVariant" : "brand",
+        "language" : "Multi-Language",
+        "subType" : "RedirectApplicationFormProductPage",
+        "theme" : "lightning",
+        "type" : "AssetLending"
+      },
+      "componentName" : "runtime_omnistudio:omniscript",
+      "id" : "3da73eea-5377-4bd4-9dde-ad2445fb0694",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "f3b3b6aa-8772-44b9-ae41-67b278de586a",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "54bd6663-5f91-4ee1-8b23-7c5eeb5ef91d",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "redirect-application-form-product"
+}

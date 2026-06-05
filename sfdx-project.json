@@ -1,0 +1,20 @@
+{
+  "packageDirectories": [
+    {
+      "versionName": "AutoPack v1.0",
+      "versionNumber": "1.0.0.NEXT",
+      "path": "force-app",
+      "default": true,
+      "package": "AutoPack",
+      "versionDescription": "Automotive Industry Package - Complete solution for vehicle management, dealer portals, and connected vehicle experiences"
+    }
+  ],
+  "name": "automotive-ido",
+  "namespace": "",
+  "sfdcLoginUrl": "https://login.salesforce.com",
+  "sourceApiVersion": "66.0",
+  "packageAliases": {
+    "AutoPack": "0HoJ90000004CA6KAM",
+    "AutoPack@1.0.0-1": "04tJ9000000HnrgIAC"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "activeViewId" : "59070841-c499-4921-967f-ece272abf5a3",
+  "appPageId" : "1e4d6659-0826-4bf2-a237-43ecbc3624af",
+  "configurationTags" : [ ],
+  "devName" : "Booking_Related_List__c",
+  "id" : "82fcca45-0717-4269-82ca-8006bd58d3ce",
+  "label" : "Booking Related List",
+  "routeType" : "relatedlist-006",
+  "type" : "route",
+  "urlPrefix" : "opportunity"
+}

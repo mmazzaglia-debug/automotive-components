@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "742e2fcc-fe71-4e5e-a705-4271bca9adfd",
+  "appPageId" : "1e4d6659-0826-4bf2-a237-43ecbc3624af",
+  "configurationTags" : [ ],
+  "devName" : "Finance_Calculator",
+  "id" : "a5477afb-d05c-4ae9-8e5f-dbef81dbaf24",
+  "label" : "Finance Calculator",
+  "pageAccess" : "UseParent",
+  "routeType" : "custom-finance-calculator",
+  "type" : "route",
+  "urlPrefix" : "finance-calculator"
+}

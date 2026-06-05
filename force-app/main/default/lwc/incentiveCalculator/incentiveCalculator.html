@@ -1,0 +1,121 @@
+<template>
+    <lightning-card title="Incentive Estimator" class="slds-text-heading_medium bold-text" icon-name="standard:formula">
+         <table class="slds-table slds-m-around_medium" style="width:100%;">
+            <tbody>
+                <!-- Charts Section -->
+								<tr>
+    <!-- First Chart Header -->
+    <td style="width:50%;text-align: center; vertical-align: middle;" >
+				  <div class="chart-header1">
+							Target Achievement</div>
+    </td>
+    <!-- Second Chart Header -->
+    <td style="width:50%;text-align: center; vertical-align: middle;">  <div class="chart-header1">
+				Incentive %</div>
+    </td>
+</tr>
+                <tr>
+                    <!-- First Chart Container -->
+                    <td style="width:50%; vertical-align: top;">
+                        <div class="canvas-holder">
+                            <canvas lwc:dom="manual"></canvas>
+                        </div>
+                    </td>
+                    <!-- Second Chart Container -->
+                    <td style="width:50%; vertical-align: top;">
+                        <div class="gauge-holder">
+                            <canvas lwc:dom="manual"></canvas>
+                        </div>
+                    </td>
+                </tr>
+								                              <!-- Color legend Section -->
+                <tr>
+                    <!-- First Chart Legend -->
+                    <td style="vertical-align: middle; align:center" class="fine-print">
+                        <span class="color-box" style="background-color: #f39b04;"></span> Remaining &nbsp;
+                        <span class="color-box" style="background-color: #0e8a69;"></span> Achieved
+                    </td>
+                    <!-- Second Chart Legend -->
+                    <td style="vertical-align: middle; align:center" class="fine-print">
+                        <span class="color-box" style="background-color: #f39b04;"></span> <span class="fine-print">Below Range &nbsp;</span>
+                        <span class="color-box" style="background-color: #0e8a69;"></span> In Range &nbsp;
+                        <span class="color-box" style="background-color: #006699;"></span> Beyond Range 
+                    </td>
+                </tr>
+            <!-- Spacing -->
+            <tr>
+                <td colspan="2" style="height: 20px;"></td>
+            </tr>
+                <!-- Calculated Incentive & Target Amount Section -->
+                <tr class="custom-row">
+                    <td colspan="2">
+                        <div class="slds-text-heading_small bold-text">
+                           <br> Calculated Incentive: ${calculatedIncentive}<br>
+                        </div>
+                    </td>
+                </tr>
+					<tr>
+                <td colspan="2" style="height: 40px;"></td>
+            </tr>	
+
+                <!-- Sliders Section -->
+                <tr>
+                    <td colspan="2">
+                        <lightning-slider   min={targetMinValue} max={targetMaxValue} step="10000" value={targetValue}  onchange={handleTargetChange}></lightning-slider>
+                    </td>
+                </tr>
+								                <tr>
+                    <td colspan="2">
+            
+                        <div class="slds-text-heading_small bold-text">
+														Sales Target:  <span class="incentive-value-color">${targetValue}</span>
+                        </div>
+                    </td>
+                </tr>
+					<tr>
+                <td colspan="2" style="height: 40px;"></td>
+            </tr>	
+							
+								                <tr>
+                    <td colspan="2">
+                       <lightning-slider class="custom-slider"  value={opportunityValue} min={targetMinValue} max={targetMaxValue} step="10000" onchange={handleOpportunityChange}></lightning-slider>
+                    </td>
+                </tr>
+								                <tr>
+                    <td colspan="2">
+            
+                        <div class="slds-text-heading_small bold-text">
+														Opportunities Won: <span class="incentive-value-color">${opportunityValue}</span>
+                        </div>
+                    </td>
+                </tr>
+								
+													<tr>
+                <td colspan="2" style="height: 40px;"></td>
+            </tr>	
+								
+																                <tr>
+                    <td colspan="2">
+                      <lightning-slider name="slider" value={targetIncentiveValue} min={incentiveMinValue} max={incentiveMaxValue}  onchange={handleSliderChange}></lightning-slider>
+                    </td>
+                </tr>
+								                <tr>
+                    <td colspan="2">
+            
+                        <div class="slds-text-heading_small bold-text">
+														Incentive: <span class="incentive-value-color">&nbsp;{targetIncentiveValue} %</span> 
+                        </div>
+                    </td>
+                </tr>
+												<tr>
+                <td colspan="2" style="height: 40px;"></td>
+            </tr>	
+								
+								
+								
+								
+
+            </tbody>
+        </table>
+    </lightning-card>
+</template>

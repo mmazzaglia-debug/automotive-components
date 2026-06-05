@@ -1,0 +1,11 @@
+{
+  "activeViewId" : "69dae5be-aaaf-42a1-9676-af587695f551",
+  "appPageId" : "1e4d6659-0826-4bf2-a237-43ecbc3624af",
+  "configurationTags" : [ ],
+  "devName" : "Application_Form_Product",
+  "id" : "d2cdd394-7fb1-41a2-b282-a8658294b826",
+  "label" : "Asset Lending App Form Product Page For Partners",
+  "routeType" : "ApplicationFormProduct",
+  "type" : "route",
+  "urlPrefix" : "application-form-product"
+}

@@ -1,0 +1,247 @@
+{
+  "appPageId" : "1e4d6659-0826-4bf2-a237-43ecbc3624af",
+  "componentName" : "siteforce:sldsTwoCol84Layout",
+  "dataProviders" : [ ],
+  "id" : "69dae5be-aaaf-42a1-9676-af587695f551",
+  "label" : "Asset Lending App Form Product Page For Partners",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "recordId" : "{!c__ContextId}"
+      },
+      "componentName" : "forceCommunity:recordHeadline",
+      "id" : "81d01644-b189-47db-8c00-3ca88ca89965",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "e7837887-bf8b-49aa-9b95-d8c52e0387ee",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "flexcardName" : "AssetLendingCurrentProposalAndRehashAction",
+        "objectApiName" : "{!objectApiName}",
+        "recordId" : "{!c__ContextId}"
+      },
+      "componentName" : "runtime_omnistudio:flexcard",
+      "id" : "7ac0c883-c715-48c8-bc66-9b4e73e957a3",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "relatedListApiName" : "ApplicationActionItems",
+        "relatedListComponentOverride" : "GRID",
+        "width" : "MEDIUM"
+      },
+      "componentName" : "forceCommunity:responsiveRelatedListSingle",
+      "id" : "c2883fb0-baaf-479e-917e-676a1f92dff1",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "tabsetConfig" : {
+          "UUID" : "afe50bcd-5b57-4826-b53d-c779430f39a8",
+          "activeTab" : "tab1",
+          "tabs" : [ {
+            "UUID" : "c68595d0-cc92-41ff-b387-3effc463eba5",
+            "allowGuestUser" : false,
+            "locked" : false,
+            "seedComponents" : [ {
+              "attributes" : {
+                "flexcardName" : "AssetLendingApplicationDetailsForAppFormProduct",
+                "recordId" : "{!c__ContextId}"
+              },
+              "fqn" : "runtime_omnistudio:flexcard"
+            } ],
+            "tabKey" : "tab1",
+            "tabName" : "Application Details"
+          }, {
+            "UUID" : "744457eb-07a9-4cfe-b687-aa2c58c15295",
+            "allowGuestUser" : false,
+            "locked" : false,
+            "seedComponents" : [ {
+              "attributes" : {
+                "flexcardName" : "DigitalLendingApplicantDetailCard",
+                "recordId" : "{!c__ContextId}"
+              },
+              "fqn" : "runtime_omnistudio:flexcard"
+            } ],
+            "tabKey" : "tab2",
+            "tabName" : "Applicant Details"
+          }, {
+            "UUID" : "c063c018-f79d-4bd6-adbf-88270b9a175b",
+            "allowGuestUser" : false,
+            "locked" : false,
+            "seedComponents" : [ {
+              "attributes" : {
+                "flexcardName" : "AssetLendingAllProposalsContainer",
+                "recordId" : "{!c__ContextId}"
+              },
+              "fqn" : "runtime_omnistudio:flexcard"
+            } ],
+            "tabKey" : "tab3",
+            "tabName" : "Proposals"
+          }, {
+            "UUID" : "81a80460-fa5f-4b6d-a7fc-1cdd2493d88b",
+            "allowGuestUser" : false,
+            "locked" : false,
+            "seedComponents" : [ {
+              "attributes" : {
+                "flexcardName" : "AssetLendingAppFormProductApplicantDocumentList",
+                "recordId" : "{!c__ContextId}"
+              },
+              "fqn" : "runtime_omnistudio:flexcard"
+            } ],
+            "tabKey" : "tab4",
+            "tabName" : "Documents"
+          }, {
+            "UUID" : "6dfb6c79-5a91-473f-b0fa-39af6beb7081",
+            "allowGuestUser" : false,
+            "locked" : false,
+            "seedComponents" : [ {
+              "attributes" : {
+                "recordId" : "{!c__ContextId}",
+                "relatedListApiName" : "ApplicationFormSellerItems",
+                "sfdc:identifier" : "industries_automotive_ApplicationFormSellerItems"
+              },
+              "fqn" : "forceCommunity:responsiveRelatedListSingle"
+            } ],
+            "tabKey" : "tab5",
+            "tabName" : "Related"
+          } ],
+          "useOverflowMenu" : false
+        }
+      },
+      "componentName" : "forceCommunity:tabLayout",
+      "id" : "afe50bcd-5b57-4826-b53d-c779430f39a8",
+      "regions" : [ {
+        "components" : [ {
+          "componentAttributes" : {
+            "flexcardName" : "AssetLendingApplicationDetailsForAppFormProduct",
+            "objectApiName" : "{!objectApiName}",
+            "recordId" : "{!c__ContextId}"
+          },
+          "componentName" : "runtime_omnistudio:flexcard",
+          "id" : "4d0d76ae-6529-4ded-8253-96c1f41331b4",
+          "renderPriority" : "NEUTRAL",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "c68595d0-cc92-41ff-b387-3effc463eba5",
+        "regionLabel" : "Application Details",
+        "regionName" : "tab1",
+        "renditionMap" : { },
+        "type" : "region"
+      }, {
+        "components" : [ {
+          "componentAttributes" : {
+            "flexcardName" : "DigitalLendingApplicantDetailCard",
+            "objectApiName" : "{!objectApiName}",
+            "recordId" : "{!c__ContextId}"
+          },
+          "componentName" : "runtime_omnistudio:flexcard",
+          "id" : "40120e26-b55a-48df-b649-56a37bdd8848",
+          "renderPriority" : "NEUTRAL",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "744457eb-07a9-4cfe-b687-aa2c58c15295",
+        "regionLabel" : "Applicant Details",
+        "regionName" : "tab2",
+        "renditionMap" : { },
+        "type" : "region"
+      }, {
+        "components" : [ {
+          "componentAttributes" : {
+            "flexcardName" : "AssetLendingAllProposalsContainer",
+            "objectApiName" : "{!objectApiName}",
+            "recordId" : "{!c__ContextId}"
+          },
+          "componentName" : "runtime_omnistudio:flexcard",
+          "id" : "23e5902c-701c-4f20-85b0-48cefc972c83",
+          "renderPriority" : "NEUTRAL",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "c063c018-f79d-4bd6-adbf-88270b9a175b",
+        "regionLabel" : "Proposals",
+        "regionName" : "tab3",
+        "renditionMap" : { },
+        "type" : "region"
+      }, {
+        "components" : [ {
+          "componentAttributes" : {
+            "flexcardName" : "AssetLendingAppFormProductApplicantDocumentList",
+            "objectApiName" : "{!objectApiName}",
+            "recordId" : "{!c__ContextId}"
+          },
+          "componentName" : "runtime_omnistudio:flexcard",
+          "id" : "20c16b20-3ecf-46ec-ba66-ab94b5a9619c",
+          "renderPriority" : "NEUTRAL",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "81a80460-fa5f-4b6d-a7fc-1cdd2493d88b",
+        "regionLabel" : "Documents",
+        "regionName" : "tab4",
+        "renditionMap" : { },
+        "type" : "region"
+      }, {
+        "components" : [ {
+          "componentAttributes" : {
+            "relatedListApiName" : "ApplicationFormSellerItems",
+            "relatedListComponentOverride" : "GRID",
+            "width" : "MEDIUM"
+          },
+          "componentName" : "forceCommunity:responsiveRelatedListSingle",
+          "id" : "86d913a2-bd6e-47eb-b552-59bc8a114bf2",
+          "renderPriority" : "NEUTRAL",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "6dfb6c79-5a91-473f-b0fa-39af6beb7081",
+        "regionLabel" : "Related",
+        "regionName" : "tab5",
+        "renditionMap" : { },
+        "type" : "region"
+      } ],
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "2ebe8731-0bf1-4908-a339-5bacc048d2b3",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "componentLabel" : "Work Guide",
+        "isHiddenWhenEmpty" : false,
+        "isRunNameDisplayed" : true,
+        "isStageNameDisplayed" : true,
+        "isStepNameDisplayed" : true,
+        "prioritizationCriteria" : "Last Modified Date (Ascending)",
+        "recordId" : "{!c__ContextId}"
+      },
+      "componentName" : "interaction_orchestrator:workGuide",
+      "id" : "f5f8efcd-325d-447a-9ccd-29c9354283ee",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "24a8319a-80fa-4947-853c-a63d8d34100b",
+    "regionName" : "sidebar",
+    "type" : "region"
+  }, {
+    "id" : "25e3a897-952d-45fc-9b5a-6a7059333bdb",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "ApplicationFormProduct"
+}

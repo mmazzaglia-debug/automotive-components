@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Auto_IDO_Commercial</fullName>
+    <fields>Name</fields>
+    <fields>AccountNumber</fields>
+    <fields>Type</fields>
+    <fields>District__c</fields>
+    <fields>Website</fields>
+    <label>Auto IDO - Commercial</label>
+</CompactLayout>

@@ -1,0 +1,11 @@
+{
+  "activeViewId" : "7355582f-ce6a-47b7-b6c0-7c16ce2ea7ae",
+  "appPageId" : "1e4d6659-0826-4bf2-a237-43ecbc3624af",
+  "configurationTags" : [ ],
+  "devName" : "Quote_Related_List",
+  "id" : "f88e858d-97b4-4211-9af5-dc3535d8c6c3",
+  "label" : "Quote Related List",
+  "routeType" : "relatedlist-0Q0",
+  "type" : "route",
+  "urlPrefix" : "quote"
+}

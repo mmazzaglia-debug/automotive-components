@@ -1,0 +1,183 @@
+.main-card {
+    overflow-x: hidden;
+    position: relative;
+    display: block;
+}
+
+.main-card > article {
+    overflow: hidden;
+}
+
+.can-rounded-card {
+    padding: 15px;
+    background: rgb(243 243 243);
+    border-radius: 16px;
+}
+
+.vehicle-card {
+    overflow-x: hidden;
+    position: relative;
+    display: block;
+}
+
+.vehicle {
+    position: relative;
+    /* FOR A CAR
+    width: 250px; /* 350px for mercedes
+    aspect-ratio: 22/50;
+    */
+    /* FOR A TRAIN
+    width: 200px;
+    aspect-ratio: 0.2;
+    */
+    /* FOR A PLANE
+    width: 95%;
+    aspect-ratio: 1;
+    */
+    width: 333px;
+    aspect-ratio: 22/45;
+    margin-left: 1%;
+}
+
+.vehicle-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.7;
+}
+
+.vehicle-image img {
+    width: 100%;
+    filter: drop-shadow(2px 4px 13px rgba(0, 0, 0, 0.6));
+}
+
+.vehicle-part {
+    position: absolute;
+    cursor: pointer;
+    text-align: center;
+    z-index: 2;
+    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.vehicle-part:hover {
+    background: black !important;
+    box-shadow: 0 0 12px 5px rgba(0, 0, 0, 0.4);
+    transform: scale(1.05);
+}
+
+.slider {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 25px;
+    width: 50%;
+    background: white;
+    border: 1px solid rgb(210, 210, 210);
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    box-shadow: -5px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    z-index: 50;
+    overflow-y: scroll;
+}
+
+.slider-out {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.slider-in {
+    transform: translateX(0%);
+    opacity: 1;
+}
+
+.close-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.remaining-life__value {
+    font-weight: bolder;
+}
+
+.can-progress-bar .slds-progress-bar__value {
+    background: rgba(92, 52, 234, 1) !important;
+}
+
+.can-progress-bar {
+    --lwc-progressBarColorBackgroundFill: rgba(92, 52, 234, 1);
+}
+
+.can-rotation-slider {
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+
+[data-is-active=true] {
+    background: rgba(92, 52, 234, 1) !important;
+    -webkit-box-shadow:0px 0px 20px 10px rgba(95,52,234,0.9);
+    -moz-box-shadow: 0px 0px 20px 10px rgba(95,52,234,0.9);
+    box-shadow: 0px 0px 20px 10px rgba(95,52,234,0.9);
+}
+
+[data-has-chart-points=false] {
+    display: none;
+}
+  
+.can-modal {
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    box-shadow: 0 0 20px 5px rgb(0 0 0 / 9%);
+    border-radius: 16px;
+}
+
+.can-modal-front {
+    z-index: 100;
+}
+
+.can-empty-block {
+    height: 150px;
+}
+
+
+[data-part-inspection-status="0"] {
+    background: rgba(231, 76, 60, 0.8) !important;
+}
+
+[data-part-inspection-status="1"] {
+    background: rgba(230, 126, 34, 0.8) !important;
+}
+
+[data-part-inspection-status="2"] {
+    background: rgba(241, 196, 15, 0.8) !important;
+}
+
+[data-part-inspection-status="3"] {
+    background: rgba(46, 204, 113, 0.8) !important;
+}
+
+[data-part-inspection-status="4"] {
+    background: rgba(26, 188, 156, 0.8) !important;
+}
+
+[data-is-alert=true] {
+    animation: blinkingBackground 1s infinite;
+}
+
+@keyframes blinkingBackground{
+    0%		{ background-color: transparent;}
+    50%		{ background-color: #cf0210;}
+    100%	{ background-color: transparent;}
+}

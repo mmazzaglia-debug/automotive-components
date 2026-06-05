@@ -1,0 +1,11 @@
+{
+  "activeViewId" : "06b8a837-eda9-4150-8585-1c60c6f13837",
+  "appPageId" : "1e4d6659-0826-4bf2-a237-43ecbc3624af",
+  "configurationTags" : [ ],
+  "devName" : "Application_Form_Product_Related_List__c",
+  "id" : "0a44b7c8-4e8c-422a-8fe9-bc7b0e91a2f8",
+  "label" : "Application Form Product Related List",
+  "routeType" : "relatedlist-13Z",
+  "type" : "route",
+  "urlPrefix" : "applicationformproduct"
+}

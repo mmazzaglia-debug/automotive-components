@@ -1,0 +1,14 @@
+.separator{
+    height: 1px;
+    width: 100%;
+    border-top: 1px dashed #979797;
+}
+
+.separator-bottom{
+    width: 100%;
+    border-bottom: 1px dashed #979797;
+}
+
+.title{
+    font-weight: bold;
+}

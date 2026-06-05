@@ -1,0 +1,82 @@
+{
+  "appPageId" : "1e4d6659-0826-4bf2-a237-43ecbc3624af",
+  "componentName" : "siteforce:sldsTwoCol84Layout",
+  "dataProviders" : [ ],
+  "id" : "e80bc04c-370f-4b6b-9af7-01de40555d76",
+  "label" : "Quote Detail",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "forceCommunity:recordHeadline",
+      "id" : "39bd2f0c-c2f1-49de-b6bc-ff6bc57f3c3d",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "b9c10ce3-bd79-466c-8a82-3ad3297d28e3",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "forceCommunity:recordDetail",
+      "id" : "c091c285-ee25-4f42-9f8d-cff74a3be5c6",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}",
+        "width" : "MEDIUM"
+      },
+      "componentName" : "forceCommunity:relatedRecords",
+      "id" : "1170be0b-6380-4748-accd-c52bb2321c08",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "7fdf4a0c-f5a3-47be-a3da-9d8602a208c5",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "6a7aada4-1ee2-4339-983d-ecc5fb958e73",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "Visualizza i dettagli del preventivo e genera il PDF Gruppo Bossoni.",
+        "title" : "Preventivo: {!Record._Title}"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "d4daff83-6a29-4895-80d1-f88887eabc2a",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "8e31a880-a66c-4580-b630-823ff65017d1",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "c:quoteDocGenFlow",
+      "id" : "a2b3c4d5-e6f7-4890-ab12-cd34ef567890",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "4d98a9ba-ad1f-40f3-b0f7-22b39fae908b",
+    "regionName" : "sidebar",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "detail-0Q0"
+}

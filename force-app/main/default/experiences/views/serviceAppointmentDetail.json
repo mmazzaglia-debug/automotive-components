@@ -1,0 +1,96 @@
+{
+  "appPageId" : "1e4d6659-0826-4bf2-a237-43ecbc3624af",
+  "componentName" : "siteforce:sldsTwoCol84Layout",
+  "dataProviders" : [ ],
+  "id" : "f60e2871-6fa2-4f7d-ba42-e4b4262a6c9d",
+  "label" : "Service Appointment Detail",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "forceCommunity:recordHeadline",
+      "id" : "f0d5e588-8a94-4fab-98a7-92df4c967678",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "bca648d9-7e52-4c7e-8fea-177be6523fa7",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "forceCommunity:recordDetail",
+      "id" : "e33e65ac-e808-401d-b1d0-01009513aa6d",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "additionalFields" : "",
+        "cardTitle" : "Interaction Summary",
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "c:serviceAppointmentTestRideFeedback",
+      "id" : "733e65ac-e808-401d-b1d0-01009513aa6d",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "64b21358-7eae-4bad-8851-aa8aae917b87",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "642f7ebd-7fb5-4992-8213-900c890aefe8",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "{!Record._Object}: {!Record._Title}"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "d21f6406-5598-48f4-af73-bd284a924b59",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "439669d5-d09c-4e39-840e-b9ea1c102e9f",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "relatedListApiName" : "Interaction_Summaries__r",
+        "relatedListComponentOverride" : "GRID",
+        "width" : "MEDIUM"
+      },
+      "componentName" : "forceCommunity:responsiveRelatedListSingle",
+      "id" : "f24efdc0-a8aa-4c88-8bec-f3b10033ce53",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "relatedListApiName" : "ServiceReports",
+        "relatedListComponentOverride" : "GRID",
+        "width" : "MEDIUM"
+      },
+      "componentName" : "forceCommunity:responsiveRelatedListSingle",
+      "id" : "e6daea62-e318-4c1c-ab9f-27cb36564f76",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "d4233f6a-d5ba-49c4-a2bb-730ae576303c",
+    "regionName" : "sidebar",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "detail-08p"
+}

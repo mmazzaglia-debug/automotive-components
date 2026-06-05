@@ -1,0 +1,129 @@
+<template>
+  <lightning-card>
+    <div class="slds-card__body slds-card__body_inner">
+      <div class="slds-text-heading_medium card_title">{name}</div>
+      <div class="slds-grid">
+        <div>
+          <div class="slds-text-color_weak">
+            Feature list based on currently available products.
+          </div>
+        </div>
+
+        <div
+          class="slds-col_bump-left slds-text-align_right slds-text-body_small"
+        >
+          <div class="slds-text-color_weak">Version 16.1.30</div>
+          <a href="#">Check for updates</a>
+        </div>
+      </div>
+
+      <div class="slds-border_bottom slds-m-top_large">
+        <div class="slds-grid">
+          <div>
+            <span>Feature Name</span>
+          </div>
+          <div class="slds-col_bump-left">
+            <span>Status</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Features Accordion-->
+
+      <!-- <p>{activeSectionsMessage}</p>-->
+
+      <lightning-accordion
+        allow-multiple-sections-open
+        onsectiontoggle={handleSectionToggle}
+        active-section-name={activeSections}
+      >
+        <template for:each={features} for:item="feature">
+          <div key={feature.name}>
+            <div class="slds-grid slds-border_bottom">
+              <div>
+                <lightning-accordion-section
+                  name={feature.name}
+                  label={feature.name}
+                >
+                  <div class="slds-tile__detail">
+                    <dl class="slds-list_horizontal slds-wrap">
+                      <dt
+                        class="slds-item_label slds-text-color_weak"
+                        title="Category"
+                      >
+                        Category
+                      </dt>
+                      <dd class="slds-item_detail" title={feature.category}>
+                        {feature.category}
+                      </dd>
+                      <dt
+                        class="slds-item_label slds-text-color_weak"
+                        title="State"
+                      >
+                        State
+                      </dt>
+                      <dd
+                        class="slds-item_detail"
+                        title="Description for second label"
+                      >
+                        {feature.state}
+                      </dd>
+                    </dl>
+                    <dl class="slds-list_horizontal slds-wrap">
+                      <dt
+                        class="slds-item_label slds-text-color_weak"
+                        title="Firmware Version"
+                      >
+                        Firmware Version
+                      </dt>
+                      <dd class="slds-item_detail" title={feature.version}>
+                        {feature.version}
+                      </dd>
+                      <dt
+                        class="slds-item_label slds-text-color_weak"
+                        title="Description"
+                      >
+                        Description
+                      </dt>
+                      <dd class="slds-item_detail" title={feature.description}>
+                        {feature.description}
+                      </dd>
+                      <dt
+                        class="slds-item_label slds-text-color_weak"
+                        title="Resources"
+                      >
+                        Resources
+                      </dt>
+                      <dd class="slds-item_detail" title={feature.resource}>
+                        <a href="#">{feature.resource}&nbsp;</a>
+                        <lightning-icon
+                          icon-name="utility:share_mobile"
+                          alternative-text="Connected"
+                          size="xx-small"
+                          title="xx-small size"
+                          class="blue-icon"
+                        ></lightning-icon>
+                      </dd>
+                    </dl>
+                  </div>
+                </lightning-accordion-section>
+              </div>
+              <div class="slds-col_bump-left slds-p-vertical_small">
+                <lightning-input
+                  type="toggle"
+                  label=" "
+                  name="input1"
+                  message-toggle-active=""
+                  message-toggle-inactive=""
+                  checked={feature.checked}
+                  onchange={handleToggleChange}
+                  data-id={feature.name}
+                ></lightning-input>
+              </div>
+            </div>
+          </div>
+        </template>
+      </lightning-accordion>
+    </div>
+  </lightning-card>
+</template>

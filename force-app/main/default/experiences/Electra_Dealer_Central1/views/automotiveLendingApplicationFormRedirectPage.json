@@ -1,0 +1,39 @@
+{
+  "appPageId" : "1e4d6659-0826-4bf2-a237-43ecbc3624af",
+  "componentName" : "siteforce:dynamicLayout",
+  "dataProviders" : [ ],
+  "id" : "68dee7fa-f9df-4068-9fcd-b9602e4035a8",
+  "label" : "Automotive Lending Application Form Redirect Page",
+  "regions" : [ {
+    "id" : "eef938d6-f02d-402c-ae86-4f0700c84684",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "direction" : "ltr",
+        "display" : "Display OmniScript on page",
+        "inlineVariant" : "brand",
+        "language" : "English",
+        "subType" : "RedirectApplication",
+        "theme" : "lightning",
+        "type" : "AssetLending"
+      },
+      "componentName" : "runtime_omnistudio:omniscript",
+      "id" : "145ae6db-bdbb-4e3e-95f9-436c6d6c424f",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "9c806c8d-adfd-41ff-97dd-47a44cbc32c5",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "7eebcc3e-e6c4-4866-95ff-5d1137ce0860",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "redirect-application"
+}

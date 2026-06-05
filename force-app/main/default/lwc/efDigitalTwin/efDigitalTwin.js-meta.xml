@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>55.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+           <target>lightning__RecordPage</target>
+           <target>lightningCommunity__Page</target>
+           <target>lightningCommunity__Default</target>
+        </targets>
+
+        <targetConfigs>  
+            <targetConfig targets="lightningCommunity__Default">
+                <property name="recordId" type="String" default="{!recordId}" label="Enter the record Id (dynamic value : {!recordId})"></property>
+                <property name="objectApiName" type="String" default="Vehicle"  label="Enter the objectApi name (dynamic value {!objectApiName} not working on ExpCloud, enter the value ex.: Vehicle)"></property>
+                <property name="powerMeasureName" type="String" default="Power" label="Enter the Asset Telematics Measure Name to display in the chart at bottom left of the component (default is Power)"></property>
+                <property name="doorsMeasureName" type="String" default="Doors" label="Enter the Asset Telematics Measure Name to associate to the lock state in the control panel (default is Doors)"></property>
+                <property name="chargeMeasureName" type="String" default="Charge" label="Enter the Asset Telematics Measure Name to associate to the battery charge (default is Charge)"></property>
+              </targetConfig>
+              <targetConfig targets="lightning__RecordPage">
+                <property name="powerMeasureName" type="String" default="Power" label="Enter the Asset Telematics Measure Name to display in the chart at bottom left of the component (default is Power)"></property>
+                <property name="doorsMeasureName" type="String" default="Doors" label="Enter the Asset Telematics Measure Name to associate to the lock state in the control panel (default is Doors)"></property>
+                <property name="chargeMeasureName" type="String" default="Charge" label="Enter the Asset Telematics Measure Name to associate to the battery charge (default is Charge)"></property>
+              </targetConfig>
+        </targetConfigs>
+</LightningComponentBundle>

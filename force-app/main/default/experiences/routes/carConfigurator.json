@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "3beddded-07e6-4a5b-80dc-89d16c8fa0ed",
+  "appPageId" : "1e4d6659-0826-4bf2-a237-43ecbc3624af",
+  "configurationTags" : [ ],
+  "devName" : "Car_Configurator",
+  "id" : "f69b6459-db19-44f1-9ee6-a9ec44f2fae2",
+  "label" : "Car Configurator",
+  "pageAccess" : "UseParent",
+  "routeType" : "custom-car-configurator",
+  "type" : "route",
+  "urlPrefix" : "car-configurator"
+}

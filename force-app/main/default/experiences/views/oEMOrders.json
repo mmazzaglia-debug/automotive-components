@@ -1,0 +1,31 @@
+{
+  "appPageId" : "1e4d6659-0826-4bf2-a237-43ecbc3624af",
+  "componentName" : "siteforce:dynamicLayout",
+  "dataProviders" : [ ],
+  "id" : "5b2ec47a-fa41-499b-a479-5a8b2aecbf11",
+  "label" : "OEM Orders",
+  "regions" : [ {
+    "id" : "c786b0e1-eb47-49a3-9c43-9d93db4f23ce",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:oemOrdersPage",
+      "id" : "978fb19e-c07c-4e10-8430-dedbbfdff9a6",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "1f43a274-816a-49d4-9fee-13363b3c222a",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "cc269815-349c-49b5-8cf7-3235bf179903",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "automotive-plp"
+}

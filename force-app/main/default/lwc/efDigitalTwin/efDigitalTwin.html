@@ -1,0 +1,39 @@
+<template>
+  <lightning-card>
+    <h3 slot="title">
+      <lightning-icon
+        icon-name="standard:iot_context"
+        class="slds-m-right_small"
+      ></lightning-icon>
+      Vehicle Controls
+    </h3>
+
+    <lightning-tabset variant="vertical">
+      <lightning-tab label="Controls" icon-name="utility:rotate">
+        <template lwc:if={VehicleParametersSet}>
+          <c-can-vehicle-view
+            record-id={recordId}
+            object-api-name={objectApiName}
+            asset-id={assetId}
+            charge-measure-name={chargeMeasureName}
+            power-measure-name={powerMeasureName}
+            doors-measure-name={doorsMeasureName}
+          ></c-can-vehicle-view>
+        </template>
+        <template lwc:else>
+          <lightning-spinner alternative-text="Loading"></lightning-spinner>
+        </template>
+      </lightning-tab>
+      <lightning-tab label="Features" icon-name="utility:slider">
+        <c-ef-digital-twin-tab-features
+          name={name}
+          asset-id={assetId}
+        ></c-ef-digital-twin-tab-features
+        >
+      </lightning-tab>
+      <lightning-tab label="Navigation" icon-name="utility:target">
+        <c-ef-digital-twin-map></c-ef-digital-twin-map>
+      </lightning-tab>
+    </lightning-tabset>
+  </lightning-card>
+</template>

@@ -1,0 +1,35 @@
+{
+  "appPageId" : "1e4d6659-0826-4bf2-a237-43ecbc3624af",
+  "componentName" : "siteforce:dynamicLayout",
+  "dataProviders" : [ ],
+  "id" : "fe2b84a4-45ff-4d52-8a76-df9ed3984fff",
+  "label" : "Automotive Lending Product Detail Page",
+  "regions" : [ {
+    "id" : "1cc05502-fa29-4a2e-a555-6bc46d954a0a",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "flexcardName" : "AssetLendingProductDetailsPage",
+        "objectApiName" : "{!objectApiName}",
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "runtime_omnistudio:flexcard",
+      "id" : "90649148-54e5-4e2b-b6de-288c1201bf8a",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "5e5b3cbe-c7b3-4f7d-86ba-51637fb039f6",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "7840c431-3354-4f81-bd86-e4db47471080",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "automotive-pdp"
+}

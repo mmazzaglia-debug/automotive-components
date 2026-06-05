@@ -1,0 +1,1020 @@
+<template>
+	<section aria-pressed={isOpen} class="wrapper" >
+		<div class="slds-grid slds-grid_vertical slds-template__container">
+			<div class="contentContainer slds-grow">
+				<lightning-spinner alternative-text="Loading" variant="brand" size="large" if:true={isLoading}>
+				</lightning-spinner>
+				<!--Illustration Start-->
+				<div class="slds-grid slds-grid_vertical slds-align_absolute-center slds-m-horizontal_large slds-text-align_center fullHeight slds-grow"
+					if:true={showIllustation}>
+					<div class="slds-illustration slds-illustration_large" aria-hidden="true">
+						<img src="/projRes/ui-home-private/emptyStates/noAssistant.svg" class="slds-illustration__svg"
+                            alt="" />
+						<div class="slds-text-longform">
+							<h3 class="slds-text-heading_medium">Nothing's here yet</h3>
+							<div class="slds-text-body_regular emptyDescription">
+								Create a Program, a few Milestones & Exercises using the &nbsp;
+								<a onclick={goToApp}>Guidance Center Demo Manager app</a>.
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--Illustration End-->
+
+				<!--All Programs Start-->
+				<div class="slds-grid slds-grid_vertical slds-grow content-view allProgramsView" if:true={isShowAllPrograms}>
+					<div class="slds-m-horizontal_large slds-m-bottom_small">
+						<div
+							class="slds-grid slds-grid_align-spread slds-grid_vertical-align-center slds-m-top_medium slds-m-bottom_small">
+							<h2 class="slds-text-heading_small"><b>Assigned Programs</b></h2>
+						</div>
+						<template for:each={allPrograms} for:item="program" if:true={allPrograms}>
+							<div class="thp-item-card__container slds-grid" key={program.Id}>
+								<div class="thp-item-card__image slds-grow-none">
+									<div class="thp-content-icon__main slds-icon-standard-survey slds-icon_container">
+										<svg class="slds-icon" focusable="false" data-key="survey" aria-hidden="true"
+											viewBox="0 0 100 100" style="height: 100%; width: 100%">
+											<g>
+												<g>
+													<path
+														d="M24 23h44c2.2 0 4 1.8 4 4v4c0 2.2-1.8 4-4 4H24c-2.2 0-4-1.8-4-4v-4c0-2.2 1.8-4 4-4zM24 41h25c2.2 0 4 1.8 4 4v4c0 2.2-1.8 4-4 4H24c-2.2 0-4-1.8-4-4v-4c0-2.2 1.8-4 4-4zM65.9 52c7.7 0 14 6.3 14 14s-6.3 14-14 14-14-6.3-14-14 6.3-14 14-14zm7.9 10.9c.3-.3.3-1 0-1.3l-1.4-1.3c-.4-.4-1-.4-1.4 0l-7.5 8.4-3.4-3.4c-.4-.4-1-.4-1.4 0l-1.4 1.3c-.4.3-.4.9 0 1.3l4.8 4.7c.4.4.9.6 1.4.6.6 0 1-.2 1.4-.6l8.9-9.7zM24 59h23.2c-.8 2.3-1.2 4.3-1.2 6-.1 2.1.1 4.1.6 6H24c-2.2 0-4-1.8-4-4v-4c0-2.2 1.8-4 4-4z">
+													</path>
+												</g>
+											</g>
+										</svg>
+									</div>
+								</div>
+								<div
+									class="thp-item-card__content slds-grid slds-grid_vertical slds-grow slds-has-flexi-truncate">
+                                    <span style="font-size:12px;">Program</span>
+									<div class="thp-item-card__title" style="margin-bottom:0.25rem;">
+										<button class="slds-button_reset slds-text-link" data-programid={program.Id}
+                                            onclick={selectProgram}>
+                                            <b style="text-decoration:underline">{program.Name}</b>
+                                        </button>
+									</div>
+									<div class="thp-item-card__description">
+										<p>{program.Description__c}</p>
+									</div>
+									<div
+										class="thp-item-card__footer slds-grid slds-grid_vertical-align-center date-progress">
+										<div class="thp-item-card__footer-left slds-text-body_small">
+											<span class="thp-due-date">Due
+                                                <span class="slds-m-left_xx-small">
+                                                    <lightning-formatted-date-time value={program.Due_Date__c}
+                                                        year="numeric" month="numeric"
+                                                        day="numeric"></lightning-formatted-date-time>
+                                                </span>
+											</span>
+										</div>
+                                        <div class="programs-footer-divider"></div>
+										<div class="thp-item-card__footer-right slds-text-body_small">
+											<div class="thp-progress-summary__container">
+												<div
+													class="thp-progress__container slds-grid slds-grid_vertical-align-center">
+													<span
+                                                        class="slds-m-right_xx-small">{program.Program_Duration__c}</span>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</template>
+					</div>
+				</div>
+				<!--All Programs End-->
+				<!--Program Detail Start-->
+				<div class="slds-grid slds-grid_vertical slds-grow content-view" if:true={isShowProgramDetails}>
+					<template for:each={program} for:item="program" if:true={program}>
+						<div class="thp-item-card__container" key={program.Id}>
+							<div class="slds-m-around_medium">
+								<div>
+									<div class="slds-grid slds-grid_vertical slds-border_bottom slds-p-bottom_medium">
+										<div class="header slds-grid slds-m-bottom_small" style="display: flex;justify-content: space-between;">
+												<b style="font-size: 30px;width: 70%;word-wrap: break-word;">{program.Name}</b>
+                                                <!-- <a class="slds-button slds-button_neutral" style="float: right;font-size: 0.8rem;" ondblclick={doReset} onclick={showAllPrograms}>All Programs</a> -->
+                                                <a class="slds-button slds-button_neutral" style="font-size: 0.8rem;align-self: flex-start;margin-top: 5px;" ondblclick={doReset} onclick={doSingleClick}>All Programs</a>
+										</div>
+										<p class="slds-m-vertical_xx-small">{program.Description__c}</p>
+										<div class="thp-side-panel-header__footer">
+											<div class="slds-grid date-progress">
+                                                    <span class="thp-due-date">Due
+                                                        <span
+                                                            class="slds-m-left_xx-small"><lightning-formatted-date-time
+                                                                value={program.Due_Date__c} year="numeric"
+                                                                month="numeric" day="numeric">
+                                                            </lightning-formatted-date-time></span>
+													</span>
+                                                    <div class="programs-footer-divider"></div>
+													<div>{program.Completion_Percentage__c}%</div>
+                                                    <div style="width: 8rem;align-self: center;margin-bottom: 2px;margin-left: 10px;">
+                                                         <lightning-progress-bar value={program.Completion_Percentage__c} size="medium" variant="circular"></lightning-progress-bar>
+                                                    </div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--Program Outcome Start-->
+							<div class="slds-m-horizontal_large slds-m-bottom_medium">
+								<div class="slds-m-bottom_medium">
+									<h3
+										class="slds-show_inline-block slds-text-heading_small slds-text-title_bold slds-m-bottom_small">
+										Program Outcome
+										<lightning-helptext class="slds-p-left_x-small helptext"
+											content="A goal that you must achieve to complete the program. Progress is reflected when you take action towards the goal in Salesforce, and is evaluated twice daily.">
+										</lightning-helptext>
+									</h3>
+
+									<div class="thp-panel-program__section slds-border_bottom">
+										<div class="thp-item-list__container slds-p-bottom_small"
+											data-item-variant="bare">
+												 <template for:each={progOutcomeList} for:item="programOutcome"
+													if:true={progOutcomeList}>
+                                                        <article class="thp-item-list__item slds-m-top_small"  key={programOutcome.Id}>
+                                                        <div class="thp-milestone" data-size="small">
+                                                            <div class="thp-item-card__container slds-grid" data-variant="bare" data-size="small">
+                                                                
+                                                                <div if:false={milestoneOutcomeType}>
+                                                                    <div class="thp-item-card__image slds-grow-none">
+                                                                            <div if:true={programOutcome.Completed__c}
+                                                                                        class="slds-icon_container_circle slds-icon-action-approval slds-icon_container greenCheckIcon">
+                                                                                        <svg class="slds-icon"
+                                                                                            focusable="false"
+                                                                                            data-key="approval"
+                                                                                            aria-hidden="true"
+                                                                                            viewBox="0 0 52 52"
+                                                                                            style="width: 100%; height: 100%">
+                                                                                            <g>
+                                                                                                <path
+                                                                                                    d="M19 43.6L2.5 27c-.6-.6-.6-1.6 0-2.2l2.2-2.2c.6-.6 1.6-.6 2.2 0l12.4 12.5c.4.4 1.1.4 1.5 0l24.3-24.5c.6-.6 1.6-.6 2.2 0l2.2 2.2c.6.6.6 1.6 0 2.2L21.2 43.6c-.6.7-1.6.7-2.2 0z">
+                                                                                                </path>
+                                                                                            </g>
+                                                                                        </svg>
+                                                                                </div>
+                                                                                <lightning-progress-ring
+                                                                                    if:false={programOutcome.Completed__c}
+                                                                                    class="thp-milestone__progress-ring"
+                                                                                    value={programOutcome.Completion_Percentage__c}
+                                                                                    size="large">
+                                                                                </lightning-progress-ring>
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                                <div if:true={milestoneOutcomeType}>
+                                                                    <div class="thp-item-card__image slds-grow-none">
+                                                                        <div class="thp-content-icon__container slds-is-relative slds-show_inline-block">
+                                                                            <div class="thp-content-icon__main slds-icon-standard-account slds-icon_container">
+                                                                                <div class="thp-item-card__image slds-grow-none">
+                                                                                    <c-cx-in-custom-guidance-center-icon
+                                                                                        icon-name="programOutcome"
+                                                                                        is-complete={programOutcome.Completed__c}>
+                                                                                    </c-cx-in-custom-guidance-center-icon>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div if:true={programOutcome.Completed__c}>
+                                                                            <div class="slds-is-absolute slds-theme_success thp-content-icon__checkmark">
+                                                                                <div class="thp-content-icon__check-icon">
+                                                                                    <div class="slds-icon-utility-check slds-icon_container">
+                                                                                        <svg class="slds-icon" focusable="false" data-key="check"
+                                                                                            aria-hidden="true" viewBox="0 0 52 52"
+                                                                                            style="height: 50%; width: 50%;">
+                                                                                            <g>
+                                                                                                <path
+                                                                                                    d="M19.1 42.5L2.6 25.9c-.6-.6-.6-1.6 0-2.2l2.2-2.2c.6-.6 1.6-.6 2.2 0L19.4 34c.4.4 1.1.4 1.5 0L45.2 9.5c.6-.6 1.6-.6 2.2 0l2.2 2.2c.6.6.6 1.6 0 2.2L21.3 42.5c-.6.7-1.6.7-2.2 0z">
+                                                                                                </path>
+                                                                                            </g>
+                                                                                        </svg>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+
+                                                                <div
+                                                                    class="thp-item-card__content slds-grid slds-grid_vertical slds-grow slds-has-flexi-truncate">
+                                                                    <span style="font-size:12px;">Outcome</span>
+                                                                    <div class="slds-text-title_bold thp-item-card__title">
+                                                                        <div class="slds-text-title_bold" slot="title">
+                                                                             {programOutcome.Name__c}
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="thp-item-card__description">
+                                                                        <div class="truncate__content description truncate__content--clamp">
+                                                                            <div class="truncate__inner">
+                                                                                <p>{programOutcome.Description__c}</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div
+                                                                        class="thp-item-card__footer slds-grid slds-grid_vertical-align-center date-progress">
+                                                                        <div class="thp-item-card__footer-left slds-text-body_small">
+                                                                            <span class="thp-due-date"  if:false={programOutcome.Completed__c}>
+                                                                            Due
+                                                                            <span class="slds-m-left_xx-small"><lightning-formatted-date-time
+                                                                                                    value={programOutcome.Due_Date__c}
+                                                                                                    year="numeric"
+                                                                                                    month="numeric"
+                                                                                                    day="numeric">
+                                                                                                </lightning-formatted-date-time></span>
+                                                                            
+                                                                            </span>
+                                                                                 <span
+                                                                                                                        if:true={programOutcome.Completed__c}>Completed&nbsp;
+                                                                                                                        <lightning-formatted-date-time
+                                                                                                                            value={programOutcome.Completed_On__c}
+                                                                                                                            year="numeric"
+                                                                                                                            month="numeric"
+                                                                                                                            day="numeric">
+                                                                                                                        </lightning-formatted-date-time>
+                                                                                                                    </span>
+                                                                            
+                                                                        </div>
+                                                                        <div class="programs-footer-divider"></div>
+                                                                         <div class="thp-item-card__footer-right slds-text-body_small">
+                                                                                                        <div class="slds-text-body_small">
+                                                                                                            <div
+                                                                                                                class="thp-progress-summary__container thp-progress-summary_steps">
+                                                                                                                <span
+                                                                                                                        class="thp-progress-summary__text"
+                                                                                                                        aria-hidden="false">
+                                                                                                                        <lightning-formatted-number
+                                                                                                                            value={programOutcome.Current_Value__c}
+                                                                                                                            maximum-fraction-digits="0"></lightning-formatted-number>
+                                                                                                                        &nbsp;of&nbsp;
+                                                                                                                        <lightning-formatted-number
+                                                                                                                            value={programOutcome.Total_Target_Value__c}
+                                                                                                                            maximum-fraction-digits="0"></lightning-formatted-number>
+                                                                                                                    </span>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                    </div>
+                                                                           
+                                                                </div>
+                                                            </div>
+                                                        </div>
+													</article>
+												</template>
+										</div>
+									</div>
+								</div>
+								<!--Program Outcome End-->
+								<!--Section Header Start-->
+								<div>
+									<h3
+										class="slds-show_inline-block slds-text-heading_small slds-text-title_bold slds-m-bottom_small">
+										Milestones &amp; Exercises
+										<lightning-helptext class="slds-p-left_x-small helptext"
+											content="Milestones are goals that you complete over the course of a program. Exercises are resources provided to help you train for and achieve milestones and the program outcome.">
+										</lightning-helptext>
+									</h3>
+									<lightning-button variant="base" label="Collapse All" title="Collapse All"
+										onclick={toggleExpand} class="slds-float_right slds-m-left_x-small">
+									</lightning-button>
+								</div>
+								<template for:each={allSectionsList} for:item="sections" if:true={allSectionsList}>
+                                    <div  key={sections.Id}>
+                                        
+                                        <div class="thp-panel-program__section slds-border_bottom">
+                                            <div class="section-container">
+                                                <div class="section-header is-open" data-toggle={sections.Id}>
+                                                    <h4 class="slds-m-top_small slds-m-bottom_small">
+                                                        <div class="slds-summary-detail">
+                                                            <lightning-button-icon size="medium"
+                                                                class="slds-accordion__summary-action-icon dropdown" icon-name="utility:switch"
+                                                                alternative-text="Settings" title="Settings" variant="bare" data-id={sections.Id} onclick={handleToggleClick}></lightning-button-icon>
+                                                            <div class="slds-m-horizontal_x-small">
+                                                                <div if:true={sections.Completed__c}>
+                                                                    <div class="slds-icon_container_circle slds-icon-action-approval slds-icon_container sectionCheckIcon">
+                                                                        <svg class="slds-icon"
+                                                                            focusable="false"
+                                                                            data-key="approval"
+                                                                            aria-hidden="true"
+                                                                            viewBox="0 0 52 52"
+                                                                            style="width: 13px;height: 13px;position: absolute;top: 6px;left: 6px;">
+                                                                            <g>
+                                                                                <path
+                                                                                    d="M19 43.6L2.5 27c-.6-.6-.6-1.6 0-2.2l2.2-2.2c.6-.6 1.6-.6 2.2 0l12.4 12.5c.4.4 1.1.4 1.5 0l24.3-24.5c.6-.6 1.6-.6 2.2 0l2.2 2.2c.6.6.6 1.6 0 2.2L21.2 43.6c-.6.7-1.6.7-2.2 0z">
+                                                                                </path>
+                                                                            </g>
+                                                                        </svg>
+                                                                    </div>
+                                                                </div>
+                                                                <lightning-progress-ring
+                                                                    if:false={sections.Completed__c}
+                                                                    value={sections.Completion_Percentage__c} size="small">
+                                                                </lightning-progress-ring>
+                                                            </div>
+                                                            <span class="slds-text-title_bold slds-text-color_default" title={sections.Name}>{sections.Name}  ({sections.Total_Milestones_and_Exercises__c})</span>
+                                                        </div>
+                                                    </h4>
+                                                    <!--Section Body Start--> 
+                                                    <div class="section-body">
+                                                       
+                                                        <template for:each={sections.Milestones_and_Exercises__r} for:item="m" if:true={sections.Milestones_and_Exercises__r}>
+                                                                <div class="slds-m-left_xx-large" key={m.Id}>
+                                                                    <ul>
+                                                                        
+                                                                        <template if:false={m.MilestoneIsTrue__c}>
+                                                                        <li class="slds-p-bottom_medium slds-border_bottom">
+                                                                            <article class="thp-item-list__item slds-m-top_small">
+                                                                                <div class=" thp-item-card__container slds-grid">
+                                                                                    <div class="thp-item-card__image slds-grow-none">
+                                                                                        <div class="thp-content-icon__container slds-is-relative slds-show_inline-block">
+                                                                                            <div class="thp-content-icon__main slds-icon-standard-account slds-icon_container">
+                                                                                                <div class="thp-item-card__image slds-grow-none">
+                                                                                                    <c-cx-in-custom-guidance-center-icon
+                                                                                                        icon-name={m.Type__c}
+                                                                                                        is-complete={m.Completed_Ex__c}>
+                                                                                                    </c-cx-in-custom-guidance-center-icon>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div if:true={Completed_Ex__c}>
+                                                                                            <div class="slds-is-absolute slds-theme_success thp-content-icon__checkmark">
+                                                                                                <div class="thp-content-icon__check-icon">
+                                                                                                    <div class="slds-icon-utility-check slds-icon_container">
+                                                                                                        <svg class="slds-icon" focusable="false" data-key="check"
+                                                                                                            aria-hidden="true" viewBox="0 0 52 52"
+                                                                                                            style="height: 50%; width: 50%;">
+                                                                                                            <g>
+                                                                                                                <path
+                                                                                                                    d="M19.1 42.5L2.6 25.9c-.6-.6-.6-1.6 0-2.2l2.2-2.2c.6-.6 1.6-.6 2.2 0L19.4 34c.4.4 1.1.4 1.5 0L45.2 9.5c.6-.6 1.6-.6 2.2 0l2.2 2.2c.6.6.6 1.6 0 2.2L21.3 42.5c-.6.7-1.6.7-2.2 0z">
+                                                                                                                </path>
+                                                                                                            </g>
+                                                                                                        </svg>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    
+                                                                                    <div
+                                                                                        class="thp-item-card__content slds-grid slds-grid_vertical slds-grow slds-has-flexi-truncate">
+                                                                                        <span style="font-size:12px;">{m.Type__c}</span>
+                                                                                        <div class="slds-text-title_bold thp-item-card__title">
+                                                                                            <button class="slds-button_reset slds-text-link"
+                                                                                            data-recid={m.Id}
+                                                                                                            data-type={m.Type__c}
+                                                                                                            data-url={m.URL__c}
+                                                                                                            data-iscomplete={m.Completed_Ex__c}
+                                                                                                            onclick={handleExerciseClick}>
+                                                                                                                <b>{m.Name__c}</b>
+                                                                                                            </button>
+                                                                                        </div>
+                                                                                        <div class="thp-item-card__description">
+                                                                                            <div class="truncate__content description truncate__content--clamp">
+                                                                                                <div class="truncate__inner">
+                                                                                                    <p>{m.Description__c}</p>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div
+                                                                                            class="thp-item-card__footer slds-grid slds-grid_align-start slds-grid_vertical-align-center date-progress">
+                                                                                            <div class="thp-item-card__footer-left slds-text-body_small">
+                                                                                            </div>
+                                                                                            <div class="thp-item-card__footer-right slds-text-body_small">
+                                                                                                <div class="thp-progress-summary__container">
+                                                                                                    <span class="slds-grid slds-grid_vertical-align-center"
+                                                                                                                if:false={m.Completed_Ex__c}>Due
+                                                                                                                <span
+                                                                                                                    class="slds-m-left_xx-small">
+                                                                                                                    <lightning-formatted-date-time
+                                                                                                                        value={m.Due_Date__c}
+                                                                                                                        year="numeric"
+                                                                                                                        month="numeric"
+                                                                                                                        day="numeric">
+                                                                                                                    </lightning-formatted-date-time></span>
+                                                                                                                    <div class="programs-footer-divider"></div>
+                                                                                                                   <span> ~ {m.Exercise_Duration__c}</span>
+                                                                                                                    </span>
+                            
+                                                                                                                        <div
+                                                                                                                    class="slds-grid slds-grid_vertical-align-center">
+                                                                                                                    <span
+                                                                                                                        if:true={m.Completed_Ex__c}>Completed&nbsp;
+                                                                                                                        <lightning-formatted-date-time
+                                                                                                                            value={m.Completed_On__c}
+                                                                                                                            year="numeric"
+                                                                                                                            month="numeric"
+                                                                                                                            day="numeric">
+                                                                                                                        </lightning-formatted-date-time>
+                                                                                                                    </span>
+
+                                                                                                                </div>
+                                                                                                    <span class="thp-progress-summary__text" aria-hidden="true"></span>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </article>
+                                                                        </li>
+                                                                        </template>
+                                                                 
+                                                                        <template if:true={m.MilestoneIsTrue__c}>
+                                                                        <div if:false={m.Program_Outcome__c}>
+                                                                        <li class="slds-p-bottom_medium">
+                                                                            <article class="thp-item-list__item slds-m-top_small">
+                                                                                <div class=" thp-milestone">
+                                                                                    <div class="thp-milestone__item">
+                                                                                        
+                                                                                        <div class="thp-item-card__container slds-grid">
+
+
+                                                                                            <div if:false={milestoneOutcomeType}>
+                                                                                                <div class="thp-item-card__image slds-grow-none">
+                                                                                                        <div if:true={m.Completed__c}
+                                                                                                        class="slds-icon_container_circle slds-icon-action-approval slds-icon_container greenCheckIcon">
+                                                                                                        <svg class="slds-icon" focusable="false"
+                                                                                                            data-key="approval" aria-hidden="true"
+                                                                                                            viewBox="0 0 52 52"
+                                                                                                            style="width: 100%; height: 100%">
+                                                                                                            <g>
+                                                                                                                <path
+                                                                                                                    d="M19 43.6L2.5 27c-.6-.6-.6-1.6 0-2.2l2.2-2.2c.6-.6 1.6-.6 2.2 0l12.4 12.5c.4.4 1.1.4 1.5 0l24.3-24.5c.6-.6 1.6-.6 2.2 0l2.2 2.2c.6.6.6 1.6 0 2.2L21.2 43.6c-.6.7-1.6.7-2.2 0z">
+                                                                                                                </path>
+                                                                                                            </g>
+                                                                                                        </svg>
+                                                                                                    </div>
+                                                                                                    <lightning-progress-ring
+                                                                                                        if:false={m.Completed__c}
+                                                                                                        class="thp-milestone__progress-ring"
+                                                                                                        value={m.Completion_Percentage__c}
+                                                                                                        size="large">
+                                                                                                    </lightning-progress-ring>
+                                                                                                </div>
+                                                                                            </div>
+
+                                                                                            <div if:true={milestoneOutcomeType}>
+                                                                                                <div class="thp-item-card__image slds-grow-none">
+                                                                                                    <div class="thp-content-icon__container slds-is-relative slds-show_inline-block">
+                                                                                                        <div class="thp-content-icon__main slds-icon-standard-account slds-icon_container">
+                                                                                                            <div class="thp-item-card__image slds-grow-none">
+                                                                                                                <c-cx-in-custom-guidance-center-icon
+                                                                                                                    icon-name="milestone"
+                                                                                                                    is-complete={m.Completed__c}>
+                                                                                                                </c-cx-in-custom-guidance-center-icon>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div if:true={m.Completed__c}>
+                                                                                                        <div class="slds-is-absolute slds-theme_success thp-content-icon__checkmark">
+                                                                                                            <div class="thp-content-icon__check-icon">
+                                                                                                                <div class="slds-icon-utility-check slds-icon_container">
+                                                                                                                    <svg class="slds-icon" focusable="false" data-key="check"
+                                                                                                                        aria-hidden="true" viewBox="0 0 52 52"
+                                                                                                                        style="height: 50%; width: 50%;">
+                                                                                                                        <g>
+                                                                                                                            <path
+                                                                                                                                d="M19.1 42.5L2.6 25.9c-.6-.6-.6-1.6 0-2.2l2.2-2.2c.6-.6 1.6-.6 2.2 0L19.4 34c.4.4 1.1.4 1.5 0L45.2 9.5c.6-.6 1.6-.6 2.2 0l2.2 2.2c.6.6.6 1.6 0 2.2L21.3 42.5c-.6.7-1.6.7-2.2 0z">
+                                                                                                                            </path>
+                                                                                                                        </g>
+                                                                                                                    </svg>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+
+
+                                                                                            <div
+                                                                                                class="thp-item-card__content slds-grid slds-grid_vertical slds-grow slds-has-flexi-truncate">
+                                                                                                <div class="slds-text-title_bold thp-item-card__title">
+                                                                                                    <div class="slds-text-title_bold">{m.Name__c}</div>
+                                                                                                </div>
+                                                                                                <div class="thp-item-card__description">
+                                                                                                    <div class="truncate__content description truncate__content--clamp" >
+                                                                                                        <div class="truncate__inner">
+                                                                                                            <p>{m.Description__c}</p>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div
+                                                                                                    class="thp-item-card__footer slds-grid slds-grid_vertical-align-center date-progress">
+                                                                                                    <div class="thp-item-card__footer-left slds-text-body_small">
+                                                                                                        <span class="thp-due-date" if:false={m.Completed__c}>Due<span
+                                                                                                                    class="slds-m-left_xx-small">
+                                                                                                                    <lightning-formatted-date-time
+                                                                                                                        value={m.Due_Date__c}
+                                                                                                                        year="numeric"
+                                                                                                                        month="numeric"
+                                                                                                                        day="numeric">
+                                                                                                                    </lightning-formatted-date-time>
+                                                                                                                    </span>
+                                                                                                                </span>
+                                                                                                                
+                                                                                                                
+                                                                                                                  <span
+                                                                                                                        if:true={m.Completed__c}>Completed&nbsp;
+                                                                                                                        <lightning-formatted-date-time
+                                                                                                                            value={m.Completed_On__c}
+                                                                                                                            year="numeric"
+                                                                                                                            month="numeric"
+                                                                                                                            day="numeric">
+                                                                                                                        </lightning-formatted-date-time>
+                                                                                                                    </span>
+
+                                                                                                    </div>
+                                                                                                    <div class="programs-footer-divider"></div>
+                                                                                                    <div class="thp-item-card__footer-right slds-text-body_small">
+                                                                                                        <div class="slds-text-body_small">
+                                                                                                            <div
+                                                                                                                class="thp-progress-summary__container thp-progress-summary_steps">
+                                                                                                                <span
+                                                                                                                        class="thp-progress-summary__text"
+                                                                                                                        aria-hidden="false">
+                                                                                                                        <lightning-formatted-number
+                                                                                                                            value={m.Current_Value__c}
+                                                                                                                            maximum-fraction-digits="0"></lightning-formatted-number>
+                                                                                                                        &nbsp;of&nbsp;
+                                                                                                                        <lightning-formatted-number
+                                                                                                                            value={m.Total_Target_Value__c}
+                                                                                                                            maximum-fraction-digits="0"></lightning-formatted-number>
+                                                                                                                    </span>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </article>
+                                                                        </li>
+                                                                        </div>
+                                                                        </template>
+                                                                     
+                                                                    </ul>
+                                                                </div>
+                                                        </template>
+                                                       
+                                                    </div>
+                                                   <!--Section Body End--> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </template>
+							</div>
+						</div>
+					</template>
+				</div>
+				<!--Program Detail End-->
+				<!-- video or lesson detail Start -->
+				<div class="slds-grid slds-grid_vertical slds-grow content-view allProgramsView"
+					if:true={isShowLessonDetails}>
+					<div class="thp-item-card__container" style="border:0;">
+                        <a class="slds-button slds-button_neutral" style="float: right;font-size: 0.8rem;" onclick={showAllPrograms}>All Programs</a>
+						<div class="slds-m-around_medium">
+                            <div class="slds-p-top_small">
+                                <a style="color: var(--lwc-brandAccessible);"  onclick={doSingleClick} if:false={isShowAllPrograms}>&#10094; Back To Program</a>
+                            </div>
+                            
+							<div if:true={isLessonContent}> 
+                                 <template if:true={lesson}>
+								<div class="slds-grid slds-grid_vertical">
+									<div class="header slds-grid slds-m-bottom_small slds-m-top_xx-small">
+										<h2 class="slds-col slds-align-bottom slds-text-heading_medium">
+											<b>{lessonName}</b>
+                                            <p class="slds-text-heading_small slds-m-top_xx-small">{lessonDescription}</p>
+                                            <p class="date-progress slds-text-body_small slds-m-top_xx-small">~ {lessonLength}</p>
+                                             <template if:true={isItemComplete}> 
+                                                 <a class="slds-button slds-button_brand slds-m-vertical_x-small" style="font-size: 0.75rem;" onclick={markItemComplete} data-recid={exerciseId} data-isitemcomplete={isItemComplete} disabled>Completed</a>
+                                              </template>
+                                                <template if:false={isItemComplete}>
+                                                    <a class="slds-button slds-button_brand slds-m-vertical_x-small" style="font-size: 0.75rem;" onclick={markItemComplete} data-recid={exerciseId} data-isitemcomplete={isItemComplete}>Mark Complete</a>
+                                                </template>
+                                        </h2>
+									</div>
+								</div>
+                                <lightning-formatted-rich-text class="slds-p-top_medium" style="display:block;"
+                                    value={lessonRichText}
+                                ></lightning-formatted-rich-text>
+                                 </template>
+							</div>
+                            
+							<div if:true={isVideoContent}>
+                                 <template if:true={video} >
+								<div class="slds-grid slds-grid_vertical slds-p-bottom_medium">
+									<div class="header slds-grid slds-m-bottom_small slds-m-top_xx-small">
+										<h2 class="slds-col slds-align-bottom ">
+											<b class="slds-text-heading_medium">{videoName}</b>
+                                            <p class="slds-text-heading_small slds-m-top_xx-small">{videoDescription}</p>
+                                            <p class="date-progress slds-text-body_small slds-m-top_xx-small">~ {videoLength}</p>
+                                             <template if:true={isItemComplete}> 
+                                                 <a class="slds-button slds-button_brand slds-m-vertical_x-small" style="font-size: 0.75rem;" onclick={markItemComplete} data-recid={exerciseId} data-isitemcomplete={isItemComplete} disabled>Completed</a>
+                                              </template>
+                                                <template if:false={isItemComplete}>
+                                                    <a class="slds-button slds-button_brand slds-m-vertical_x-small" style="font-size: 0.75rem;" onclick={markItemComplete} data-recid={exerciseId} data-isitemcomplete={isItemComplete}>Mark Complete</a>
+                                                </template>
+										</h2>
+									</div>
+									<iframe if:true={videoEmbedURL} width="100%" height="360" src={videoEmbedURL}
+										title="Video player" frameborder="0"
+										allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+										allowfullscreen>
+									</iframe>
+									
+								</div>
+                                 </template>
+							</div>
+
+
+                            <!-- Feedback -->
+                            <div if:true={isShowFeedbackDetails}>
+                                <div>
+                                    <div class="slds-m-around_medium">
+                                        <div>
+                                            <div class="slds-grid slds-grid_vertical slds-border_bottom slds-p-bottom_medium">
+                                                <div class="header slds-grid slds-m-bottom_small">
+                                                    <h2 class="slds-col slds-align-bottom slds-text-heading_medium">
+                                                        <b>{feedbackHeader}</b>
+                                                    </h2>
+                                                </div>
+                                                <p>{feedbackSubHeader}</p>
+                                                <div class="thp-side-panel-header__footer">
+                                                    <div
+                                                        class="slds-grid slds-grid_align-spread slds-size_1-of-1 slds-m-top_small">
+                                                        <div class="thp-side-panel-header__footer-summary slds-m-right_small slds-truncate">
+                                                        {feedbackDuration}
+                                                        </div>
+                                                        <div class="thp-side-panel-header__footer-percent">
+                                                            <b>0%</b>
+                                                        </div>
+                                                    </div>
+                                                    <div class="thp-side-panel-header__footer-progress-bar slds-m-top_xx-small">
+                                                        <lightning-progress-bar value={program.Completion_Percentage__c}
+                                                            size="medium" variant="circular">
+                                                        </lightning-progress-bar>
+                                                    </div>
+                                                    <div class="slds-grid slds-grid_align-spread slds-m-top_x-small">
+                                                        <div
+                                                            class="thp-side-panel-header__footer-meta-left slds-m-right_small slds-truncate">
+                                                            <span class="thp-due-date">Due
+                                                                <span class="slds-m-left_xx-small">
+                                                                    <lightning-formatted-date-time value={feedbackDueDate} year="numeric" month="numeric" day="numeric">
+                                                                    </lightning-formatted-date-time>
+                                                                
+                                                                    </span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slds-m-horizontal_large slds-m-bottom_medium">
+                                        <h3 class="slds-show_inline-block slds-text-heading_small slds-text-title_bold slds-m-bottom_small">Share Content for Review</h3>
+                                        <lightning-input type="text" label="URL" onchange={handleInputChange} placeholder="Paste a link to your content..." required></lightning-input>
+
+                                        <h3 class="slds-show_inline-block slds-text-heading_small slds-text-title_bold slds-m-top_large slds-m-bottom_small">Invite Reviewers</h3>
+                                        <p class="slds-m-vertical_xx-small">Select teammates to review your content. Make sure to include:</p>
+                                        <div class="slds-m-vertical_x-small slds-grid">   
+                                            <div if:true={selectedRecordsLength} class="slds-p-vertical_x-small slds-grid slds-grid_vertical-align-center">
+                                                <lightning-icon icon-name="utility:success" alternative-text="Success!" variant="success" title="success variant x-small" size="x-small"></lightning-icon>
+                                                <div class="slds-m-left_xx-small"> 5 Reviewers</div>
+                                            </div>
+                                            <div if:false={selectedRecordsLength} class="slds-p-vertical_x-small slds-grid slds-grid_vertical-align-center">
+                                                    <lightning-icon icon-name="utility:routing_offline" alternative-text="Success!" title="success variant x-small" size="x-small"></lightning-icon>
+                                                    <div class="slds-m-left_xx-small"> 5 Reviewers</div>
+                                            </div>
+                                        
+                                        
+                                        
+                                        </div>
+                                        <div>
+                                            <c-cx-In-Custom-Guidance-Center-User-Lookup objectname="User" fieldnames=" Id, Name" onselected={handleselectedUserRecords}
+                                                icon-name="standard:people" placeholder="Lookup Users">
+                                            </c-cx-In-Custom-Guidance-Center-User-Lookup>
+                                        </div>
+                                        <lightning-textarea class="slds-m-vertical_small" name="input1" label="Note" onchange={handleInputChangeForNote}  placeholder="Send your reviewer a note to ask them to review your video"></lightning-textarea>
+
+                                        <h3 class="slds-show_inline-block slds-text-heading_small slds-text-title_bold slds-m-top_medium slds-m-bottom_small">Complete a Self Assessment</h3>
+                                        <p class="slds-m-vertical_xx-small">Rate your own performance using the same rubric that your reviewers will receive. (Optional)</p>
+                                        <div class="slds-m-top_medium slds-m-bottom_large"><a href={feedbackassessmentURL} target="_blank">Take the self assessment</a></div>
+                                        
+
+                                        <lightning-button onclick={handleRequestFeedback} variant="brand" label="Send Your Feedback Request" title="Primary action" stretch></lightning-button>
+                                        <p class="slds-m-vertical_xx-small" style="color: #444444;font-size: 12px;text-align: center;">You can’t change your URL or reviewers after you send.</p>
+
+                                    </div>
+                                </div>
+                        </div>
+                        <!-- Feedback results -->
+                        <div class="slds-grid slds-grid_vertical slds-grow content-view" if:true={isShowFeedbackResults}>
+                            <div class="slds-m-around_medium">
+                                <div>
+                                    <div class="slds-grid slds-grid_vertical slds-border_bottom slds-p-bottom_medium">
+                                        <div class="header slds-grid slds-m-bottom_small">
+                                            <h2 class="slds-col slds-align-bottom slds-text-heading_medium">
+                                                <b>{feedbackHeader}</b>
+                                            </h2>
+                                        </div>
+                                        <p>{feedbackSubHeader}</p>
+                                        <div class="thp-side-panel-header__footer">
+                                            <div
+                                                class="slds-grid slds-grid_align-spread slds-size_1-of-1 slds-m-top_small">
+                                                <div class="thp-side-panel-header__footer-summary slds-m-right_small slds-truncate">
+                                                    1 out of 1 step completed
+                                                </div>
+                                                <div class="thp-side-panel-header__footer-percent">
+                                                    <b>100%</b>
+                                                </div>
+                                            </div>
+                                            <div class="thp-side-panel-header__footer-progress-bar slds-m-top_xx-small">
+                                                <lightning-progress-bar value="100"
+                                                    size="medium" variant="circular">
+                                                </lightning-progress-bar>
+                                            </div>
+                                            <div class="slds-grid slds-grid_align-spread slds-m-top_x-small">
+                                                <div
+                                                    class="thp-side-panel-header__footer-meta-left slds-m-right_small slds-truncate">
+                                                    <span class="thp-due-date">Completed
+                                                        <span
+                                                            class="slds-m-left_xx-small">	
+                                                                    {date}
+                                                            </span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slds-m-horizontal_large slds-m-bottom_medium">
+                                <h3 class="slds-show_inline-block slds-text-heading_small slds-text-title_bold slds-m-bottom_small">Content for Review</h3>
+
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="text-input-id-47">URL</label>
+                                    <div class="slds-form-element__control">
+                                        <a>{textValueUrl}</a>
+                                    </div>
+                                </div>
+                                <h3 class="slds-show_inline-block slds-text-heading_small slds-text-title_bold slds-m-top_medium slds-m-bottom_small">Reviewer Status</h3>
+                                <p class="slds-m-vertical_xx-small">5 of 5 reviews submitted</p>
+                                <template for:each={selectedUserNames} for:item="user" if:true={selectedUserNames}>
+                                <div key={user.Id}>
+                                <div class="slds-m-vertical_x-small slds-grid">
+                                
+                                    <lightning-icon icon-name="utility:success" alternative-text="Success!" variant="success"
+                                        title="success variant x-small" size="x-small"></lightning-icon>
+                                    <p class="slds-m-left_xx-small">{user}</p>
+                                </div>
+                                </div>
+                                </template>
+                                <a>View More</a>
+                                
+                                <div class="slds-form-element slds-p-top_medium slds-p-bottom_large slds-border_bottom">
+                                    <label class="slds-form-element__label" for="text-input-id-47">Note</label>
+                                    <div class="slds-form-element__control">
+                                        <p>{textValueNote}</p>
+                                    </div>
+                                </div>
+
+                                <h3 class="slds-text-heading_small slds-text-title_bold slds-m-top_large slds-m-bottom_small">Results</h3>
+
+                                <div class="slds-grid slds-wrap slds-border_bottom slds-p-bottom_medium">
+                                    <div class="slds-col slds-size_1-of-1">
+                                        <h3 class="slds-text-heading_small slds-text-title_bold slds-m-vertical_small" style="font-size: 13px;">Total Average Score - 3 Assessments</h3>
+                                    </div>
+                                    <div class="slds-col slds-size_2-of-3">
+                                        <c-cx-in-custom-guidance-center-ratings rating-value={feedbackTotalAvgScore}></c-cx-in-custom-guidance-center-ratings>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-3">
+                                        <h3 class="slds-text-heading_small slds-text-title_bold slds-m-vertical_small slds-text-align_right" style="font-size: 13px;">Avg Score:{feedbackTotalAvgScore}</h3>
+                                    </div>
+                                </div>
+
+                                <!-- Rating 1 -->
+                                <div class="slds-grid slds-wrap slds-border_bottom slds-p-bottom_large slds-m-vertical_small">
+                                    <div class="slds-col slds-size_1-of-1 slds-m-top_small slds-m-bottom_xx-small">
+                                        <div class="slds-m-vertical_xxx-small" style="color:#444444;font-size:12px;">1 of 3</div>
+                                        <h3 class="slds-text-heading_small slds-text-title_bold" style="font-size: 13px;">{feedbackTitle1}</h3>
+                                        <p class="slds-m-top_x-small">{feedbackDescription1}</p>
+                                    </div>
+                                    <div class="slds-col slds-size_2-of-3">
+                                        <c-cx-in-custom-guidance-center-ratings rating-value={feedbackRating1}></c-cx-in-custom-guidance-center-ratings>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-3">
+                                        <h3 class="slds-text-heading_small slds-text-title_bold slds-m-vertical_small slds-text-align_right" style="font-size: 13px;">Avg Score:{feedbackRating1}</h3>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-1">
+                                        <div style="font-size: 10px;">Needs work<span style="padding-left: 60px;">Exceptional</span></div>
+                                    </div>
+
+                                    <a class="slds-col slds-size_1-of-1 slds-m-top_large slds-p-bottom_x-small ratings-breakdown" onclick={handleToggleRatingsBreakdown}></a>
+                                    <div class="slds-col slds-size_1-of-1">
+                                        <div class="slds-grid slds-wrap slds-p-around_medium" style="border: 1px solid #E5E5E5;border-radius: 4px;">
+                                            <div class="slds-col slds-size_1-of-1 slds-m-bottom_small">Answer Breakdown</div>
+                                            <div class="slds-col slds-size_1-of-1 slds-m-bottom_small">
+                                                <div class="slds-grid slds-wrap">
+                                                    <div class="slds-col" style="flex: none;width: 55px;">5 Stars</div>
+                                                    <div class="slds-col" style="align-self: center;flex: none;width: 75%;">
+                                                        <lightning-progress-bar value="42" size="medium" variant="circular"></lightning-progress-bar>
+                                                    </div>
+                                                    <div class="slds-col" style="flex: none;width: 20px;text-align: right;">3</div>
+                                                </div>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-1 slds-m-bottom_small">
+                                                <div class="slds-grid slds-wrap">
+                                                    <div class="slds-col" style="flex: none;width: 55px;">4 Stars</div>
+                                                    <div class="slds-col" style="align-self: center;flex: none;width: 75%;">
+                                                        <lightning-progress-bar value="28" size="medium" variant="circular"></lightning-progress-bar>
+                                                    </div>
+                                                    <div class="slds-col" style="flex: none;width: 20px;text-align: right;">2</div>
+                                                </div>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-1 slds-m-bottom_small">
+                                                <div class="slds-grid slds-wrap">
+                                                    <div class="slds-col" style="flex: none;width: 55px;">3 Stars</div>
+                                                    <div class="slds-col" style="align-self: center;flex: none;width: 75%;">
+                                                        <lightning-progress-bar value="14" size="medium" variant="circular"></lightning-progress-bar>
+                                                    </div>
+                                                    <div class="slds-col" style="flex: none;width: 20px;text-align: right;">1</div>
+                                                </div>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-1 slds-m-bottom_small">
+                                                <div class="slds-grid slds-wrap">
+                                                    <div class="slds-col" style="flex: none;width: 55px;">2 Stars</div>
+                                                    <div class="slds-col" style="align-self: center;flex: none;width: 75%;">
+                                                        <lightning-progress-bar value="14" size="medium" variant="circular"></lightning-progress-bar>
+                                                    </div>
+                                                    <div class="slds-col" style="flex: none;width: 20px;text-align: right;">1</div>
+                                                </div>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-1">
+                                                <div class="slds-grid slds-wrap">
+                                                    <div class="slds-col" style="flex: none;width: 55px;">1 Stars</div>
+                                                    <div class="slds-col" style="align-self: center;flex: none;width: 75%;">
+                                                        <lightning-progress-bar value="0" size="medium" variant="circular"></lightning-progress-bar>
+                                                    </div>
+                                                    <div class="slds-col" style="flex: none;width: 20px;text-align: right;">0</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- </div>
+                                </template> -->
+
+                                <!-- Rating 2 -->
+                                <div class="slds-grid slds-wrap slds-border_bottom slds-p-bottom_large slds-m-vertical_small">
+                                    <div class="slds-col slds-size_1-of-1 slds-m-top_small slds-m-bottom_xx-small">
+                                        <div class="slds-m-vertical_xxx-small" style="color:#444444;font-size:12px;">2 of 3</div>
+                                        <h3 class="slds-text-heading_small slds-text-title_bold" style="font-size: 13px;">{feedbackTitle2}</h3>
+                                        <p class="slds-m-top_x-small">{feedbackDescription2}</p>
+                                    </div>
+                                    <div class="slds-col slds-size_2-of-3">
+                                        <c-cx-in-custom-guidance-center-ratings rating-value={feedbackRating2}></c-cx-in-custom-guidance-center-ratings>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-3">
+                                        <h3 class="slds-text-heading_small slds-text-title_bold slds-m-vertical_small slds-text-align_right" style="font-size: 13px;">Avg Score:{feedbackRating2}</h3>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-1">
+                                        <div style="font-size: 10px;">Needs work<span style="padding-left: 60px;">Exceptional</span></div>
+                                    </div>
+
+                                    <a class="slds-col slds-size_1-of-1 slds-m-top_large slds-p-bottom_x-small ratings-breakdown" onclick={handleToggleRatingsBreakdown}></a>
+                                    <div class="slds-col slds-size_1-of-1">
+                                        <div class="slds-grid slds-wrap slds-p-around_medium" style="border: 1px solid #E5E5E5;border-radius: 4px;">
+                                            <div class="slds-col slds-size_1-of-1 slds-m-bottom_small">Answer Breakdown</div>
+                                            <div class="slds-col slds-size_1-of-1 slds-m-bottom_small">
+                                                <div class="slds-grid slds-wrap">
+                                                    <div class="slds-col" style="flex: none;width: 55px;">5 Stars</div>
+                                                    <div class="slds-col" style="align-self: center;flex: none;width: 75%;">
+                                                        <lightning-progress-bar value="42" size="medium" variant="circular"></lightning-progress-bar>
+                                                    </div>
+                                                    <div class="slds-col" style="flex: none;width: 20px;text-align: right;">3</div>
+                                                </div>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-1 slds-m-bottom_small">
+                                                <div class="slds-grid slds-wrap">
+                                                    <div class="slds-col" style="flex: none;width: 55px;">4 Stars</div>
+                                                    <div class="slds-col" style="align-self: center;flex: none;width: 75%;">
+                                                        <lightning-progress-bar value="28" size="medium" variant="circular"></lightning-progress-bar>
+                                                    </div>
+                                                    <div class="slds-col" style="flex: none;width: 20px;text-align: right;">2</div>
+                                                </div>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-1 slds-m-bottom_small">
+                                                <div class="slds-grid slds-wrap">
+                                                    <div class="slds-col" style="flex: none;width: 55px;">3 Stars</div>
+                                                    <div class="slds-col" style="align-self: center;flex: none;width: 75%;">
+                                                        <lightning-progress-bar value="14" size="medium" variant="circular"></lightning-progress-bar>
+                                                    </div>
+                                                    <div class="slds-col" style="flex: none;width: 20px;text-align: right;">1</div>
+                                                </div>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-1 slds-m-bottom_small">
+                                                <div class="slds-grid slds-wrap">
+                                                    <div class="slds-col" style="flex: none;width: 55px;">2 Stars</div>
+                                                    <div class="slds-col" style="align-self: center;flex: none;width: 75%;">
+                                                        <lightning-progress-bar value="14" size="medium" variant="circular"></lightning-progress-bar>
+                                                    </div>
+                                                    <div class="slds-col" style="flex: none;width: 20px;text-align: right;">1</div>
+                                                </div>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-1">
+                                                <div class="slds-grid slds-wrap">
+                                                    <div class="slds-col" style="flex: none;width: 55px;">1 Stars</div>
+                                                    <div class="slds-col" style="align-self: center;flex: none;width: 75%;">
+                                                        <lightning-progress-bar value="0" size="medium" variant="circular"></lightning-progress-bar>
+                                                    </div>
+                                                    <div class="slds-col" style="flex: none;width: 20px;text-align: right;">0</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Rating 3 -->
+                                <div class="slds-grid slds-wrap slds-border_bottom slds-p-bottom_large slds-m-vertical_small">
+                                    <div class="slds-col slds-size_1-of-1 slds-m-top_small slds-m-bottom_xx-small">
+                                        <div class="slds-m-vertical_xxx-small" style="color:#444444;font-size:12px;">3 of 3</div>
+                                        <h3 class="slds-text-heading_small slds-text-title_bold" style="font-size: 13px;">{feedbackTitle3}</h3>
+                                        <p class="slds-m-top_x-small">{feedbackDescription3}</p>
+                                    </div>
+                                    <div class="slds-col slds-size_2-of-3">
+                                        <c-cx-in-custom-guidance-center-ratings rating-value={feedbackRating3}></c-cx-in-custom-guidance-center-ratings>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-3">
+                                        <h3 class="slds-text-heading_small slds-text-title_bold slds-m-vertical_small slds-text-align_right" style="font-size: 13px;">Avg Score:{feedbackRating3}</h3>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-1">
+                                        <div style="font-size: 10px;">Needs work<span style="padding-left: 60px;">Exceptional</span></div>
+                                    </div>
+
+                                    <a class="slds-col slds-size_1-of-1 slds-m-top_large slds-p-bottom_x-small ratings-breakdown" onclick={handleToggleRatingsBreakdown}></a>
+                                    <div class="slds-col slds-size_1-of-1">
+                                        <div class="slds-grid slds-wrap slds-p-around_medium" style="border: 1px solid #E5E5E5;border-radius: 4px;">
+                                            <div class="slds-col slds-size_1-of-1 slds-m-bottom_small">Answer Breakdown</div>
+                                            <div class="slds-col slds-size_1-of-1 slds-m-bottom_small">
+                                                <div class="slds-grid slds-wrap">
+                                                    <div class="slds-col" style="flex: none;width: 55px;">5 Stars</div>
+                                                    <div class="slds-col" style="align-self: center;flex: none;width: 75%;">
+                                                        <lightning-progress-bar value="42" size="medium" variant="circular"></lightning-progress-bar>
+                                                    </div>
+                                                    <div class="slds-col" style="flex: none;width: 20px;text-align: right;">3</div>
+                                                </div>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-1 slds-m-bottom_small">
+                                                <div class="slds-grid slds-wrap">
+                                                    <div class="slds-col" style="flex: none;width: 55px;">4 Stars</div>
+                                                    <div class="slds-col" style="align-self: center;flex: none;width: 75%;">
+                                                        <lightning-progress-bar value="28" size="medium" variant="circular"></lightning-progress-bar>
+                                                    </div>
+                                                    <div class="slds-col" style="flex: none;width: 20px;text-align: right;">2</div>
+                                                </div>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-1 slds-m-bottom_small">
+                                                <div class="slds-grid slds-wrap">
+                                                    <div class="slds-col" style="flex: none;width: 55px;">3 Stars</div>
+                                                    <div class="slds-col" style="align-self: center;flex: none;width: 75%;">
+                                                        <lightning-progress-bar value="14" size="medium" variant="circular"></lightning-progress-bar>
+                                                    </div>
+                                                    <div class="slds-col" style="flex: none;width: 20px;text-align: right;">1</div>
+                                                </div>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-1 slds-m-bottom_small">
+                                                <div class="slds-grid slds-wrap">
+                                                    <div class="slds-col" style="flex: none;width: 55px;">2 Stars</div>
+                                                    <div class="slds-col" style="align-self: center;flex: none;width: 75%;">
+                                                        <lightning-progress-bar value="14" size="medium" variant="circular"></lightning-progress-bar>
+                                                    </div>
+                                                    <div class="slds-col" style="flex: none;width: 20px;text-align: right;">1</div>
+                                                </div>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-1">
+                                                <div class="slds-grid slds-wrap">
+                                                    <div class="slds-col" style="flex: none;width: 55px;">1 Stars</div>
+                                                    <div class="slds-col" style="align-self: center;flex: none;width: 75%;">
+                                                        <lightning-progress-bar value="0" size="medium" variant="circular"></lightning-progress-bar>
+                                                    </div>
+                                                    <div class="slds-col" style="flex: none;width: 20px;text-align: right;">0</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Feedback results end -->
+                        <!-- Feedback end -->
+
+
+
+						</div>
+					</div>
+				</div>
+				<!-- video or lesson detail end -->
+			</div>
+		</div>
+	</section>
+</template>

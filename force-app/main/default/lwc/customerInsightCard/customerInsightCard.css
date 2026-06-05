@@ -1,0 +1,298 @@
+/**
+ * Customer Insight Card – styles
+ * Uses CSS custom properties (--header-bg, --header-gradient, --badge-*) set from JS/App Builder.
+ */
+
+/* ---- Error state ---- */
+.error-state code {
+    font-size: 0.8125rem;
+    background: rgba(0, 0, 0, 0.06);
+    padding: 0.1rem 0.35rem;
+    border-radius: 0.2rem;
+}
+
+/* ---- Card wrapper ---- */
+.card-wrapper {
+    border-radius: 0.5rem;
+    overflow: hidden;
+    border: 1px solid var(--slds-g-color-border-base-1, #c9c9c9);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.07);
+}
+
+/* ---- Header: gradient, rounded top ---- */
+.card-header {
+    background: linear-gradient(
+        180deg,
+        var(--header-bg, #1b3a5c) 0%,
+        var(--header-gradient, #2d5a87) 100%
+    );
+    padding: 1rem 1.5rem 0.75rem;
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.profile-wrap {
+    flex-shrink: 0;
+}
+
+.profile-img {
+    width: 5.5rem;
+    height: 5.5rem;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.header-text {
+    min-width: 0;
+}
+
+.customer-name-wrap {
+    margin: 0;
+    line-height: 1.3;
+}
+
+.customer-name-link {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #fff;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    text-align: left;
+    text-decoration: none;
+    transition: text-decoration 0.2s ease, opacity 0.2s ease;
+}
+
+.customer-name-link:hover {
+    text-decoration: underline;
+    opacity: 0.95;
+}
+
+.customer-location {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0.25rem 0 0 0;
+}
+
+/* ---- Action buttons (pill-style) ---- */
+.actions-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.5rem 1.5rem 1rem;
+    background: var(--header-gradient, #2d5a87);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.pill-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.4rem 0.9rem;
+    border-radius: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.pill-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.pill-btn .pill-icon {
+    --slds-c-icon-color-foreground-default: #fff;
+}
+
+/* ---- Info section: label + value ---- */
+.info-section {
+    padding: 1.25rem 1.5rem;
+    background: #fff;
+}
+
+.info-row {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 0.75rem;
+    align-items: start;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--slds-g-color-border-base-1, #e5e5e5);
+}
+
+.info-row:last-child {
+    border-bottom: none;
+}
+
+.info-label {
+    font-size: 0.8125rem;
+    color: var(--slds-g-color-neutral-base-50, #706e6b);
+}
+
+.info-value {
+    font-size: 0.875rem;
+    color: var(--slds-g-color-neutral-base-30, #3e3e3c);
+    word-break: break-word;
+}
+
+.info-value-link {
+    font-size: 0.875rem;
+    color: var(--slds-g-color-brand-base-50, #0176d3);
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    text-align: left;
+    text-decoration: none;
+}
+
+.info-value-link:hover {
+    text-decoration: underline;
+}
+
+/* ---- Engagement Signals box ---- */
+.engagement-box {
+    margin: 0 1.5rem 1.25rem;
+    padding: 1rem 1.25rem;
+    background: rgba(45, 90, 135, 0.08);
+    border: 1px solid rgba(27, 58, 92, 0.2);
+    border-radius: 0.5rem;
+}
+
+.engagement-title {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--slds-g-color-neutral-base-30, #3e3e3c);
+    margin: 0 0 0.75rem 0;
+}
+
+.engagement-tiles {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.signal-tile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+
+.signal-header {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    flex-wrap: wrap;
+}
+
+.signal-value {
+    flex-shrink: 0;
+}
+
+.edit-pencil {
+    margin-left: auto;
+    padding: 0.15rem;
+    border: none;
+    background: transparent;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    color: var(--slds-g-color-neutral-base-50, #706e6b);
+}
+
+.edit-pencil:hover {
+    color: var(--slds-g-color-brand-base-50, #0176d3);
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.signal-input {
+    width: 100%;
+    max-width: 8rem;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    border: 1px solid var(--slds-g-color-border-base-1, #c9c9c9);
+    border-radius: 0.25rem;
+}
+
+.signal-label {
+    font-size: 0.8125rem;
+    color: var(--slds-g-color-neutral-base-50, #706e6b);
+}
+
+/* Badges: colored background from CSS variables */
+.badge {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: #fff;
+    width: fit-content;
+}
+
+.badge-positive {
+    background: var(--badge-positive, #4caf50);
+}
+
+.badge-neutral {
+    background: var(--badge-neutral, #9e9e9e);
+}
+
+.badge-negative {
+    background: var(--badge-negative, #f44336);
+}
+
+/* ---- Troubleshooting panel ---- */
+.debug-panel {
+    font-size: 0.8125rem;
+    background: #f3f3f3;
+    border: 1px solid #c9c9c9;
+    border-radius: 0.25rem;
+    color: #3e3e3c;
+}
+
+.debug-panel ul {
+    margin: 0;
+    padding-left: 1.25rem;
+}
+
+.debug-mono {
+    word-break: break-all;
+    font-family: monospace;
+}
+
+/* ---- Responsive: mobile and small screens ---- */
+@media (max-width: 480px) {
+    .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .actions-row {
+        flex-direction: column;
+    }
+
+    .pill-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .info-row {
+        grid-template-columns: 1fr;
+    }
+}

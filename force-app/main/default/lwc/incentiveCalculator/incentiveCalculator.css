@@ -1,0 +1,83 @@
+.chart-placeholder {
+    background-color: #f4f6f9;
+    padding: 1rem;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1.5rem;
+}
+canvas {
+    width: 100%;
+    height: 250px; /* adjust as necessary */
+}
+
+table.slds-table tr {
+    border-bottom: 1px solid #ffffff; /* Very light gray */
+}
+lightning-slider::part(label) {
+    display: none;
+}
+
+.bold-text {
+    font-weight: bold;
+    color: #261089;
+}
+
+
+.custom-row {
+    background-color: #F0EBFD;
+    border: 1px solid #261089;
+    border-radius: 10px;
+}
+.incentive-value-color {
+    color: gray;
+}
+
+
+.custom-slider {
+
+    --slds-c-slider-track-color-background: #F0EBFD;
+    --slds-c-slider-thumb-color-foreground: #261089;
+
+
+}
+.color-box {
+		display: inline-block;
+		width: 20px;
+		height: 20px;
+		margin-right: 5px;
+		border: 1px solid #ccc;
+}
+.fine-print {
+		font-weight: normal;
+		font-size: 12px;
+		    padding-left: 5px;
+    text-align: center;
+}
+.canvas-holder, .gauge-holder {
+    background-color: #f4f4f4; /* subtle gray background */
+    border: 1px solid #e0e0e0; /* slightly darker border */
+    padding: 15px; /* space around the charts */
+    border-radius: 5px; /* rounded corners */
+    margin: 5px 0; /* vertical spacing before and after the canvas */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* optional: adds a subtle shadow for depth */
+}
+.chart-header1{
+    font-weight: 500;          /* Not as bold as before */
+    font-size: 14px;           /* Reduced font size */
+    color: #3a3a3a;            /* Darker shade of gray */
+    background-color: #f0f0f0; /* Light gray background for headers */
+    padding: 15px;          
+		    border-radius: 5px; /* rounded corners */
+		    margin: 5px 0; /* vertical spacing before and after the canvas */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* optional: adds a subtle shadow for depth */
+    text-align: center;        /* Horizontally center the text */
+    border: 1px solid #e0e0e0; /* slightly darker border */
+}
+.chart-header {
+    background-color: #f4f4f4; /* subtle gray background */
+    border: 1px solid #e0e0e0; /* slightly darker border */
+    padding: 15px; /* space around the charts */
+    border-radius: 5px; /* rounded corners */
+    margin: 5px 0; /* vertical spacing before and after the canvas */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* optional: adds a subtle shadow for depth */
+}

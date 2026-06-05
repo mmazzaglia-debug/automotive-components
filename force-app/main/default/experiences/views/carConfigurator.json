@@ -1,0 +1,46 @@
+{
+  "appPageId" : "1e4d6659-0826-4bf2-a237-43ecbc3624af",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "3beddded-07e6-4a5b-80dc-89d16c8fa0ed",
+  "label" : "Car Configurator",
+  "regions" : [ {
+    "id" : "94e2b799-8e7f-40f9-8371-1789650c5c90",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:carConfigurator",
+      "id" : "ccadaa9b-1551-42a3-81eb-1097c1ad8a0b",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "b36551a9-a09e-4dbf-9e6b-addb47bb23ce",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "2da4b136-f339-48f1-ad95-2fd2f0ddeca6",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "Build your perfect OMODA — select your model, package, colour, interior and wheels.",
+        "title" : "Car Configurator"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "035fbac2-c8ea-49ea-b065-019af79dac01",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "4ef7e9a5-c84a-4d16-9570-070529f27b01",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-car-configurator"
+}

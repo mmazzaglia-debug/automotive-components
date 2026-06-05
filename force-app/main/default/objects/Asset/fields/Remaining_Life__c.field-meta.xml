@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Remaining_Life__c</fullName>
+    <formula>IF (  Life_Expectancy__c &gt; 0,  1 - Mileage__c / Life_Expectancy__c , IF(Product2.Life_Expectancy__c &gt; 0, 1 - Mileage__c / Product2.Life_Expectancy__c , 0))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Remaining Life</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <type>Percent</type>
+</CustomField>

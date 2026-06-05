@@ -1,0 +1,46 @@
+{
+  "appPageId" : "1e4d6659-0826-4bf2-a237-43ecbc3624af",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "742e2fcc-fe71-4e5e-a705-4271bca9adfd",
+  "label" : "Finance Calculator",
+  "regions" : [ {
+    "id" : "f2ab69b6-3402-4650-9cbb-c07f87a20ba4",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:financeCalculator",
+      "id" : "089136e8-fc89-4beb-b4b8-86aff0230078",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "e0781cc5-00d7-46a8-9a69-5c8404807f0b",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "95099e1a-0ec5-4aee-9ebd-e1787251a7bd",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "Interactive finance calculator for Lease and Asset Finance on your OMODA vehicle.",
+        "title" : "Finance Calculator"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "56f2cd15-e47c-43e9-87af-6ddc09aa6b74",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "e474106d-acda-4abd-9978-fe602338f72b",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-finance-calculator"
+}

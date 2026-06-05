@@ -1,0 +1,39 @@
+{
+  "appPageId" : "1e4d6659-0826-4bf2-a237-43ecbc3624af",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "59070841-c499-4921-967f-ece272abf5a3",
+  "label" : "Booking Related List",
+  "regions" : [ {
+    "id" : "8637dc7f-db46-40a2-9bb0-296bd644ae24",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customTitle" : "",
+        "parentRecordId" : "{!recordId}",
+        "relatedListName" : "{!relationshipApiName}",
+        "showBreadCrumbs" : true,
+        "showCustomTitle" : false,
+        "showManualRefreshButton" : true,
+        "showRowNumbers" : true
+      },
+      "componentName" : "forceCommunity:relatedList",
+      "id" : "2410e8a0-fd16-44d9-af6d-5ba56288a4a2",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "6d9e385f-58ac-4fc5-ae9b-57f7d1691101",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "e661d4ed-5e7b-4832-b4ca-aa4b7a762479",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "relatedlist-006"
+}

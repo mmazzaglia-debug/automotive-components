@@ -1,0 +1,46 @@
+.serviceContainer {
+    --content-font-color: black;
+  --service-type1-bg-color: skyblue;
+}
+
+.container {
+ background-color: #ffff;
+ padding: 16px;
+ font-style: normal;
+}
+
+.title-service {
+ font-weight: 700;
+ font-size: 16px;
+}
+
+.heading-pad {
+ margin-bottom: 16px;
+}
+.service-type1-container {
+ background-color: var(--service-type1-bg-color);
+ border-radius: 22px;
+ display: flex;
+ flex-direction: row;
+ flex-wrap: wrap;
+ overflow: hidden;
+}
+.content-container {
+ background: var(--content-bg-color);
+ flex-grow: 1;
+ width: 62%;
+ display: flex;
+ flex-direction: column;
+ justify-content: space-between;
+ color: var(--content-font-color);
+}
+.caption{
+font-weight: 400;
+font-size: 15px;
+line-height: 140%;
+}
+.code-Container{
+ font-weight: 400;
+ font-size: 14px;
+ line-height: 140%;
+}

@@ -1,0 +1,60 @@
+<template>
+    <template if:true={isStart}>
+        <li class="slds-chat-listitem slds-chat-listitem_bookend">
+            <div class="slds-chat-bookend">
+                <span class="slds-icon_container slds-icon-utility-chat slds-chat-icon">
+                    <lightning-icon icon-name="utility:chat" alternative-text="Chat" size="x-small" title="chat"></lightning-icon>
+                </span>
+                <p>Session started • {_message.date}, {_message.time}</p>
+            </div>
+        </li>
+    </template>
+
+    <template if:true={isInbound}>
+        <li class="slds-chat-listitem slds-chat-listitem_inbound slds-chat-list slds-p-bottom_x-small">
+            <div class="slds-chat-message">
+                <div class="slds-chat-message__body">
+                    <div class="slds-chat-message__text slds-chat-message__text_inbound">
+                        <template if:true={loading}>
+                            <span class="slds-icon-typing slds-is-animated" title="Customer is typing">
+                                <span class="slds-icon-typing__dot"></span>
+                                <span class="slds-icon-typing__dot"></span>
+                                <span class="slds-icon-typing__dot"></span>
+                                <span class="slds-assistive-text">Customer is typing</span>
+                            </span>
+                        </template>
+                        <template if:false={loading}>
+                            <span>{_message.messageBody}</span>
+                        </template>
+                    </div>
+                    <template if:false={loading}>
+                        <div class="slds-chat-message__meta">{_message.name} • {_message.time}</div>
+                    </template>
+                </div>
+            </div>
+        </li>
+        <template if:false={loading}>
+        </template>
+    </template>
+    <template if:true={isOutbound}>
+        <li class="slds-chat-listitem slds-chat-list slds-chat-listitem_outbound slds-p-bottom_x-small">
+            <div class="slds-chat-message">
+                <div class="slds-chat-message__body">
+                    <div class="slds-chat-message__text slds-chat-message__text_outbound">
+                        <span>{_message.messageBody}</span>
+                    </div>
+                    <div class="slds-chat-message__meta">{_message.name} • {_message.time}</div>
+                </div>
+            </div>
+        </li>
+    </template>
+    <template if:true={isLast}>
+        <template if:false={loading}>
+            <li class="slds-chat-listitem slds-chat-listitem_bookend">
+                <div class="slds-chat-bookend slds-chat-bookend_stop">
+                    <p>Session ended by <b>{_message.name}</b> • {_message.date}, {_message.time}</p>
+                </div>
+            </li>
+        </template>
+    </template>
+</template>

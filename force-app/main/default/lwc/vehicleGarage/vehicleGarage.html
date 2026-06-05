@@ -1,0 +1,67 @@
+<template>
+    <div class="garage-wrapper">
+        <header class="garage-header">
+            <h2 class="garage-title">Garaje</h2>
+        </header>
+        <div class="garage-body">
+            <template lwc:if={loading}>
+                <div class="state state-loading">
+                    <lightning-spinner alternative-text="Cargando" size="medium"></lightning-spinner>
+                </div>
+            </template>
+
+            <template lwc:if={hasError}>
+                <div class="state state-error">
+                    <p>{errorMessage}</p>
+                </div>
+            </template>
+
+            <template lwc:if={showEmpty}>
+                <div class="state state-empty">
+                    <div class="state-empty-icon" aria-hidden="true"></div>
+                    <p>No hay vehículos asociados</p>
+                </div>
+            </template>
+
+            <template lwc:if={hasVehicles}>
+                <div class="cards">
+                    <template for:each={vehicles} for:item="vehicle">
+                        <article
+                            key={vehicle.id}
+                            class="card"
+                            role="button"
+                            tabindex="0"
+                            data-id={vehicle.id}
+                            onclick={handleCardClick}
+                            onkeydown={handleCardKeydown}
+                        >
+                            <div class="card-media">
+                                <template lwc:if={vehicle.imageUrl}>
+                                    <img
+                                        class="card-img"
+                                        src={vehicle.imageUrl}
+                                        alt={vehicle.name}
+                                        onerror={handleImageError}
+                                        data-id={vehicle.id}
+                                    />
+                                </template>
+                                <template lwc:else>
+                                    <div class="card-placeholder" title={vehicle.name}></div>
+                                </template>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="card-title">{vehicle.name}</h3>
+                                <template lwc:if={vehicle.warrantyIndicator}>
+                                    <p class="card-meta"><span class="card-meta-dot"></span>Garantía: {vehicle.warrantyIndicator}</p>
+                                </template>
+                                <template lwc:if={vehicle.lastServiceDateFormatted}>
+                                    <p class="card-meta"><span class="card-meta-dot"></span>Último servicio: {vehicle.lastServiceDateFormatted}</p>
+                                </template>
+                            </div>
+                        </article>
+                    </template>
+                </div>
+            </template>
+        </div>
+    </div>
+</template>

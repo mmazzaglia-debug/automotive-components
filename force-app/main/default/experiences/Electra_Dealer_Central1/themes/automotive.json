@@ -1,0 +1,469 @@
+{
+  "activeBrandingSetId" : "1443b9a1-b12a-49eb-b504-2d6aeb99d247",
+  "customCSS" : ".siteforceActionRenderer, .siteforceBody { background-color: #ffffff !important; } .forceCommunityTheme .siteforceNavigation a, .forceCommunityTheme .siteforceNavigation a:visited { color: #061c3f !important; font-weight: 500; } .forceCommunityTheme .siteforceNavigation a:hover { color: #061c3f !important; text-decoration: underline; }",
+  "developerName" : "automotive",
+  "id" : "34e47573-08fd-456d-be0f-eb408bc4a68f",
+  "label" : "Automotive",
+  "layouts" : {
+    "Home" : "ff1b57fe-a81e-4f50-81f4-07395f8e2ede",
+    "Inner" : "ae9e9c3e-7b8a-4805-8eaa-890ef91ea566",
+    "Login" : "02e0793a-750f-4f94-b692-ad4679b0eed2",
+    "ServiceNotAvailable" : "5234d8c6-0f2f-4bb7-b3a1-ebfd36a3a3e1"
+  },
+  "type" : "theme",
+  "views" : [ {
+    "componentAttributes" : { },
+    "componentName" : "salesforceIdentity:loginBody2",
+    "id" : "02e0793a-750f-4f94-b692-ad4679b0eed2",
+    "label" : "Login",
+    "regions" : [ {
+      "id" : "1aeceaca-3a86-470b-95ba-9ea41ac0d34b",
+      "regionName" : "header",
+      "type" : "region"
+    }, {
+      "id" : "b5a26a79-61a2-41cf-b411-22a9851b4923",
+      "regionName" : "content",
+      "type" : "region"
+    }, {
+      "id" : "8a5b7290-0357-47fb-afa6-b035cc1e4ffb",
+      "regionName" : "footer",
+      "type" : "region"
+    } ],
+    "type" : "view"
+  }, {
+    "componentAttributes" : {
+      "fixedPageWidth" : 1170,
+      "headerBgColor" : "rgba(0, 0, 0, 0)",
+      "isHeaderPinned" : false,
+      "isHeroUnderHeader" : false,
+      "isPageWidthFixed" : true,
+      "showHeader" : true,
+      "showHero" : false
+    },
+    "componentName" : "siteforce:automotiveLayoutStarter",
+    "id" : "ae9e9c3e-7b8a-4805-8eaa-890ef91ea566",
+    "label" : "Default",
+    "regions" : [ {
+      "components" : [ {
+        "componentAttributes" : {
+          "background" : "background: #FFFFFF",
+          "backgroundOverlayColor" : "rgba(0, 0, 0, 0)",
+          "borderBottomColor" : "rgb(6, 28, 63)",
+          "borderTopColor" : "rgba(0, 0, 0, 0)",
+          "bottomRowHeight" : 4,
+          "bottomRowOverlayColor" : "rgba(0, 0, 0, 0)",
+          "containHeader" : true,
+          "containHeaderWidth" : 1440,
+          "dropdownBackgroundColor" : "rgb(255, 255, 255)",
+          "dropdownBackgroundHoverColor" : "rgb(245, 245, 245)",
+          "dropdownBorderColor" : "rgb(228, 229, 233)",
+          "dropdownTextColor" : "rgb(6, 28, 63)",
+          "dropdownTextHoverColor" : "rgb(6, 28, 63)",
+          "iconLinkColor" : "rgb(6, 28, 63)",
+          "iconLinkHoverColor" : "rgb(100, 100, 100)",
+          "iconLinkTextShadowColor" : "rgba(0, 0, 0, 0)",
+          "linkActiveBorderColor" : "rgb(6, 28, 63)",
+          "linkColor" : "rgb(6, 28, 63)",
+          "linkHoverColor" : "rgb(6, 28, 63)",
+          "linkTextShadowColor" : "rgba(0, 0, 0, 0)",
+          "logoWidth" : 180,
+          "searchPosition" : "right",
+          "searchStyle" : "expanded",
+          "showAppLauncher" : false,
+          "showNotifications" : true,
+          "showProfileMenu" : true,
+          "showSearch" : true,
+          "topRowHeight" : 44
+        },
+        "componentName" : "forceCommunity:themeHeaderAuto",
+        "id" : "50d4a757-129b-43ff-be1e-ac6593d3f182",
+        "regions" : [ {
+          "components" : [ {
+            "componentAttributes" : {
+              "accountManagementLabel" : "Account Management",
+              "buttonBackgroundColor" : "",
+              "buttonBackgroundHoverColor" : "",
+              "buttonBorderColor" : "rgba(0, 0, 0, 0)",
+              "buttonBorderRadius" : 4,
+              "buttonText" : "Log in",
+              "buttonTextColor" : "",
+              "buttonTextHoverColor" : "",
+              "communityBuilderLabel" : "Experience Builder",
+              "communitySetupLabel" : "Salesforce Setup",
+              "contactSupportLabel" : "Contact Support",
+              "filterName" : "MyCases",
+              "homeLabel" : "Home",
+              "logoutLabel" : "Logout",
+              "menuStyle" : "iconAndName",
+              "messagesLabel" : "Messages",
+              "myAccountLabel" : "My Account",
+              "showAccountManagement" : false,
+              "showContactSupport" : false,
+              "showMessages" : false,
+              "showUserSettings" : false,
+              "userSettingsLabel" : "My Settings",
+              "viewProfileLabel" : "My Profile"
+            },
+            "componentName" : "forceCommunity:themeProfileMenu",
+            "id" : "15564c73-33fa-4441-95e5-6b74ce8674ca",
+            "renditionMap" : { },
+            "type" : "component"
+          } ],
+          "id" : "11b70319-bf7a-4dbe-83d0-b930d084a296",
+          "regionName" : "themeHeaderProfileMenu",
+          "type" : "region"
+        }, {
+          "components" : [ {
+            "componentAttributes" : {
+              "maxAutoCompleteResults" : 5,
+              "searchLabel" : "Search...",
+              "searchObjects" : [ {
+                "isPublic" : false,
+                "name" : "Vehicle"
+              }, {
+                "isPublic" : false,
+                "name" : "VehicleDefinition"
+              }, {
+                "isPublic" : false,
+                "name" : "Asset"
+              }, {
+                "isPublic" : false,
+                "name" : "AssetAccountParticipant"
+              }, {
+                "isPublic" : false,
+                "name" : "AssetContactParticipant"
+              }, {
+                "isPublic" : false,
+                "name" : "AssetMilestone"
+              }, {
+                "isPublic" : false,
+                "name" : "Lead"
+              }, {
+                "isPublic" : false,
+                "name" : "Opportunity"
+              }, {
+                "isPublic" : false,
+                "name" : "Product2"
+              }, {
+                "isPublic" : false,
+                "name" : "Order"
+              } ]
+            },
+            "componentName" : "forceCommunity:globalSearchInput",
+            "id" : "6c26d73d-9ce8-46f2-870f-64e45f71a222",
+            "renditionMap" : { },
+            "type" : "component"
+          } ],
+          "id" : "acb2a81f-af12-44de-b8f3-f8f33c834732",
+          "regionName" : "search",
+          "type" : "region"
+        }, {
+          "components" : [ {
+            "componentAttributes" : {
+              "NavigationMenuEditorRefresh" : "",
+              "alignment" : "left",
+              "showAppLauncher" : false,
+              "showBackLabel" : false,
+              "showHomeLink" : true
+            },
+            "componentName" : "forceCommunity:multiLevelNavigationWrapper",
+            "id" : "e2e910e4-5b61-488f-a8e2-c6bb7fab97bf",
+            "renditionMap" : { },
+            "type" : "component"
+          } ],
+          "id" : "75706864-4d6e-4596-92a8-302e135fb913",
+          "regionName" : "nav",
+          "type" : "region"
+        } ],
+        "renditionMap" : { },
+        "type" : "component"
+      } ],
+      "id" : "749b6b45-63ed-4161-a190-b647ec78e2ee",
+      "regionName" : "themeHeader",
+      "type" : "region"
+    }, {
+      "components" : [ {
+        "componentAttributes" : {
+          "bgImage" : "background: rgba(255,255,255) url(/sfsites/assets/themes/automotive-BgHero.png) center center /cover",
+          "bgOverlayColor" : "rgba(6, 28, 63, 0.55)",
+          "captionText" : "Electra Dealer Central",
+          "captionTextColor" : "rgb(255, 255, 255)",
+          "captionTextShadowColor" : "rgba(0, 0, 0, 0)",
+          "contentAlignment" : "left",
+          "contentWidth" : 50,
+          "ctaBtnOneBgColor" : "rgba(6, 28, 63, 1)",
+          "ctaBtnOneBgHoverColor" : "rgba(10, 48, 112, 1)",
+          "ctaBtnOneBorderColor" : "rgba(6, 28, 63, 1)",
+          "ctaBtnOneOpenNewTab" : false,
+          "ctaBtnOneText" : "Configure a Vehicle",
+          "ctaBtnOneTextColor" : "rgba(255, 255, 255, 1)",
+          "ctaBtnOneTextHoverColor" : "rgba(255, 255, 255, 1)",
+          "ctaBtnOneUrl" : "/dealer/s/car-configurator",
+          "ctaBtnRadius" : 2,
+          "ctaBtnTwoBgColor" : "rgba(255, 255, 255, 1)",
+          "ctaBtnTwoBgHoverColor" : "rgba(240, 240, 240, 1)",
+          "ctaBtnTwoBorderColor" : "rgba(255, 255, 255, 1)",
+          "ctaBtnTwoOpenNewTab" : false,
+          "ctaBtnTwoText" : "Find a Dealer",
+          "ctaBtnTwoTextColor" : "rgba(6, 28, 63, 1)",
+          "ctaBtnTwoTextHoverColor" : "rgba(6, 28, 63, 1)",
+          "ctaBtnTwoUrl" : "https://omodaauto.co.uk/buy-a-car/find-a-dealer",
+          "ctaShowBtnOne" : true,
+          "ctaShowBtnTwo" : true,
+          "fixedHeroWidth" : true,
+          "heroHeight" : 42,
+          "heroWidth" : 1401,
+          "showCaption" : true,
+          "showSubtitle" : true,
+          "showTitle" : true,
+          "subtitleText" : "Explore deals, vehicles, and configure your OMODA.",
+          "subtitleTextColor" : "rgba(220, 225, 235, 1)",
+          "subtitleTextShadowColor" : "rgba(0, 0, 0, 0)",
+          "titleText" : "Welcome to OMODA Dealer Central",
+          "titleTextColor" : "rgb(255, 255, 255)",
+          "titleTextShadowColor" : "rgba(0, 0, 0, 0)",
+          "type" : "showSearch"
+        },
+        "componentName" : "forceCommunity:themeHeroStarter",
+        "id" : "25d338bf-ba8f-4fea-a984-54cab5f45864",
+        "renditionMap" : { },
+        "type" : "component"
+      } ],
+      "id" : "d1b1370f-65fb-4e5f-a6a6-c3773205bcd5",
+      "regionName" : "themeHero",
+      "type" : "region"
+    }, {
+      "id" : "a2276c8a-3fbb-48e4-b2b1-57a0f1ab30cb",
+      "regionName" : "themeFooter",
+      "type" : "region"
+    } ],
+    "type" : "view"
+  }, {
+    "componentAttributes" : {
+      "fixedPageWidth" : 1440,
+      "headerBgColor" : "rgba(0, 0, 0, 0)",
+      "isHeaderPinned" : false,
+      "isHeroUnderHeader" : false,
+      "isPageWidthFixed" : true,
+      "showHeader" : true,
+      "showHero" : true
+    },
+    "componentName" : "siteforce:automotiveLayoutStarter",
+    "id" : "ff1b57fe-a81e-4f50-81f4-07395f8e2ede",
+    "label" : "Home",
+    "regions" : [ {
+      "components" : [ {
+        "componentAttributes" : {
+          "background" : "background: #FFFFFF",
+          "backgroundOverlayColor" : "rgba(0, 0, 0, 0)",
+          "borderBottomColor" : "rgb(6, 28, 63)",
+          "borderTopColor" : "rgba(0, 0, 0, 0)",
+          "bottomRowHeight" : 4,
+          "bottomRowOverlayColor" : "rgba(0, 0, 0, 0)",
+          "containHeader" : true,
+          "containHeaderWidth" : 1440,
+          "dropdownBackgroundColor" : "rgb(255, 255, 255)",
+          "dropdownBackgroundHoverColor" : "rgb(245, 245, 245)",
+          "dropdownBorderColor" : "rgb(228, 229, 233)",
+          "dropdownTextColor" : "rgb(6, 28, 63)",
+          "dropdownTextHoverColor" : "rgb(6, 28, 63)",
+          "iconLinkColor" : "rgb(6, 28, 63)",
+          "iconLinkHoverColor" : "rgb(100, 100, 100)",
+          "iconLinkTextShadowColor" : "rgba(0, 0, 0, 0)",
+          "linkActiveBorderColor" : "rgb(6, 28, 63)",
+          "linkColor" : "rgb(6, 28, 63)",
+          "linkHoverColor" : "rgb(6, 28, 63)",
+          "linkTextShadowColor" : "rgba(0, 0, 0, 0)",
+          "logoWidth" : 180,
+          "searchPosition" : "right",
+          "searchStyle" : "expanded",
+          "showAppLauncher" : false,
+          "showNotifications" : true,
+          "showProfileMenu" : true,
+          "showSearch" : true,
+          "topRowHeight" : 44
+        },
+        "componentName" : "forceCommunity:themeHeaderAuto",
+        "id" : "8ad12950-09c1-4371-a92b-0a3a382d9485",
+        "regions" : [ {
+          "components" : [ {
+            "componentAttributes" : {
+              "accountManagementLabel" : "Account Management",
+              "buttonBackgroundColor" : "",
+              "buttonBackgroundHoverColor" : "",
+              "buttonBorderColor" : "rgba(0, 0, 0, 0)",
+              "buttonBorderRadius" : 4,
+              "buttonText" : "Log in",
+              "buttonTextColor" : "",
+              "buttonTextHoverColor" : "",
+              "communityBuilderLabel" : "Experience Builder",
+              "communitySetupLabel" : "Salesforce Setup",
+              "contactSupportLabel" : "Contact Support",
+              "filterName" : "MyCases",
+              "homeLabel" : "Home",
+              "logoutLabel" : "Logout",
+              "menuStyle" : "iconAndName",
+              "messagesLabel" : "Messages",
+              "myAccountLabel" : "My Account",
+              "showAccountManagement" : false,
+              "showContactSupport" : false,
+              "showMessages" : false,
+              "showUserSettings" : false,
+              "userSettingsLabel" : "My Settings",
+              "viewProfileLabel" : "My Profile"
+            },
+            "componentName" : "forceCommunity:themeProfileMenu",
+            "id" : "f04aeacc-0aef-41c8-a98e-9c4a4b2548a3",
+            "renditionMap" : { },
+            "type" : "component"
+          } ],
+          "id" : "6f4607d3-07e4-4480-a64f-c670d992cae3",
+          "regionName" : "themeHeaderProfileMenu",
+          "type" : "region"
+        }, {
+          "components" : [ {
+            "componentAttributes" : {
+              "maxAutoCompleteResults" : 5,
+              "searchLabel" : "Search...",
+              "searchObjects" : [ {
+                "isPublic" : false,
+                "name" : "Vehicle"
+              }, {
+                "isPublic" : false,
+                "name" : "VehicleDefinition"
+              }, {
+                "isPublic" : false,
+                "name" : "Asset"
+              }, {
+                "isPublic" : false,
+                "name" : "AssetAccountParticipant"
+              }, {
+                "isPublic" : false,
+                "name" : "AssetContactParticipant"
+              }, {
+                "isPublic" : false,
+                "name" : "AssetMilestone"
+              }, {
+                "isPublic" : false,
+                "name" : "Lead"
+              }, {
+                "isPublic" : false,
+                "name" : "Opportunity"
+              }, {
+                "isPublic" : false,
+                "name" : "Product2"
+              }, {
+                "isPublic" : false,
+                "name" : "Order"
+              } ]
+            },
+            "componentName" : "forceCommunity:globalSearchInput",
+            "id" : "f4e3dee4-7d2a-47a5-a622-deeaadae4281",
+            "renditionMap" : { },
+            "type" : "component"
+          } ],
+          "id" : "f1579038-c346-4189-803b-60b6dcee6021",
+          "regionName" : "search",
+          "type" : "region"
+        }, {
+          "components" : [ {
+            "componentAttributes" : {
+              "NavigationMenuEditorRefresh" : "",
+              "alignment" : "left",
+              "showAppLauncher" : false,
+              "showBackLabel" : false,
+              "showHomeLink" : true
+            },
+            "componentName" : "forceCommunity:multiLevelNavigationWrapper",
+            "id" : "bf264372-023a-4d0b-90a4-675825e7626b",
+            "renditionMap" : { },
+            "type" : "component"
+          } ],
+          "id" : "b15aab10-d8ce-432f-bcce-9ec7e8589dda",
+          "regionName" : "nav",
+          "type" : "region"
+        } ],
+        "renditionMap" : { },
+        "type" : "component"
+      } ],
+      "id" : "6a263ec3-7cea-4dcf-b78e-202abd308423",
+      "regionName" : "themeHeader",
+      "type" : "region"
+    }, {
+      "components" : [ {
+        "componentAttributes" : {
+          "bgImage" : "background: rgba(255,255,255) url(/sfsites/assets/themes/automotive-BgHero.png) center center /cover",
+          "bgOverlayColor" : "rgba(6, 28, 63, 0.55)",
+          "captionText" : "Electra Dealer Central",
+          "captionTextColor" : "rgb(255, 255, 255)",
+          "captionTextShadowColor" : "rgba(0, 0, 0, 0)",
+          "contentAlignment" : "left",
+          "contentWidth" : 50,
+          "ctaBtnOneBgColor" : "rgba(6, 28, 63, 1)",
+          "ctaBtnOneBgHoverColor" : "rgba(10, 48, 112, 1)",
+          "ctaBtnOneBorderColor" : "rgba(6, 28, 63, 1)",
+          "ctaBtnOneOpenNewTab" : false,
+          "ctaBtnOneText" : "Configure a Vehicle",
+          "ctaBtnOneTextColor" : "rgba(255, 255, 255, 1)",
+          "ctaBtnOneTextHoverColor" : "rgba(255, 255, 255, 1)",
+          "ctaBtnOneUrl" : "/dealer/s/car-configurator",
+          "ctaBtnRadius" : 2,
+          "ctaBtnTwoBgColor" : "rgba(255, 255, 255, 1)",
+          "ctaBtnTwoBgHoverColor" : "rgba(240, 240, 240, 1)",
+          "ctaBtnTwoBorderColor" : "rgba(255, 255, 255, 1)",
+          "ctaBtnTwoOpenNewTab" : false,
+          "ctaBtnTwoText" : "Find a Dealer",
+          "ctaBtnTwoTextColor" : "rgba(6, 28, 63, 1)",
+          "ctaBtnTwoTextHoverColor" : "rgba(6, 28, 63, 1)",
+          "ctaBtnTwoUrl" : "https://omodaauto.co.uk/buy-a-car/find-a-dealer",
+          "ctaShowBtnOne" : true,
+          "ctaShowBtnTwo" : true,
+          "fixedHeroWidth" : true,
+          "heroHeight" : 42,
+          "heroWidth" : 1401,
+          "showCaption" : true,
+          "showSubtitle" : true,
+          "showTitle" : true,
+          "subtitleText" : "Explore deals, vehicles, and configure your OMODA.",
+          "subtitleTextColor" : "rgba(220, 225, 235, 1)",
+          "subtitleTextShadowColor" : "rgba(0, 0, 0, 0)",
+          "titleText" : "Welcome to OMODA Dealer Central",
+          "titleTextColor" : "rgb(255, 255, 255)",
+          "titleTextShadowColor" : "rgba(0, 0, 0, 0)",
+          "type" : "showSearch"
+        },
+        "componentName" : "forceCommunity:themeHeroStarter",
+        "id" : "822cc668-7dc8-47bc-9d67-ada42c3b49a5",
+        "renditionMap" : { },
+        "type" : "component"
+      } ],
+      "id" : "2cf1115d-b08c-4e65-8713-9b14dff9f143",
+      "regionName" : "themeHero",
+      "type" : "region"
+    } ],
+    "type" : "view"
+  }, {
+    "componentAttributes" : {
+      "fixedPageWidth" : 1170,
+      "headerBgColor" : "rgba(0, 0, 0, 0)",
+      "isHeaderPinned" : false,
+      "isHeroUnderHeader" : false,
+      "isPageWidthFixed" : true,
+      "showHeader" : true,
+      "showHero" : true
+    },
+    "componentName" : "siteforce:themeLayoutStarter",
+    "id" : "5234d8c6-0f2f-4bb7-b3a1-ebfd36a3a3e1",
+    "label" : "ServiceNotAvailable",
+    "regions" : [ {
+      "id" : "3aa2c67e-ab40-4f33-831e-29fdc20d0910",
+      "regionName" : "themeHeader",
+      "type" : "region"
+    }, {
+      "id" : "e0ad7863-6776-447b-b4a1-3392dafd1f97",
+      "regionName" : "themeFooter",
+      "type" : "region"
+    } ],
+    "type" : "view"
+  } ]
+}

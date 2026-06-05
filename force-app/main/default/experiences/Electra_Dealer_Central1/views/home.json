@@ -1,0 +1,238 @@
+{
+  "appPageId" : "1e4d6659-0826-4bf2-a237-43ecbc3624af",
+  "componentName" : "siteforce:dynamicLayout",
+  "dataProviders" : [ ],
+  "id" : "ceefe8e4-e532-4d1f-9c71-29d17419668f",
+  "label" : "Home",
+  "regions" : [ {
+    "id" : "57e317e6-7336-43fa-b7fd-6b41c659221e",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "background" : "background: rgba(0,0,0,0)",
+        "backgroundOverlay" : "rgba(0,0,0,0.5)",
+        "contentAreaWidth" : 100,
+        "sectionConfig" : {
+          "UUID" : "59fc45ac-89e6-4e37-bb97-5794b19e2106",
+          "columns" : [ {
+            "UUID" : "c34c7684-c086-45be-b9f5-f2f851efa8ae",
+            "columnKey" : "col1",
+            "columnName" : "column 1",
+            "columnWidth" : "8",
+            "seedComponents" : [ {
+              "attributes" : {
+                "listViewIdForNavigation" : "AllOpenLeads",
+                "navigateToListView" : "true",
+                "pageSize" : "5",
+                "sfdc:identifier" : "forceCommunity_leadInbox",
+                "sortBy" : "CreatedDate",
+                "title" : "Leads"
+              },
+              "fqn" : "forceCommunity:leadInbox"
+            }, {
+              "attributes" : {
+                "filterName" : "AllActivatedOrders",
+                "layout" : "COMPACT",
+                "pageSize" : "6",
+                "scope" : "Order",
+                "sfdc:identifier" : "forceCommunity_objectHome"
+              },
+              "fqn" : "forceCommunity:objectHome"
+            }, {
+              "attributes" : {
+                "filterName" : "All_ApplicationForms",
+                "layout" : "COMPACT",
+                "pageSize" : "6",
+                "scope" : "ApplicationForm",
+                "sfdc:identifier" : "forceCommunity_objectHome"
+              },
+              "fqn" : "forceCommunity:objectHome"
+            } ]
+          }, {
+            "UUID" : "066df2ff-a280-4bff-8810-3b6f045b20dc",
+            "columnKey" : "col2",
+            "columnName" : "column 2",
+            "columnWidth" : "4",
+            "seedComponents" : [ {
+              "attributes" : {
+                "filterName" : "MyOpportunities",
+                "layout" : "COMPACT",
+                "pageSize" : "8",
+                "scope" : "Opportunity",
+                "sfdc:identifier" : "forceCommunity_objectHome"
+              },
+              "fqn" : "forceCommunity:objectHome"
+            }, {
+              "attributes" : {
+                "filterName" : "MyOpenCases",
+                "layout" : "COMPACT",
+                "pageSize" : "6",
+                "scope" : "Case",
+                "sfdc:identifier" : "forceCommunity_objectHome"
+              },
+              "fqn" : "forceCommunity:objectHome"
+            } ]
+          } ]
+        },
+        "sectionHeight" : 32
+      },
+      "componentName" : "forceCommunity:section",
+      "id" : "59fc45ac-89e6-4e37-bb97-5794b19e2106",
+      "regions" : [ {
+        "components" : [ {
+          "componentAttributes" : {
+            "enableInlineEdit" : true,
+            "filterName" : "AllOpportunities",
+            "layout" : "COMPACT",
+            "pageSize" : 8,
+            "scope" : "Opportunity",
+            "showActionBar" : true,
+            "showChartsPanel" : true,
+            "showDisplay" : "showall",
+            "showFilterPanel" : true,
+            "showImageIcon" : true,
+            "showManualRefreshButton" : true,
+            "showObjectName" : true,
+            "showPinnedList" : true,
+            "showSearchBar" : true
+          },
+          "componentName" : "forceCommunity:objectHome",
+          "id" : "313288b0-ca79-4be3-8cdb-bf21ddf0f95f",
+          "renderPriority" : "NEUTRAL",
+          "renditionMap" : { },
+          "type" : "component"
+        }, {
+          "componentAttributes" : {
+            "enableInlineEdit" : true,
+            "filterName" : "AllActivatedOrders",
+            "layout" : "COMPACT",
+            "pageSize" : 25,
+            "scope" : "Order",
+            "showActionBar" : true,
+            "showChartsPanel" : true,
+            "showDisplay" : "showall",
+            "showFilterPanel" : true,
+            "showImageIcon" : true,
+            "showManualRefreshButton" : true,
+            "showObjectName" : true,
+            "showPinnedList" : true,
+            "showSearchBar" : true
+          },
+          "componentName" : "forceCommunity:objectHome",
+          "id" : "59261f12-c92e-4e27-b4fb-75e4a7ea7b5b",
+          "renderPriority" : "NEUTRAL",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "c34c7684-c086-45be-b9f5-f2f851efa8ae",
+        "regionLabel" : "column 1",
+        "regionName" : "col1",
+        "renditionMap" : { },
+        "type" : "region"
+      }, {
+        "components" : [ {
+          "componentAttributes" : {
+            "casesOn" : false,
+            "displayGreeting" : true,
+            "displayimage" : "Left",
+            "leadsOn" : true,
+            "oppsOn" : false,
+            "prodsOn" : false,
+            "tasksOn" : true
+          },
+          "componentName" : "c:sdo_Experience_RecordSnapshot",
+          "id" : "a273a30b-8925-44a2-b937-014d3eabfd12",
+          "renderPriority" : "NEUTRAL",
+          "renditionMap" : { },
+          "type" : "component"
+        }, {
+          "componentAttributes" : {
+            "tabsetConfig" : {
+              "UUID" : "5a6f73d2-6058-4f0a-b557-cf0121014846",
+              "activeTab" : "",
+              "tabs" : [ {
+                "UUID" : "32600ded-209f-4f51-83b1-bd629e0e7ca4",
+                "allowGuestUser" : false,
+                "locked" : false,
+                "seedComponents" : [ ],
+                "tabKey" : "1",
+                "tabName" : "Leads"
+              } ],
+              "useOverflowMenu" : true
+            }
+          },
+          "componentName" : "forceCommunity:tabLayout",
+          "id" : "5a6f73d2-6058-4f0a-b557-cf0121014846",
+          "regions" : [ {
+            "components" : [ {
+              "componentAttributes" : {
+                "enableInlineEdit" : true,
+                "filterName" : "Hot_Leads",
+                "layout" : "COMPACT",
+                "pageSize" : 25,
+                "scope" : "Lead",
+                "showActionBar" : true,
+                "showChartsPanel" : true,
+                "showDisplay" : "showall",
+                "showFilterPanel" : true,
+                "showImageIcon" : true,
+                "showManualRefreshButton" : true,
+                "showObjectName" : true,
+                "showPinnedList" : true,
+                "showSearchBar" : true
+              },
+              "componentName" : "forceCommunity:objectHome",
+              "id" : "16fe3fad-dea8-4ea0-931e-651113388f01",
+              "renderPriority" : "NEUTRAL",
+              "renditionMap" : { },
+              "type" : "component"
+            } ],
+            "id" : "32600ded-209f-4f51-83b1-bd629e0e7ca4",
+            "regionLabel" : "Leads",
+            "regionName" : "1",
+            "renditionMap" : { },
+            "type" : "region"
+          } ],
+          "renderPriority" : "NEUTRAL",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "066df2ff-a280-4bff-8810-3b6f045b20dc",
+        "regionLabel" : "column 2",
+        "regionName" : "col2",
+        "renditionMap" : { },
+        "type" : "region"
+      } ],
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "613a5eb6-a779-4f63-978a-24570ce91d3b",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "3e7539ae-4c6d-46b0-b297-f794ed819d8a",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Home"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "c68e42d0-2b59-4968-b06a-1390c5263d2f",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "d5c1a769-b79c-44b2-bc24-070007e7ea74",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Home",
+  "type" : "view",
+  "viewType" : "home"
+}

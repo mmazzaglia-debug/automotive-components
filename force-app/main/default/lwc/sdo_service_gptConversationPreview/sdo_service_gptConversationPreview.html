@@ -1,0 +1,74 @@
+<template>
+    <lightning-card  title="Conversation Preview" icon-name="standard:messaging_conversation">
+   
+        <lightning-button-group slot="actions">
+            <lightning-button label="End Chat"></lightning-button>
+            <lightning-button-menu alternative-text="Show menu" menu-alignment="right" variant="border-filled">
+                <lightning-menu-item label="Customer Inactive" value="inactive" ></lightning-menu-item>
+            </lightning-button-menu>
+        </lightning-button-group>
+
+        <div class="slds-card__body">
+            <div class="slds-card__body slds-p-horizontal_medium">
+
+                <!-- conversation log -->
+                <section>
+                        <div class="slds-grid slds-wrap">
+                            <div class="slds-size_1-of-1 slds-card container">
+                                <div class="slds-size_1-of-1 slds-size_1-of-1">
+                                    <div class="slds-grid slds-wrap slds-p-bottom_large">
+                                        <div class="slds-size_1-of-1 slds-scrollable_y scroller" style="height:700px">
+                                            <section role="log">
+                                                <ul>
+                                                    <template if:true={messages}>
+                                                        <template for:each={messages} for:item="message" for:index="i">
+                                                            <c-sdo_service_gpt-message key={message.i} message={message}></c-sdo_service_gpt-message>
+                                                        </template>    
+                                                    </template>
+                                                </ul>
+                                            </section>
+                                        </div>
+                                    </div>
+                                </div> 
+                            </div>                      
+                        </div>
+                </section>
+                
+                <!-- action bar & reply text area -->
+                <section>
+                    <div class="slds-publisher slds-is-active">
+                        <ul class="scrt-button-group-row slds-is-relative">
+                            <li class="scrt-button-group-item">
+                                <lightning-button-icon-stateful icon-name="utility:emoji"></lightning-button-icon-stateful>
+                            </li>
+                            <li class="scrt-button-group-item">
+                                <lightning-button-icon-stateful icon-name="utility:change_owner"></lightning-button-icon-stateful>
+                            </li>
+                            <li class="scrt-button-group-item">
+                                <lightning-button-icon-stateful icon-name="utility:quick_text"></lightning-button-icon-stateful>
+                            </li>
+                            <li class="scrt-button-group-item">
+                                <lightning-button-icon-stateful icon-name="utility:attach"></lightning-button-icon-stateful>
+                            </li>
+                            <li class="scrt-button-group-item">
+                                <lightning-button-icon-stateful icon-name="utility:priority"></lightning-button-icon-stateful>
+                            </li>
+                        </ul>
+                    </div>
+        
+                    <div class="flex-row slds-m-bottom_xx-small">
+                        <div class="slds-form-element__control slds-grow">
+                            <span onkeypress={handleKeystroke} style="--sds-c-textarea-sizing-min-height: var(--initialheight);
+                                --slds-c-textarea-color-border: rgb(150, 148, 146);
+                                --slds-c-textarea-radius-border: var(--slds-c-textarea-radius-border, var(--sds-c-textarea-radius-border, var(--lwc-borderRadiusMedium,0.25rem)));">
+                                    <lightning-textarea name="input"  class="slds-textarea messaging-textarea" placeholder="Reply to message"></lightning-textarea>
+                                </span>
+                        </div>
+                        
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/html5-qrcode"></script>
+    <style>
+        #scanner-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="qr-reader" style="width: 250px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+   "></div>
+    <div id="qr-reader-results"></div>
+    <script>
+
+        if (window.addEventListener) {
+            console.log('B1B2B3');
+            // For standards-compliant web browsers
+            window.addEventListener("message", handleMessage, false);
+        } else {
+            console.log('A1A2A3');
+            // For standards-compliant web browsers
+
+            window.attachEvent("onmessage", handleMessage);
+        }
+
+
+
+        function handleMessage(evt) {
+            var data = evt.data;
+            console.log(JSON.stringify(data));
+
+
+            function docReady(fn) {
+                // see if DOM is already available
+                if (document.readyState === "complete"
+                    || document.readyState === "interactive") {
+                    // call on next available tick
+                    setTimeout(fn, 1);
+
+                } else {
+                    document.addEventListener("DOMContentLoaded", fn);
+                }
+            }
+
+
+            docReady(function () {
+                // This method will trigger user permissions 
+                Html5Qrcode.getCameras().then(devices => {
+                    /**
+                      * devices would be an array of objects of type:
+                      * { id: "id", label: "label" }
+                     */
+                    if (devices && devices.length) {
+                        var cameraId = '';
+                        if (devices.length > 1) {
+                            cameraId = devices[1].id;
+                        } else {
+                            cameraId = devices[0].id;
+                        }
+                        //var cameraId = devices[0].id;
+                        // .. use this to start scanning.
+                        console.log('success');
+                        startScan(cameraId, evt);
+                    }
+                }).catch(err => {
+                    // handle err   
+                    console.log(err)
+                });
+
+
+                function startScan(cameraId) {
+                    console.log('Start scan');
+                    const html5QrCode = new Html5Qrcode(/* element id */ "qr-reader");
+                    html5QrCode.start(
+                        cameraId,
+                        {
+                            fps: 10,    // Optional frame per seconds for qr code scanning
+                            qrbox: 250  // Optional if you want bounded box UI
+                        },
+                        qrCodeMessage => {
+                            console.log('QR msg' + qrCodeMessage);
+                            html5QrCode.stop();
+                            evt.source.postMessage(qrCodeMessage, "*");
+                            //return result;
+                        })
+                        .catch(err => {
+                            console.log(err)
+                        });
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

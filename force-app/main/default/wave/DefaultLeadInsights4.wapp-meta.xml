@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WaveApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <assetIcon>/analytics/wave/web/proto/images/app/icons/21.png</assetIcon>
+    <folder>DefaultLeadInsights4</folder>
+    <masterLabel>Einstein Lead Scoring</masterLabel>
+    <templateOrigin>sfdc_internal__LeadInsightsAnalytics</templateOrigin>
+    <templateVersion>1.5</templateVersion>
+</WaveApplication>

@@ -1,0 +1,39 @@
+{
+  "appPageId" : "1e4d6659-0826-4bf2-a237-43ecbc3624af",
+  "componentName" : "siteforce:dynamicLayout",
+  "dataProviders" : [ ],
+  "id" : "56b82d93-65a3-4385-9bc1-7f0e50bd4b3e",
+  "label" : "Automotive Lending New Application Form Page",
+  "regions" : [ {
+    "id" : "a5814aa3-0eb8-425a-833b-3bbcfb3657f1",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "direction" : "ltr",
+        "display" : "Display OmniScript on page",
+        "inlineVariant" : "brand",
+        "language" : "multiLanguage",
+        "subType" : "SelfIntakeApplication",
+        "theme" : "lightning",
+        "type" : "AutomotiveLending"
+      },
+      "componentName" : "runtime_omnistudio:omniscript",
+      "id" : "2481979d-28c3-484e-8fef-e6464b108302",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "aa0e5ddb-6aaa-4e99-a847-ac353fcbfcdb",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "fc8b4793-54e4-49c6-b18c-a9621397dc42",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "automotive-new-application-form"
+}

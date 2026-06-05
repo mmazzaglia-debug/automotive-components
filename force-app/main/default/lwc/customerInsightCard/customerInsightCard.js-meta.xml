@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightning__RecordPage</target>
+        <target>lightning__AppPage</target>
+        <target>lightning__HomePage</target>
+    </targets>
+    <masterLabel>Customer Insight Card</masterLabel>
+    <description>Customer summary card with photo, location, action buttons, contact info, and Engagement Signals (CSAT, LTV, Sentiment). Configure field API names and colors in Edit Page.</description>
+    <targetConfigs>
+        <targetConfig targets="lightning__RecordPage,lightning__AppPage,lightning__HomePage">
+            <property name="cardTitle" type="String" label="Title" default="Customer Summary" description="Card title (optional; shown in header area)."/>
+            <property name="showCallButton" type="Boolean" label="Show Call Button" default="true" description="Show or hide the Call action button."/>
+            <property name="showMessageButton" type="Boolean" label="Show Message Button" default="false" description="Deprecated: Message button has been removed from the component. This property is kept for page compatibility only."/>
+            <property name="showEmailButton" type="Boolean" label="Show Email Button" default="true" description="Show or hide the Email action button."/>
+            <property name="nameField" type="String" label="Name Field" default="Contact.Name" description="API name for name (e.g. Contact.Name, Account.Name)."/>
+            <property name="titleField" type="String" label="Title Field" default="Contact.Title" description="API name for title. Shown as 'Title at Account Name' below the name (e.g. CEO at Omega)."/>
+            <property name="locationField" type="String" label="Location Field" default="" description="API name for location (e.g. Contact.MailingCity). Leave blank if not used."/>
+            <property name="emailField" type="String" label="Email Field" default="Contact.Email" description="API name for email (e.g. Contact.Email)."/>
+            <property name="phoneField" type="String" label="Phone Field" default="Contact.Phone" description="API name for phone (e.g. Contact.Phone)."/>
+            <property name="addressField" type="String" label="Address Field" default="" description="API name for address (e.g. Contact.MailingStreet). Leave blank if not used."/>
+            <property name="accountIdField" type="String" label="Account Id Field" default="Contact.AccountId" description="API name for Account lookup (e.g. Contact.AccountId). Used for Account link."/>
+            <property name="accountNameField" type="String" label="Account Name Field" default="Contact.Account.Name" description="API name for Account name (e.g. Contact.Account.Name). Shown in Account row."/>
+            <property name="photoField" type="String" label="Photo Field" default="" description="API name for profile photo URL. Leave blank for placeholder."/>
+            <property name="csatField" type="String" label="CSAT Field" default="" description="API name for CSAT score 0-100. Leave blank if not used."/>
+            <property name="ltvField" type="String" label="LTV Field" default="" description="API name for LTV currency. Leave blank if not used."/>
+            <property name="sentimentField" type="String" label="Sentiment Field" default="" description="API name for sentiment (Positive, Neutral, Negative). Leave blank if not used."/>
+            <property name="relatedLookupField" type="String" label="Related Lookup Field" default="" description="On Case (or parent) pages: full API name of the lookup to the customer record (e.g. Case.ContactId or Case.AccountId). Leave blank when the page record is the customer (Contact/Account)."/>
+            <property name="allowEditEngagement" type="Boolean" label="Allow Editing Engagement Values" default="true" description="When true, users can edit LTV, CSAT, and Sentiment inline to override or fake values."/>
+            <property name="showDebugInfo" type="Boolean" label="Show Debug Info (Troubleshooting)" default="false" description="When true, shows a panel with record Ids, requested fields, and values read. Use to debug why contact info does not load."/>
+            <property name="headerBackgroundColor" type="String" label="Header Background Color" default="#1b3a5c" description="Header gradient start color (e.g. #1b3a5c)."/>
+            <property name="headerGradientColor" type="String" label="Header Gradient Color" default="#2d5a87" description="Header gradient end color (e.g. #2d5a87)."/>
+            <property name="badgePositiveColor" type="String" label="Badge Positive Color" default="#4caf50" description="Badge background for positive/High (e.g. #4caf50)."/>
+            <property name="badgeNeutralColor" type="String" label="Badge Neutral Color" default="#9e9e9e" description="Badge background for neutral (e.g. #9e9e9e)."/>
+            <property name="badgeNegativeColor" type="String" label="Badge Negative Color" default="#f44336" description="Badge background for negative/Low (e.g. #f44336)."/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

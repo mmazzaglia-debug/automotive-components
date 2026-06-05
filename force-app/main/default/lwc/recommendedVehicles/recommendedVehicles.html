@@ -1,0 +1,65 @@
+<template>
+    <lightning-card title="Recommended Vehicles" icon-name="utility:truck">
+        <div class="slds-p-horizontal_small slds-p-bottom_small">
+            <template if:true={showSpinner}>
+                <lightning-spinner alternative-text="Loading vehicles" size="small"></lightning-spinner>
+            </template>
+
+            <template if:true={hasVehicles}>
+                <ul class="vehicle-list">
+                    <template for:each={displayVehicles} for:item="vehicle">
+                        <li key={vehicle.recordId} class="vehicle-row slds-m-vertical_small">
+                            <div class="vehicle-media">
+                                <template if:true={vehicle.recordUrl}>
+                                    <a href={vehicle.recordUrl} class="vehicle-link" title="Open vehicle record">
+                                        <template if:true={vehicle.imageUrl}>
+                                            <img class="vehicle-image" src={vehicle.imageUrl} alt={vehicle.vehicleName} />
+                                        </template>
+                                        <template if:false={vehicle.imageUrl}>
+                                            <lightning-icon
+                                                icon-name="standard:product"
+                                                alternative-text="Vehicle"
+                                                size="small"
+                                                class="vehicle-fallback-icon"
+                                            ></lightning-icon>
+                                        </template>
+                                    </a>
+                                </template>
+                                <template if:false={vehicle.recordUrl}>
+                                    <template if:true={vehicle.imageUrl}>
+                                        <img class="vehicle-image" src={vehicle.imageUrl} alt={vehicle.vehicleName} />
+                                    </template>
+                                    <template if:false={vehicle.imageUrl}>
+                                        <lightning-icon
+                                            icon-name="standard:product"
+                                            alternative-text="Vehicle"
+                                            size="small"
+                                            class="vehicle-fallback-icon"
+                                        ></lightning-icon>
+                                    </template>
+                                </template>
+                            </div>
+
+                            <div class="vehicle-content">
+                                <template if:true={vehicle.recordUrl}>
+                                    <a href={vehicle.recordUrl} class="vehicle-link vehicle-name" title="Open vehicle record">
+                                        {vehicle.vehicleName}
+                                    </a>
+                                </template>
+                                <template if:false={vehicle.recordUrl}>
+                                    <span class="vehicle-name">{vehicle.vehicleName}</span>
+                                </template>
+                            </div>
+                        </li>
+                    </template>
+                </ul>
+            </template>
+
+            <template if:true={showEmptyState}>
+                <p class="slds-text-body_regular">
+                    No vehicle recommendations available yet.
+                </p>
+            </template>
+        </div>
+    </lightning-card>
+</template>

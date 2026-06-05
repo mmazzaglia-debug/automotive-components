@@ -1,0 +1,201 @@
+<template>
+  <lightning-card>
+    <div class="slds-card__body slds-card__body_inner">
+      <!-- title section -->
+      <div class="slds-clearfix">
+        <div
+          class="slds-float_left slds-text-heading_small slds-truncate slds-p-right_xx-small title"
+        >
+          Vehicle Events
+        </div>
+        <div>
+          <lightning-dynamic-icon
+            type="ellie"
+            alternative-text="Ellie intelligence"
+          >
+          </lightning-dynamic-icon>
+        </div>
+      </div>
+
+      <div class="slds-m-top_large">
+        <div class="slds-grid">
+          <div>
+            <h3>All Events • Most Recent Event</h3>
+          </div>
+          <div class="slds-col_bump-left">
+            <div>
+              <lightning-button-icon
+                icon-name="utility:refresh"
+                variant="border-filled"
+                alternative-text="refresh"
+              ></lightning-button-icon>
+              <lightning-button-icon
+                icon-name="utility:event"
+                variant="border-filled"
+                alternative-text="event"
+              ></lightning-button-icon>
+              <lightning-button-icon
+                icon-name="utility:filterList"
+                variant="border-filled"
+                alternative-text="Filter"
+              ></lightning-button-icon>
+              <lightning-button-icon
+                icon-name="utility:slider"
+                variant="border-filled"
+                alternative-text="Slider"
+              ></lightning-button-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Settings buttons -->
+
+      <div class="slds-m-vertical_medium">
+        <div class="slds-grid">
+          <div>Recent</div>
+
+          <div class="separator-bottom"></div>
+        </div>
+      </div>
+
+      <!-- Timeline -->
+
+      <!---->
+
+      <div>
+        <ul class="slds-timeline">
+          <template lwc:if={assetTelematicsRecords}>
+            <template for:each={assetTelematicsRecords} for:item="rec">
+              <li key={rec.fields.Id.value}>
+                <div class={rec.iconClass1}>
+                  <span class="slds-assistive-text">task</span>
+                  <div class="slds-media">
+                    <div class="slds-media__figure">
+                      <lightning-button-icon
+                        icon-name={rec.buttonIcon}
+                        size="small"
+                        variant="bare"
+                        onclick={toggleDescription}
+                        data-id={rec.fields.Id.value}
+                      ></lightning-button-icon>
+                      <div class={rec.iconClass2} title="task">
+                        <lightning-icon
+                          icon-name={rec.iconDisplay}
+                          alternative-text="Connected"
+                          variant="inverse"
+                          size="x-small"
+                          title="xx-small size"
+                          class="slds-p-around_xx-small"
+                        ></lightning-icon>
+                      </div>
+                    </div>
+                    <div class="slds-media__body">
+                      <div
+                        class="slds-grid slds-grid_align-spread slds-timeline__trigger"
+                      >
+                        <div
+                          class="slds-grid slds-grid_vertical-align-center slds-truncate_container_75 slds-no-space"
+                        >
+                          <h3
+                            class="slds-truncate"
+                            title="Review proposals for EBC deck with larger team and have marketing review this"
+                          >
+                            <a href="#">
+                              <strong>{rec.fields.Name.value}</strong>
+                            </a>
+                          </h3>
+                          <div class="slds-no-flex">
+                            <span
+                              class="slds-icon_container slds-icon-utility-rotate"
+                              title="Recurring Task"
+                            >
+                              <lightning-icon
+                                icon-name="utility:broadcast"
+                                alternative-text="Connected"
+                                size="x-small"
+                                title="xxx-small size"
+                                class="slds-p-around_xx-small"
+                              ></lightning-icon>
+                              <span class="slds-assistive-text"
+                                >Recurring Task</span
+                              >
+                            </span>
+                          </div>
+                        </div>
+                        <div
+                          class="slds-timeline__actions slds-timeline__actions_inline"
+                        >
+                          <p class="slds-timeline__date">
+                            {rec.fields.Measure_Time__c.displayValue}
+                          </p>
+                          <lightning-button-menu
+                            alternative-text="Show menu"
+                            variant="border-filled"
+                            icon-name="utility:down"
+                            class="slds-m-left_xxx-small slds-float_right"
+                            icon-size="x-small"
+                            menu-alignment="right"
+                          >
+                            <lightning-menu-item
+                              value="New"
+                              label="New"
+                              icon-name="utility:new"
+                            ></lightning-menu-item>
+                            <lightning-menu-item
+                              value="Edit"
+                              label="Edit"
+                              icon-name="utility:edit"
+                            ></lightning-menu-item>
+                          </lightning-button-menu>
+                        </div>
+                      </div>
+                      <p class="slds-m-horizontal_xx-small">{rec.itemTitle}</p>
+                      <article
+                        if:true={rec.isActive}
+                        class="slds-box slds-m-top_x-small slds-theme_shade slds-m-horizontal_xx-small slds-p-around_medium"
+                      >
+                        <ul class="slds-list_horizontal slds-wrap">
+                          <li
+                            class="slds-grid slds-grid_vertical slds-size_1-of-2 slds-p-bottom_small"
+                          >
+                            <span class="slds-text-title slds-p-bottom_x-small"
+                              >Related To</span
+                            >
+                            <span
+                              class="slds-text-body_medium slds-truncate"
+                              title="Charlie Gomez"
+                            >
+                              <a href="#">
+                                {rec.fields.Measure_Name__c.value}</a
+                              >
+                            </span>
+                          </li>
+                        </ul>
+                        <div>
+                          <span class="slds-text-title">Value</span>
+                          <p class="slds-p-top_x-small">
+                            {rec.fields.Measure_Value__c.value}
+                          </p>
+                        </div>
+                      </article>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </template>
+          </template>
+
+          <template lwc:else>
+            <lightning-spinner alternative-text="Loading"></lightning-spinner>
+          </template>
+        </ul>
+      </div>
+
+      <!---->
+    </div>
+    <p slot="footer" class="slds-text-link" onclick={navigateToRelatedList}>
+      View All
+    </p>
+  </lightning-card>
+</template>

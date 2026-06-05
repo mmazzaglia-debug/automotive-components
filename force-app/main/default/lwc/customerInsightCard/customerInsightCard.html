@@ -1,0 +1,172 @@
+<!-- Customer Insight Card – root wrapper with CSS variables from App Builder -->
+<template>
+    <div class="card-wrapper slds-card" style={rootStyle}>
+        <!-- Error state: wire or record load failed -->
+        <template lwc:if={hasError}>
+            <div class="slds-p-around_medium error-state">
+                <p class="slds-text-body_regular slds-text-color_error">
+                    <strong>Unable to load record.</strong>
+                </p>
+                <p class="slds-text-body_regular slds-m-top_x-small slds-text-color_weak" lwc:if={wireErrorMessage}>
+                    {wireErrorMessage}
+                </p>
+                <p class="slds-text-body_small slds-m-top_small slds-text-color_weak">
+                    On a <strong>Case</strong> page: set <strong>Related Lookup Field</strong> to <code>Case.ContactId</code> or <code>Case.AccountId</code> in Edit Page, and use <strong>Contact.*</strong> or <strong>Account.*</strong> for field names (e.g. Contact.Name, Contact.Email). On a Contact or Account page, leave Related Lookup Field blank.
+                </p>
+            </div>
+        </template>
+
+        <!-- No record: missing recordId, Case page without lookup, no related record, or no data -->
+        <template lwc:elseif={showNoRecord}>
+            <div class="slds-p-around_medium slds-text-color_weak">
+                <p class="slds-text-body_regular" lwc:if={showRelatedLookupHint}>
+                    No related customer record. Either this Case has no Contact/Account linked, or (in Edit Page) there is no record context. Set "Related lookup field" to <code>Case.ContactId</code> or <code>Case.AccountId</code>, then open a Case that has a Contact linked. Enable "Show debug info" below to see resolved Ids and requested fields.
+                </p>
+                <p class="slds-text-body_regular" lwc:else>
+                    Place this component on a record page to see the customer summary, or open a record.
+                </p>
+            </div>
+        </template>
+
+        <!-- Main card content -->
+        <template lwc:else>
+            <article class="insight-card">
+                <!-- Header: gradient, profile image, name, location -->
+                <header class="card-header">
+                    <div class="header-content">
+                        <div class="profile-wrap">
+                            <img
+                                class="profile-img"
+                                src={recordData.photoUrl}
+                                alt="Profile"
+                            />
+                        </div>
+                        <div class="header-text">
+                            <h1 class="customer-name-wrap">
+                                <button type="button" class="customer-name-link" onclick={handleNameClick} title="Open record">
+                                    {recordData.name}
+                                </button>
+                            </h1>
+                            <p class="customer-location">{recordData.titleAtAccountDisplay}</p>
+                            <p class="customer-location">{recordData.location}</p>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- Action buttons: Call, Email (pill-style) -->
+                <div class="actions-row">
+                    <template lwc:if={showCallButton}>
+                        <button type="button" class="pill-btn" onclick={handleCall} title="Call">
+                            <lightning-icon icon-name="utility:call" alternative-text="Call" size="x-small" class="pill-icon"></lightning-icon>
+                            <span>Call</span>
+                        </button>
+                    </template>
+                    <template lwc:if={showEmailButton}>
+                        <button type="button" class="pill-btn" onclick={handleEmail} title="Email">
+                            <lightning-icon icon-name="utility:email" alternative-text="Email" size="x-small" class="pill-icon"></lightning-icon>
+                            <span>Email</span>
+                        </button>
+                    </template>
+                </div>
+
+                <!-- Info section: Email, Phone, Address, Account (label + value) -->
+                <div class="info-section">
+                    <div class="info-row">
+                        <span class="info-label">Email Address</span>
+                        <span class="info-value">{recordData.email}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Phone Number</span>
+                        <span class="info-value">{recordData.phone}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Address</span>
+                        <span class="info-value">{recordData.address}</span>
+                    </div>
+                    <div class="info-row" lwc:if={hasAccountField}>
+                        <span class="info-label">Account</span>
+                        <template lwc:if={recordData.accountId}>
+                            <button type="button" class="info-value-link" onclick={handleAccountClick} title="Open account">
+                                {recordData.accountName}
+                            </button>
+                        </template>
+                        <template lwc:else>
+                            <span class="info-value">{recordData.accountName}</span>
+                        </template>
+                    </div>
+                </div>
+
+                <!-- Engagement Signals box: CSAT and LTV in vertical layout, value on the right -->
+                <div class="engagement-box">
+                    <h2 class="engagement-title">
+                        <lightning-icon icon-name="utility:flash" alternative-text="" size="x-small"></lightning-icon>
+                        <span>Engagement Signals</span>
+                    </h2>
+                    <div class="engagement-tiles">
+                        <div class="signal-tile">
+                            <div class="signal-header">
+                                <lightning-icon icon-name="utility:favorite" alternative-text="CSAT" size="x-small"></lightning-icon>
+                                <span class="signal-label">CSAT</span>
+                                <template lwc:if={allowEditEngagement}>
+                                    <button type="button" class="edit-pencil" onclick={handleToggleEditCsat} title="Edit CSAT" aria-label="Edit CSAT">
+                                        <lightning-icon icon-name="utility:edit" size="xx-small" alternative-text="Edit"></lightning-icon>
+                                    </button>
+                                </template>
+                            </div>
+                            <div class="signal-value">
+                                <template lwc:if={editingCsat}>
+                                    <input type="text" class="signal-input" value={csatInputValue} placeholder="e.g. 86" oninput={handleCsatInput} onblur={handleCsatChange} onkeydown={handleCsatKeydown} data-signal="csat" />
+                                </template>
+                                <template lwc:else>
+                                    <span class="badge badge-positive">{recordData.csatFormatted}</span>
+                                </template>
+                            </div>
+                        </div>
+                        <div class="signal-tile">
+                            <div class="signal-header">
+                                <lightning-icon icon-name="utility:cart" alternative-text="LTV" size="x-small"></lightning-icon>
+                                <span class="signal-label">LTV</span>
+                                <template lwc:if={allowEditEngagement}>
+                                    <button type="button" class="edit-pencil" onclick={handleToggleEditLtv} title="Edit LTV" aria-label="Edit LTV">
+                                        <lightning-icon icon-name="utility:edit" size="xx-small" alternative-text="Edit"></lightning-icon>
+                                    </button>
+                                </template>
+                            </div>
+                            <div class="signal-value">
+                                <template lwc:if={editingLtv}>
+                                    <input type="text" class="signal-input" value={ltvInputValue} placeholder="e.g. 15000" oninput={handleLtvInput} onblur={handleLtvChange} onkeydown={handleLtvKeydown} data-signal="ltv" />
+                                </template>
+                                <template lwc:else>
+                                    <span class="badge badge-positive">{recordData.ltvFormatted}</span>
+                                </template>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </template>
+
+        <!-- Troubleshooting: enable "Show debug info" in component properties to see what is loading and what we read -->
+        <template lwc:if={showDebugInfo}>
+            <div class="debug-panel slds-m-top_medium slds-p-around_small">
+                <p class="slds-text-heading_small slds-m-bottom_x-small">Troubleshooting</p>
+                <ul class="slds-list_dotted">
+                    <li><strong>Page record Id:</strong> {debugInfo.pageRecordId}</li>
+                    <li><strong>Related lookup field:</strong> {debugInfo.relatedLookupField}</li>
+                    <li><strong>Resolved customer Id:</strong> {debugInfo.resolvedCustomerId}</li>
+                    <li><strong>Loading record (effective):</strong> {debugInfo.effectiveRecordId}</li>
+                    <li><strong>Record object:</strong> {debugInfo.recordObject}</li>
+                    <li><strong>Requested fields:</strong> <span class="debug-mono">{debugInfo.requestedFieldsStr}</span></li>
+                </ul>
+                <template lwc:if={debugInfo.fieldChecks}>
+                    <p class="slds-text-body_small slds-m-top_x-small slds-m-bottom_xx-small"><strong>Values read (field → value):</strong></p>
+                    <ul class="slds-list_dotted">
+                        <template for:each={debugInfo.fieldChecks} for:item="row">
+                            <li key={row.label}><strong>{row.label}:</strong> {row.field} → "{row.value}"</li>
+                        </template>
+                    </ul>
+                </template>
+            </div>
+        </template>
+    </div>
+</template>

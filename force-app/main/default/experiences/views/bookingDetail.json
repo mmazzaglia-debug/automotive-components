@@ -1,0 +1,128 @@
+{
+  "appPageId" : "1e4d6659-0826-4bf2-a237-43ecbc3624af",
+  "componentName" : "siteforce:sldsTwoCol66Layout",
+  "dataProviders" : [ ],
+  "id" : "0990c4a3-aa72-4092-be69-907820bbbcd8",
+  "label" : "Booking Detail",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "forceCommunity:recordHeadline",
+      "id" : "06827001-2678-4735-a223-fd592a043025",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "forceCommunity:pathAssistant",
+      "id" : "91a46ab3-797e-47fd-922e-586e96cae4b2",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "9529375f-69c3-4500-bcf3-7e6ff57fc9a0",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "tabsetConfig" : {
+          "UUID" : "5360af42-c840-49b1-8c0a-eb7f8294666f",
+          "activeTab" : "",
+          "tabs" : [ {
+            "UUID" : "3eaca5a8-65ba-46e0-9b2c-df59add37860",
+            "allowGuestUser" : true,
+            "locked" : false,
+            "seedComponents" : [ ],
+            "tabKey" : "1",
+            "tabName" : "Booking Summary"
+          } ],
+          "useOverflowMenu" : false
+        }
+      },
+      "componentName" : "forceCommunity:tabset",
+      "id" : "5360af42-c840-49b1-8c0a-eb7f8294666f",
+      "regions" : [ {
+        "components" : [ {
+          "componentAttributes" : {
+            "recordId" : "{!recordId}"
+          },
+          "componentName" : "forceCommunity:recordDetail",
+          "id" : "9f9823ab-4f2e-4dc9-96b1-39f25ab347aa",
+          "renditionMap" : { },
+          "type" : "component"
+        }, {
+          "componentAttributes" : { },
+          "componentName" : "c:requestQuoteBooking",
+          "id" : "a4eac8d3-6cd5-4ca1-9f97-3d86cf2ebc61",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "3eaca5a8-65ba-46e0-9b2c-df59add37860",
+        "regionLabel" : "Booking Summary",
+        "regionName" : "1",
+        "renditionMap" : { },
+        "type" : "region"
+      } ],
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "54032994-5e65-498a-86fe-65839d8afdca",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "775a348f-ae01-4be3-9931-b0151f75880f",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "{!Record._Object}: {!Record._Title}"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "0057a47e-745e-4576-b30d-ea228fb9a17e",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "7cdda876-0117-4d48-85a4-5cb845c0408a",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "relatedListApiName" : "OpportunityLineItems",
+        "relatedListComponentOverride" : "NONE",
+        "width" : "MEDIUM"
+      },
+      "componentName" : "forceCommunity:responsiveRelatedListSingle",
+      "id" : "c4fb41cb-6896-41ef-ae5b-ee7c115976c0",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "relatedListApiName" : "OpportunityTeamMembers",
+        "relatedListComponentOverride" : "GRID",
+        "width" : "MEDIUM"
+      },
+      "componentName" : "forceCommunity:responsiveRelatedListSingle",
+      "id" : "0dff0901-036d-4107-9a8d-cec2d2f7f20a",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "866c56f9-495d-4a49-a90c-26767129d116",
+    "regionName" : "sidebar",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "detail-006"
+}

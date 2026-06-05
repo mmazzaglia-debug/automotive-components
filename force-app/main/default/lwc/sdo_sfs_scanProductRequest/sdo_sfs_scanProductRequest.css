@@ -1,0 +1,35 @@
+.dummy{
+	color : black;
+}
+
+.quantityEditor lightning-icon{
+	--slds-c-icon-radius-border: 50%;
+	--slds-c-icon-color-foreground-default: #2A7AB0;
+	padding: 0.25rem;
+	border: 2px solid #2A7AB0;
+}
+
+.quantityEditor input{
+	height: 36px !important;
+	border-radius: 0 !important;
+	border: none;
+	background: #EEEEEE;
+	width: 75px;
+	text-align: center;	
+}
+
+.quantityEditor input:focus{
+    outline: none;
+}
+
+.productList{
+	background: #FFFFFF;
+}
+
+.slds-has-dividers_bottom-space>.slds-item{
+	padding: 1rem !important;
+}
+
+.slds-badge_lightest{
+	--slds-c-badge-font-size: 1rem;
+}

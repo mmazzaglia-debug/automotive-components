@@ -1,0 +1,11 @@
+{
+  "activeViewId" : "dddb2706-556d-40a9-8df7-9b3ff34957ad",
+  "appPageId" : "1e4d6659-0826-4bf2-a237-43ecbc3624af",
+  "configurationTags" : [ ],
+  "devName" : "Redirect_Application_Form_Product",
+  "id" : "cfb84e7c-5966-4d96-b8c1-1f56c5b7b51d",
+  "label" : "Asset Lending App Form Product Redirect Page",
+  "routeType" : "redirect-application-form-product",
+  "type" : "route",
+  "urlPrefix" : "redirect-application-form-product"
+}

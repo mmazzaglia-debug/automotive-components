@@ -1,0 +1,13 @@
+:host {
+    --sds-c-textarea-sizing-max-height: 110px;
+    --slds-c-textarea-color-border: var(--lwc-colorBorder);
+}
+  
+.slds-chat-icon {
+    margin-right: var(--lwc-spacingXSmall,0.5rem);
+}
+  
+.response-column{
+    padding-top: 6px;
+    max-width: 90%;
+}

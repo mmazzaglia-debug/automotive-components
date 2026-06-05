@@ -1,0 +1,36 @@
+{
+  "forgotPasswordRouteId" : "33982fa7-231c-486b-bcc8-c07ec5cfa1a7",
+  "isAvailableToGuests" : true,
+  "isFilteredComponentsView" : true,
+  "isProgressiveRenderingEnabled" : false,
+  "loginAppPageId" : "3df91855-7fc0-4f24-9799-7c516e5a4752",
+  "mainAppPageId" : "1e4d6659-0826-4bf2-a237-43ecbc3624af",
+  "preferredDomain" : "none",
+  "selfRegistrationRouteId" : "33c96c96-f517-4ada-9c0e-f2eba1833277",
+  "trustedSitesForScript" : [ {
+    "id" : "7871bf08-07ea-4736-80f4-d8474e0f5195",
+    "isActive" : true,
+    "trustedSiteName" : "https://cdn-icons-png.flaticon.com",
+    "trustedSiteUrl" : "https://cdn-icons-png.flaticon.com",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "ef25b521-07c1-4fe0-b036-7bb4d975d184",
+    "isActive" : true,
+    "trustedSiteName" : "Font Awesome",
+    "trustedSiteUrl" : "https://kit.fontawesome.com",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "1d7d2015-bce5-4d9d-b7e0-c078e5bfd61f",
+    "isActive" : true,
+    "trustedSiteName" : "Public Tableau",
+    "trustedSiteUrl" : "https://public.tableau.com",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "7a9b98a7-c826-49c5-b1b9-6f6e1ccadf59",
+    "isActive" : true,
+    "trustedSiteName" : "Amazon AWS",
+    "trustedSiteUrl" : "https://*.amazonaws.com",
+    "type" : "trustedSitesForScripts"
+  } ],
+  "type" : "site"
+}

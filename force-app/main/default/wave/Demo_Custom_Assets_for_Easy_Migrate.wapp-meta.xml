@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WaveApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <assetIcon>/analytics/wave/web/proto/images/app/icons/16.png</assetIcon>
+    <folder>Demo_Custom_Assets_for_Easy_Migrate</folder>
+    <masterLabel>Demo | Custom Assets for Easy Migrate</masterLabel>
+    <shares>
+        <accessLevel>Manage</accessLevel>
+        <sharedTo>storm.93b6831572b783@salesforce.com</sharedTo>
+        <sharedToType>User</sharedToType>
+    </shares>
+    <templateOrigin>Demo_Custom_Assets_for_Easy_Migrate</templateOrigin>
+    <templateVersion>1.1</templateVersion>
+</WaveApplication>

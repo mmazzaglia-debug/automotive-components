@@ -1,0 +1,11 @@
+{
+  "activeViewId" : "0990c4a3-aa72-4092-be69-907820bbbcd8",
+  "appPageId" : "1e4d6659-0826-4bf2-a237-43ecbc3624af",
+  "configurationTags" : [ ],
+  "devName" : "Booking_Detail__c",
+  "id" : "db9286c1-b8f0-4d10-9894-12b3718b75cf",
+  "label" : "Booking Detail",
+  "routeType" : "detail-006",
+  "type" : "route",
+  "urlPrefix" : "opportunity"
+}

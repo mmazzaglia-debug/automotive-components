@@ -1,0 +1,11 @@
+{
+  "activeViewId" : "29b56609-dd05-43f6-81cb-47a90ce72a19",
+  "appPageId" : "1e4d6659-0826-4bf2-a237-43ecbc3624af",
+  "configurationTags" : [ ],
+  "devName" : "Booking_List__c",
+  "id" : "e3bc4f75-fd6a-4c82-8d5f-1c7b9e0ab5aa",
+  "label" : "Booking List",
+  "routeType" : "list-006",
+  "type" : "route",
+  "urlPrefix" : "opportunity"
+}

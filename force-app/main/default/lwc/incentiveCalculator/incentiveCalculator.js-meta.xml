@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata" fqn="incentiveCalculator">
+    <apiVersion>52.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightning__AppPage</target>
+        <target>lightning__RecordPage</target>
+        <target>lightning__HomePage</target>
+    </targets>
+
+       <targetConfigs>
+        <targetConfig targets="lightning__RecordPage,lightning__AppPage,lightning__HomePage">
+            <!-- Expose @api properties as design attributes -->
+           
+            <property name="targetMinValue" type="Integer" label="Sales Target Minimum Value" />
+            <property name="targetMaxValue" type="Integer" label="Sales Target Maximum Value" />
+            <property name="incentiveMinValue" type="Integer" label="Incentive % Minimum Value" />
+            <property name="incentiveMaxValue" type="Integer" label="Incentive %  Minimum Value" />
+            <property name="defaultSalesTarget" type="Integer" label="Default Sales Target Value" />
+            <property name="defaultOpporunityWon" type="Integer" label="Default Opporunity Won Amount" />
+            <property name="defaultIncentivePercentage" type="Integer" label="Defualt Incentive %" />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

@@ -1,0 +1,175 @@
+<template>
+            <div class="slds-grid slds-wrap slds-is-relative ">
+            <div style="position: fixed;z-index: 999999;top: 0;right: 0;">
+  <omnistudio-toast class="flexcard-toast-element" theme="slds" title="" message="" styletype=""> </omnistudio-toast>
+</div>
+            <div if:true={showLoader} class="slds-is-absolute vloc-loader_override" style="height: 100%; width: 100%; min-height:50px; background: transparent; z-index: 99;">
+  <div>
+   <omnistudio-spinner
+      variant="brand"
+      alternative-text="Loading content..."
+      size="medium"
+      theme="slds"
+      ></omnistudio-spinner>
+  </div>
+</div>
+            <template if:false={hasPermission}>
+              You don't have required permissions to view this card.
+            </template>
+            <template if:true={hasPermission}>
+              <template if:true={hasRecords}>
+                        <template for:each={_records} for:item="record" for:index="rindex">
+                            <omnistudio-flex-card-state if:true={record}  key={record._flex.uniqueKey} data-recordid={record.Id} record={record} data-statue="true"  data-index="0" data-rindex={rindex} class="cf-vlocity-state-0 cf-vlocity-state slds-size_12-of-12 "  tracking-obj={_childCardTrackingObj} >
+      <div if:true={cardLoaded} class="slds-grid slds-wrap slds-p-around_x-small " style="      
+    border-radius:23 px;     z-index: 0;
+">
+          <div data-style-id="state0element0" class="slds-col   slds-text-link_reset  roundedCorners slds-card slds-border_top slds-border_right slds-border_bottom slds-border_left slds-p-vertical_medium slds-p-left_medium  slds-size_12-of-12  " data-rindex={rindex} style="     border-top: #C9C9C9 1px solid;border-right: #C9C9C9 1px solid;border-bottom: #C9C9C9 1px solid;border-left: #C9C9C9 1px solid; 
+    border-radius:.25 em;     width: 382px;
+height: 56px;
+margin: auto;
+display:inline;
+" >
+    <omnistudio-block data-style-id="state0element0_child"  card={card}  record={record}  label="TimeSlot-Block"  collapsible="false"  collapsed-by-default="false"  action='\{"name":"","label":"Action","iconName":"standard-default","eventType":"onclick","actionData":{"stateObj":"{record}","card":"{card}","stateAction":{"id":"flex-action-1653418666777","type":"cardAction","displayName":"Action","vlocityIcon":"standard-default","targetType":"Web Page","openUrlIn":"Current Window","Web Page":{"targetName":"/apex"},"eventName":"selectcards"}},"actionList":[{"key":"1661896738930-qu04tg51k","label":"Action to select time slot","draggable":true,"isOpen":false,"card":"{card}","stateAction":{"id":"flex-action-1666462733854","type":"cardAction","displayName":"Action","vlocityIcon":"standard-default","openUrlIn":"Current Window","subType":"Custom","eventName":"selectcards","bubbles":true},"actionIndex":1}],"showSpinner":"false"}'  extraclass=" slds-text-link_reset"  theme="slds"  onclick={executeAction} data-element-label="timeslotcardblock" data-action-key="state0element0" onkeydown={executeActionWithKeyboard} tabindex="0"><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element0" class="slds-col   slds-clearfix  slds-size_11-of-12  " data-rindex={rindex} style="      
+         " >
+    <omnistudio-block data-style-id="state0element0block_element0_child"  card={card}  record={record}  label="Block"  collapsible="false"  collapsed-by-default="false"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element0block_element0" class="slds-col  slds-text-align_left  slds-size_7-of-12  " data-rindex={rindex} style="      
+         resize: none;
+font-weight: 700;
+font-size: 16px;
+" ><omnistudio-output-field data-style-id="state0element0block_element0block_element0_child"   card={card}  record={record}  merge-field="%3Cdiv%20class=%22slds-text-align_center%22%3E%3Cspan%20style=%22font-size:%2012pt;%22%3E%7BdisplayStartTime%7D%20-%20%7BdisplayEndTime%7D%3C/span%3E%3C/div%3E"  theme="slds"  ></omnistudio-output-field>
+      </div>
+        </div></omnistudio-block>
+    </div><div data-style-id="state0element0block_element1" class="slds-col  slds-text-align_right  slds-p-left_x-large slds-p-right_xx-small slds-p-top_xx-small slds-p-bottom_large  slds-size_1-of-12  " data-rindex={rindex} style="      
+      min-height:38px; max-height:38px;  clip-path: polygon(28% 0, 100% 76%, 100% 0);
+position: absolute;
+right: 0;
+top: 0;
+margin-top: -1px;
+margin-right: -1px;
+z-index: 2;
+overflow: hidden;" ><omnistudio-flex-icon data-style-id="state0element0block_element1_child"   card={card}  record={record}  icon-type="Salesforce SVG"  icon-name="utility:check"  size="xx-small"  extraclass="slds-icon_container slds-icon__svg--default"  variant="inverse"  imgsrc=""  theme="slds"  ></omnistudio-flex-icon>
+      </div>
+        </div></omnistudio-block>
+    </div>
+        </div>
+      </omnistudio-flex-card-state><omnistudio-flex-card-state if:true={record}  key={record._flex.uniqueKey} data-recordid={record.Id} record={record} data-statue="true"  data-index="1" data-rindex={rindex} class="cf-vlocity-state-1 cf-vlocity-state slds-size_12-of-12 "  tracking-obj={_childCardTrackingObj} >
+      <div if:true={cardLoaded} class="slds-grid slds-wrap slds-p-around_x-small " style="      
+    border-radius:23 px;     z-index: 0;
+">
+          <div data-style-id="state1element0" class="slds-col  appointmentConfirm slds-size_12-of-12  " data-rindex={rindex} style="      
+         " ><omnistudio-flex-img data-style-id="state1element0_child"   card={card}  record={record}  size=""  extraclass="slds-align_absolute-center"  state-img='\{"imgsrc":"{Label.ServiceAppointment_Flexcards.ErrorImageSource}","alternativeText":"Image description"}'  img-height="200px"  img-width="383px"  theme="slds"  ></omnistudio-flex-img>
+      </div><div data-style-id="state1element1" class="slds-col   slds-size_12-of-12 " data-rindex={rindex} style="" ><omnistudio-output-field data-style-id="state1element1_child"   card={card}  record={record}  merge-field="%3Cdiv%20class=%22slds-text-align_center%22%3E%7BLabel.ServiceAppointment_Flexcards.TimeSlotSelectionNoTimeSlotsAvailableMessage1%7D%3C/div%3E%0A%3Cdiv%20class=%22slds-text-align_center%22%3E%7BLabel.ServiceAppointment_Flexcards.TimeSlotSelectionNoTimeSlotsAvailableMessage2%7D%3C/div%3E"  theme="slds"  ></omnistudio-output-field>
+      </div>
+        </div>
+      </omnistudio-flex-card-state><omnistudio-flex-card-state if:true={record}  key={record._flex.uniqueKey} data-recordid={record.Id} record={record} data-statue="true"  data-index="2" data-rindex={rindex} class="cf-vlocity-state-2 cf-vlocity-state slds-size_12-of-12 "  tracking-obj={_childCardTrackingObj} >
+      <div if:true={cardLoaded} class="slds-grid slds-wrap slds-p-around_x-small " style="      
+    border-radius:23 px;     z-index: 0;
+">
+          <div data-style-id="state2element0" class="slds-col  appointmentFail slds-size_12-of-12  " data-rindex={rindex} style="      
+         " ><omnistudio-flex-img data-style-id="state2element0_child"   card={card}  record={record}  size=""  extraclass="slds-align_absolute-center"  state-img='\{"imgsrc":"{Label.ServiceAppointment_Flexcards.FailureImageSource}","alternativeText":"Image description"}'  img-height="200px"  img-width="383px"  theme="slds"  ></omnistudio-flex-img>
+      </div><div data-style-id="state2element1" class="slds-col   slds-size_12-of-12 " data-rindex={rindex} style="" ><omnistudio-output-field data-style-id="state2element1_child"   card={card}  record={record}  merge-field="%3Cdiv%3E%7BLabel.ServiceAppointment_Flexcards.TimeSlotSelectionUnableToFetchDataMessage1%7D%3C/div%3E%0A%3Cdiv%3E%7BLabel.ServiceAppointment_Flexcards.TimeSlotSelectionUnableToFetchDataMessage2%7D%3C/div%3E"  theme="slds"  ></omnistudio-output-field>
+      </div>
+        </div>
+      </omnistudio-flex-card-state><omnistudio-flex-card-state if:true={record}  key={record._flex.uniqueKey} data-recordid={record.Id} record={record} data-statue="true"  data-index="3" data-rindex={rindex} class="cf-vlocity-state-3 cf-vlocity-state slds-size_12-of-12 "  tracking-obj={_childCardTrackingObj} >
+      <div if:true={cardLoaded} class="slds-grid slds-wrap slds-p-around_x-small " style="      
+    border-radius:23 px;     z-index: 0;
+">
+          <div data-style-id="state3element0" class="slds-col  appointmentConfirm slds-size_12-of-12  " data-rindex={rindex} style="      
+         " ><omnistudio-flex-img data-style-id="state3element0_child"   card={card}  record={record}  size=""  extraclass="slds-align_absolute-center"  state-img='\{"imgsrc":"{Label.ServiceAppointment_Flexcards.ErrorImageSource}","alternativeText":"Image description"}'  img-height="200px"  img-width="383px"  theme="slds"  ></omnistudio-flex-img>
+      </div><div data-style-id="state3element1" class="slds-col   slds-size_12-of-12 " data-rindex={rindex} style="" ><omnistudio-output-field data-style-id="state3element1_child"   card={card}  record={record}  merge-field="%3Cdiv%20class=%22slds-text-align_center%22%3E%7BLabel.ServiceAppointment_Flexcards.TimeSlotSelectionMissingValuesCardMessage%7D%3C/div%3E"  theme="slds"  ></omnistudio-output-field>
+      </div>
+        </div>
+      </omnistudio-flex-card-state><omnistudio-flex-card-state if:true={record}  key={record._flex.uniqueKey} data-recordid={record.Id} record={record} data-statue="true"  data-index="4" data-rindex={rindex} class="cf-vlocity-state-4 cf-vlocity-state slds-size_12-of-12 "  tracking-obj={_childCardTrackingObj} >
+      <div if:true={cardLoaded} class="slds-grid slds-wrap slds-p-around_x-small " style="      
+    border-radius:23 px;     z-index: 0;
+">
+          
+        </div>
+      </omnistudio-flex-card-state>
+                        </template>
+                      </template>
+                      <template if:false={hasRecords}>
+                            <omnistudio-flex-card-state  record={record} data-statue="false"  data-index="0" data-rindex={rindex} class="cf-vlocity-state-0 cf-vlocity-state slds-size_12-of-12 "  tracking-obj={_childCardTrackingObj} >
+      <div if:true={cardLoaded} class="slds-grid slds-wrap slds-p-around_x-small " style="      
+    border-radius:23 px;     z-index: 0;
+">
+          <div data-style-id="state0element0" class="slds-col   slds-text-link_reset  roundedCorners slds-card slds-border_top slds-border_right slds-border_bottom slds-border_left slds-p-vertical_medium slds-p-left_medium  slds-size_12-of-12  " data-rindex={rindex} style="     border-top: #C9C9C9 1px solid;border-right: #C9C9C9 1px solid;border-bottom: #C9C9C9 1px solid;border-left: #C9C9C9 1px solid; 
+    border-radius:.25 em;     width: 382px;
+height: 56px;
+margin: auto;
+display:inline;
+" >
+    <omnistudio-block data-style-id="state0element0_child"  card={card}  record={record}  label="TimeSlot-Block"  collapsible="false"  collapsed-by-default="false"  action='\{"name":"","label":"Action","iconName":"standard-default","eventType":"onclick","actionData":{"stateObj":"{record}","card":"{card}","stateAction":{"id":"flex-action-1653418666777","type":"cardAction","displayName":"Action","vlocityIcon":"standard-default","targetType":"Web Page","openUrlIn":"Current Window","Web Page":{"targetName":"/apex"},"eventName":"selectcards"}},"actionList":[{"key":"1661896738930-qu04tg51k","label":"Action to select time slot","draggable":true,"isOpen":false,"card":"{card}","stateAction":{"id":"flex-action-1666462733854","type":"cardAction","displayName":"Action","vlocityIcon":"standard-default","openUrlIn":"Current Window","subType":"Custom","eventName":"selectcards","bubbles":true},"actionIndex":1}],"showSpinner":"false"}'  extraclass=" slds-text-link_reset"  theme="slds"  onclick={executeAction} data-element-label="timeslotcardblock" data-action-key="state0element0" onkeydown={executeActionWithKeyboard} tabindex="0"><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element0" class="slds-col   slds-clearfix  slds-size_11-of-12  " data-rindex={rindex} style="      
+         " >
+    <omnistudio-block data-style-id="state0element0block_element0_child"  card={card}  record={record}  label="Block"  collapsible="false"  collapsed-by-default="false"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element0block_element0" class="slds-col  slds-text-align_left  slds-size_7-of-12  " data-rindex={rindex} style="      
+         resize: none;
+font-weight: 700;
+font-size: 16px;
+" ><omnistudio-output-field data-style-id="state0element0block_element0block_element0_child"   card={card}  record={record}  merge-field="%3Cdiv%20class=%22slds-text-align_center%22%3E%3Cspan%20style=%22font-size:%2012pt;%22%3E%7BdisplayStartTime%7D%20-%20%7BdisplayEndTime%7D%3C/span%3E%3C/div%3E"  theme="slds"  ></omnistudio-output-field>
+      </div>
+        </div></omnistudio-block>
+    </div><div data-style-id="state0element0block_element1" class="slds-col  slds-text-align_right  slds-p-left_x-large slds-p-right_xx-small slds-p-top_xx-small slds-p-bottom_large  slds-size_1-of-12  " data-rindex={rindex} style="      
+      min-height:38px; max-height:38px;  clip-path: polygon(28% 0, 100% 76%, 100% 0);
+position: absolute;
+right: 0;
+top: 0;
+margin-top: -1px;
+margin-right: -1px;
+z-index: 2;
+overflow: hidden;" ><omnistudio-flex-icon data-style-id="state0element0block_element1_child"   card={card}  record={record}  icon-type="Salesforce SVG"  icon-name="utility:check"  size="xx-small"  extraclass="slds-icon_container slds-icon__svg--default"  variant="inverse"  imgsrc=""  theme="slds"  ></omnistudio-flex-icon>
+      </div>
+        </div></omnistudio-block>
+    </div>
+        </div>
+      </omnistudio-flex-card-state><omnistudio-flex-card-state  record={record} data-statue="false"  data-index="1" data-rindex={rindex} class="cf-vlocity-state-1 cf-vlocity-state slds-size_12-of-12 "  tracking-obj={_childCardTrackingObj} >
+      <div if:true={cardLoaded} class="slds-grid slds-wrap slds-p-around_x-small " style="      
+    border-radius:23 px;     z-index: 0;
+">
+          <div data-style-id="state1element0" class="slds-col  appointmentConfirm slds-size_12-of-12  " data-rindex={rindex} style="      
+         " ><omnistudio-flex-img data-style-id="state1element0_child"   card={card}  record={record}  size=""  extraclass="slds-align_absolute-center"  state-img='\{"imgsrc":"{Label.ServiceAppointment_Flexcards.ErrorImageSource}","alternativeText":"Image description"}'  img-height="200px"  img-width="383px"  theme="slds"  ></omnistudio-flex-img>
+      </div><div data-style-id="state1element1" class="slds-col   slds-size_12-of-12 " data-rindex={rindex} style="" ><omnistudio-output-field data-style-id="state1element1_child"   card={card}  record={record}  merge-field="%3Cdiv%20class=%22slds-text-align_center%22%3E%7BLabel.ServiceAppointment_Flexcards.TimeSlotSelectionNoTimeSlotsAvailableMessage1%7D%3C/div%3E%0A%3Cdiv%20class=%22slds-text-align_center%22%3E%7BLabel.ServiceAppointment_Flexcards.TimeSlotSelectionNoTimeSlotsAvailableMessage2%7D%3C/div%3E"  theme="slds"  ></omnistudio-output-field>
+      </div>
+        </div>
+      </omnistudio-flex-card-state><omnistudio-flex-card-state  record={record} data-statue="false"  data-index="2" data-rindex={rindex} class="cf-vlocity-state-2 cf-vlocity-state slds-size_12-of-12 "  tracking-obj={_childCardTrackingObj} >
+      <div if:true={cardLoaded} class="slds-grid slds-wrap slds-p-around_x-small " style="      
+    border-radius:23 px;     z-index: 0;
+">
+          <div data-style-id="state2element0" class="slds-col  appointmentFail slds-size_12-of-12  " data-rindex={rindex} style="      
+         " ><omnistudio-flex-img data-style-id="state2element0_child"   card={card}  record={record}  size=""  extraclass="slds-align_absolute-center"  state-img='\{"imgsrc":"{Label.ServiceAppointment_Flexcards.FailureImageSource}","alternativeText":"Image description"}'  img-height="200px"  img-width="383px"  theme="slds"  ></omnistudio-flex-img>
+      </div><div data-style-id="state2element1" class="slds-col   slds-size_12-of-12 " data-rindex={rindex} style="" ><omnistudio-output-field data-style-id="state2element1_child"   card={card}  record={record}  merge-field="%3Cdiv%3E%7BLabel.ServiceAppointment_Flexcards.TimeSlotSelectionUnableToFetchDataMessage1%7D%3C/div%3E%0A%3Cdiv%3E%7BLabel.ServiceAppointment_Flexcards.TimeSlotSelectionUnableToFetchDataMessage2%7D%3C/div%3E"  theme="slds"  ></omnistudio-output-field>
+      </div>
+        </div>
+      </omnistudio-flex-card-state><omnistudio-flex-card-state  record={record} data-statue="false"  data-index="3" data-rindex={rindex} class="cf-vlocity-state-3 cf-vlocity-state slds-size_12-of-12 "  tracking-obj={_childCardTrackingObj} >
+      <div if:true={cardLoaded} class="slds-grid slds-wrap slds-p-around_x-small " style="      
+    border-radius:23 px;     z-index: 0;
+">
+          <div data-style-id="state3element0" class="slds-col  appointmentConfirm slds-size_12-of-12  " data-rindex={rindex} style="      
+         " ><omnistudio-flex-img data-style-id="state3element0_child"   card={card}  record={record}  size=""  extraclass="slds-align_absolute-center"  state-img='\{"imgsrc":"{Label.ServiceAppointment_Flexcards.ErrorImageSource}","alternativeText":"Image description"}'  img-height="200px"  img-width="383px"  theme="slds"  ></omnistudio-flex-img>
+      </div><div data-style-id="state3element1" class="slds-col   slds-size_12-of-12 " data-rindex={rindex} style="" ><omnistudio-output-field data-style-id="state3element1_child"   card={card}  record={record}  merge-field="%3Cdiv%20class=%22slds-text-align_center%22%3E%7BLabel.ServiceAppointment_Flexcards.TimeSlotSelectionMissingValuesCardMessage%7D%3C/div%3E"  theme="slds"  ></omnistudio-output-field>
+      </div>
+        </div>
+      </omnistudio-flex-card-state><omnistudio-flex-card-state  record={record} data-statue="false"  data-index="4" data-rindex={rindex} class="cf-vlocity-state-4 cf-vlocity-state slds-size_12-of-12 "  tracking-obj={_childCardTrackingObj} >
+      <div if:true={cardLoaded} class="slds-grid slds-wrap slds-p-around_x-small " style="      
+    border-radius:23 px;     z-index: 0;
+">
+          
+        </div>
+      </omnistudio-flex-card-state>
+                      </template>
+            </template>
+            <template if:true={hasError}>
+            {error}
+            </template>
+            
+      <omnistudio-action action-wrapperclass="slds-hide" re-render-flyout class="action-trigger slds-col" onupdateos={updateOmniscript} onselectcards={updateSelectedCards} onsetvalue={updateAction} onfireactionevent={actionEvtHandler}>
+      
+      </omnistudio-action>
+  
+            <omnistudio-action class="execute-action" re-render-flyout action-wrapperclass="slds-hide" onupdateos={updateOmniscript} onselectcards={updateSelectedCards} onsetvalue={updateAction} onfireactionevent={actionEvtHandler}>
+            
+            </omnistudio-action>
+            </div>
+          </template>

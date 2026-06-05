@@ -1,0 +1,11 @@
+{
+  "activeViewId" : "68dee7fa-f9df-4068-9fcd-b9602e4035a8",
+  "appPageId" : "1e4d6659-0826-4bf2-a237-43ecbc3624af",
+  "configurationTags" : [ ],
+  "devName" : "Redirect_Application",
+  "id" : "1620c0b8-0cd6-403d-be6a-efd6209f0168",
+  "label" : "Automotive Lending Application Form Redirect Page",
+  "routeType" : "redirect-application",
+  "type" : "route",
+  "urlPrefix" : "redirect-application"
+}

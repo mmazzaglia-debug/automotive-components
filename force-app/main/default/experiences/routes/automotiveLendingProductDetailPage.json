@@ -1,0 +1,11 @@
+{
+  "activeViewId" : "fe2b84a4-45ff-4d52-8a76-df9ed3984fff",
+  "appPageId" : "1e4d6659-0826-4bf2-a237-43ecbc3624af",
+  "configurationTags" : [ ],
+  "devName" : "Automotive_PDP",
+  "id" : "8ec9d98f-b958-4fed-9fc7-99092a2ba92d",
+  "label" : "Automotive Lending Product Detail Page",
+  "routeType" : "automotive-pdp",
+  "type" : "route",
+  "urlPrefix" : "automotive-pdp"
+}

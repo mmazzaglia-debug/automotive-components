@@ -1,0 +1,11 @@
+{
+  "activeViewId" : "56b82d93-65a3-4385-9bc1-7f0e50bd4b3e",
+  "appPageId" : "1e4d6659-0826-4bf2-a237-43ecbc3624af",
+  "configurationTags" : [ ],
+  "devName" : "Automotive_New_Application_Form",
+  "id" : "a5da04d9-7fc7-4347-b997-b75d02146dae",
+  "label" : "Automotive Lending New Application Form Page",
+  "routeType" : "automotive-new-application-form",
+  "type" : "route",
+  "urlPrefix" : "automotive-new-application-form"
+}

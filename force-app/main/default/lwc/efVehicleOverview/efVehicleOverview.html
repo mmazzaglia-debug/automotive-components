@@ -1,0 +1,60 @@
+<template>
+    <lightning-card  variant="Narrow"  title="Vehicle Overview" icon-name="standard:knowledge">
+        <lightning-button-icon  if:true={vehicle.data} icon-name="utility:down" variant="border-filled" alternative-text="Show More" slot="actions"></lightning-button-icon>
+         
+        <lightning-record-view-form
+        record-id={recordId}
+        object-api-name="Vehicle"
+     >
+        <div class="slds-grid">
+            <div class="slds-col slds-size_1-of-2 slds-p-bottom_medium slds-p-left_medium">
+                    <lightning-output-field field-name="Name"> </lightning-output-field>
+                    <lightning-output-field field-name="VehicleDefinitionId"> </lightning-output-field>
+                    <lightning-output-field field-name="AverageMarketValue"> </lightning-output-field>
+                </div>
+                <div class="slds-col slds-size_1-of-2 slds-p-bottom_medium slds-p-left_medium">
+                        <lightning-output-field field-name="LastOdometerReading"> </lightning-output-field>
+                        <lightning-output-field field-name="VehicleRegistrationNumber"> </lightning-output-field>
+                        <lightning-output-field field-name="ActiveWarrantyCount"> </lightning-output-field>
+            </div>
+
+        </div>
+    </lightning-record-view-form>
+
+    <div if:true={vehicle.data} class="slds-m-around_small slds-text-align_center">
+        <lightning-carousel padding="around-medium"> 
+            <lightning-carousel-image
+                src = "{vehiclePicture}"
+                header = "First view"
+                description = "Face"
+                alternative-text = "First card accessible description."
+                href = "javascript:void(0);">
+            </lightning-carousel-image>
+            <lightning-carousel-image
+                src = "{vehiclePicture2}"
+                header = "Second view"
+                description = "Side"
+                alternative-text = "Second card accessible description."
+                href = "javascript:void(0);">
+            </lightning-carousel-image>
+            <lightning-carousel-image
+                src = "{vehiclePicture3}"
+                header = "Third view"
+                description = "Bottom"
+                alternative-text = "Third card accessible description."
+                href = "javascript:void(0);">
+            </lightning-carousel-image>
+            <lightning-carousel-image
+            src = "{vehiclePicture4}"
+            header = "Fourth view"
+            description = "3/4"
+            alternative-text = "Fourth card accessible description."
+            href = "javascript:void(0);">
+        </lightning-carousel-image>
+        </lightning-carousel>
+
+    </div>
+
+
+    </lightning-card>
+</template>

@@ -1,0 +1,163 @@
+<template>
+
+    <template if:true={isDebug}>
+        <div>For debug only<br>
+            <lightning-button title="Set Inspection Status" label="Set Inspection Status" onclick={handleSubmitInspectionStatus}></lightning-button>
+            <div>{rerender}</div>
+        </div>
+    </template>
+
+    <lightning-card class="main-card">
+        
+        <h2 class="slds-card__header-title" slot="title">
+            <lightning-icon icon-name="custom:custom31" size="small" class="slds-var-m-right_small"></lightning-icon>
+            Connected Vehicle
+        </h2>
+        <lightning-layout pull-to-boundary="large">
+            <lightning-layout-item size="4" padding="horizontal-large">
+                <div class="slds-var-p-around_medium">
+                    
+                    <div class="can-rounded-card xslds-border_top slds-var-p-vertical_medium slds-var-m-vertical_medium">
+                        <h2 class="slds-card__header-title xxx-slds-text-title_caps">Software</h2>
+                        <p>Software version : <strong>1.3.412</strong></p>
+                        <p>
+                            <lightning-icon class="slds-var-m-right_x-small" icon-name="utility:warning" alternative-text="Warning" size="x-small" title="Warning"></lightning-icon> 
+                            New version available (1.4.003). Waiting for driver to accept terms.
+                        </p>
+                    </div>
+
+                    <div class="can-rounded-card remaining-life slds-var-p-bottom_medium slds-var-m-vertical_medium">
+                        <span class="slds-text-heading_medium slds-var-m-right_small remaining-life__value">Medium</span>
+                        <lightning-icon class="slds-var-m-right_x-small" icon-name="utility:wifi" alternative-text="Warning" size="x-small" title="Warning"></lightning-icon> 
+                        <span class="slds-text-body_small remaining-life__label"> Signal Quality</span>
+                        <div>
+                            <lightning-progress-bar class="can-progress-bar" value="43" size="large" variant="circular"></lightning-progress-bar>
+                        </div>
+                        <div></div>
+                    </div>
+
+                    <div class="can-rounded-card remaining-life slds-var-p-bottom_medium slds-var-m-vertical_medium">
+                        <span class="slds-text-heading_medium slds-var-m-right_small remaining-life__value">{currentCharge} %</span>
+                        <span class="slds-text-body_small remaining-life__label"> Remaining {chargeMeasureName}</span>
+                        <div>
+                            <lightning-progress-bar class="can-progress-bar" value={currentCharge} size="large" variant="circular"></lightning-progress-bar>
+                        </div>
+                        <div></div>
+                    </div>
+
+                    <div class="can-rounded-card xslds-border_top slds-var-p-vertical_medium slds-var-m-vertical_medium">
+                        <h2 class="slds-card__header-title xxx-slds-text-title_caps">Controls</h2>
+                        <h3>{doorsMeasureName}</h3>
+                        <lightning-button-group>
+                            <lightning-button-icon-stateful icon-name="utility:lock" selected={lockState} onclick={handleLock} alternative-text="Lock"></lightning-button-icon-stateful>
+                            <lightning-button-icon-stateful icon-name="utility:unlock" selected={unlockState} onclick={handleLock} alternative-text="Lock"></lightning-button-icon-stateful>
+                        </lightning-button-group>
+                        &nbsp;{lockStateLabel}
+                    </div>
+                    
+                    <!-- Chart -->
+                    <div class="can-rounded-card xslds-border_top slds-var-p-top_medium slds-var-m-vertical_medium">
+                        <h2 class="slds-card__header-title">{powerMeasureName}</h2>
+                        <h4>Current state</h4>
+                        <lightning-button-icon-stateful icon-name="utility:power" selected={switchPower} onclick={handleSwitchPower} alternative-text="Power"></lightning-button-icon-stateful> {powerState}
+                        <c-chart-js data-id="powerChart" chart-points="1,0,0,0,1,0,1" point-labels="test" is-stepped="true" hide-vertical-axis="true"></c-chart-js>
+                    </div>
+
+                </div>
+            </lightning-layout-item>
+            <lightning-layout-item size="8" padding="horizontal-large">
+                <lightning-card class="vehicle-card">
+                    <div class="vehicle">
+                        <div class="vehicle-image">
+                            <img src={vehicleImageBackground} />
+                        </div>
+                        <!-- Parts -->
+                         <template for:each={parts} for:item="part">
+                             <template if:true={part.Is_Damaged__c}> 
+                             <div class="vehicle-part" 
+                                key={part.Id} 
+                                data-part-id={part.Id} 
+                                data-is-active={part.isActive} 
+                                data-is-alert={part.isAlert}
+                                data-part-inspection-status={part.inspectionStatus} 
+                                onclick={handlePartClick} 
+                                style={part.CSS_Properties_for_Damage__c}>
+                            </div>
+                           </template> 
+                            <template if:false={part.Is_Damaged__c}> 
+                             <div class="vehicle-part" 
+                                key={part.Id} 
+                                data-part-id={part.Id} 
+                                data-is-active={part.isActive} 
+                                data-is-alert={part.isAlert}
+                                data-part-inspection-status={part.inspectionStatus} 
+                                onclick={handlePartClick} 
+                                style={part.CSS_properties__c}>
+                            </div>
+                            </template> 
+                         </template> 
+                    </div>
+                </lightning-card>
+            </lightning-layout-item>
+        </lightning-layout>
+
+        <div class={sliderClass}>
+            <!-- Title (asset name) -->
+            <h1 class="slds-text-heading_large slds-var-m-bottom_large">{activePart.Name}</h1>
+            <div class="close-button" onclick={handleCloseSlider}><lightning-icon icon-name="utility:close" size="small"></lightning-icon></div>
+                
+            <div class="slds-var-p-bottom_medium">
+                <!-- Image -->
+                <template if:true={activePart.Product2}>
+                    <lightning-avatar 
+                        size="large"   
+                        src={activePart.Product2.Product_Image_URL__c}
+                        initials="" 
+                        fallback-icon-name="standard:asset" 
+                        alternative-text={activePart.Name}
+                        class="slds-var-m-right_small">
+                    </lightning-avatar>
+                </template>
+                <!-- Serial Number -->
+                <lightning-badge label={activePart.SerialNumber}></lightning-badge>
+            </div>
+
+            <!-- Remaining Life -->
+            <template if:true={hasRemainingLife}>
+                <div class="slds-border_top slds-var-p-vertical_medium">
+                    <div class="remaining-life slds-var-p-bottom_medium">
+                        <span class="slds-text-heading_medium slds-var-m-right_small remaining-life__value">{activePart.Remaining_Life__c} %</span>
+                        <span class="slds-text-body_small remaining-life__label"> Remaining Life</span>
+                        <div>
+                            <lightning-progress-bar class="can-progress-bar" value={activePart.Remaining_Life__c} size="large" variant="circular"></lightning-progress-bar>
+                        </div>
+                    </div>
+                    <div class="slds-var-p-vertical_x-small">
+                        <lightning-icon class="slds-var-m-right_x-small" icon-name="utility:download" alternative-text="Installed" size="x-small" title="Installed"></lightning-icon> 
+                        Installed on <lightning-formatted-date-time value={activePart.InstallDate}></lightning-formatted-date-time>
+                    </div>
+                    <div class="">
+                        <lightning-icon class="slds-var-m-right_x-small" icon-name="utility:upload" alternative-text="Installed" size="x-small" title="Installed"></lightning-icon> 
+                        Replacement on <lightning-formatted-date-time value={activePart.Replacement_Date__c}></lightning-formatted-date-time>
+                    </div>
+                </div>
+            </template>
+
+            <!-- Chart -->
+            <div class="slds-border_top slds-var-p-top_medium" data-has-chart-points={hasChartPoints}>
+                <h2 class="slds-card__header-title">Evolution</h2>
+                <c-chart-js data-id="assetChart" chart-points={chartPoints} point-labels="test"></c-chart-js>
+            </div>
+
+            <div class="slds-border_top slds-var-p-vertical_medium">
+                <lightning-button title="Open Record" label="Open Record" onclick={handleOpenAsset}></lightning-button>
+            </div>
+            <!---->
+
+        </div>
+
+        <div style="position: absolute; opacity: 0; color: transparent; top:0; left:0;">{rerender}</div>
+    
+    </lightning-card>
+    
+</template>

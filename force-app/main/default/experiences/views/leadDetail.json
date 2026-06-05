@@ -1,0 +1,182 @@
+{
+  "appPageId" : "1e4d6659-0826-4bf2-a237-43ecbc3624af",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "de8814b5-f543-4819-b609-59ba7500ca9d",
+  "label" : "Lead Detail",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "forceCommunity:recordHeadline",
+      "id" : "4ed8e12c-60c7-4283-b7b4-15bf16066032",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "4d0fc5d6-1e42-44ee-8db7-f6d5466bbd17",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "forceCommunity:pathAssistant",
+      "id" : "e03c4625-a0b2-4326-a064-40db8df3406e",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "428c820c-3c42-42ee-aac0-56dc297c7ea8",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "tabsetConfig" : {
+          "UUID" : "76f838ab-277f-4424-9c26-ce4adcad4461",
+          "activeTab" : "",
+          "tabs" : [ {
+            "UUID" : "d83b4513-53c3-4712-95b4-5c090682f508",
+            "allowGuestUser" : false,
+            "locked" : false,
+            "seedComponents" : [ ],
+            "tabKey" : "1",
+            "tabName" : "Details"
+          }, {
+            "UUID" : "556eb26b-477c-49b6-a29c-f21ad9d49f9d",
+            "allowGuestUser" : false,
+            "locked" : false,
+            "seedComponents" : [ ],
+            "tabKey" : "3",
+            "tabName" : "🏎️ Schedule Test Drive"
+          }, {
+            "UUID" : "fad768fd-1a3e-4467-9c9e-b5558cd923ca",
+            "allowGuestUser" : true,
+            "locked" : false,
+            "seedComponents" : [ ],
+            "tabKey" : "934b7",
+            "tabName" : "Re-assign Lead"
+          }, {
+            "UUID" : "6e58ccfa-d95a-4001-a41a-10169c76e004",
+            "allowGuestUser" : false,
+            "locked" : false,
+            "seedComponents" : [ ],
+            "tabKey" : "2",
+            "tabName" : "Related"
+          } ],
+          "useOverflowMenu" : false
+        }
+      },
+      "componentName" : "forceCommunity:tabset",
+      "id" : "76f838ab-277f-4424-9c26-ce4adcad4461",
+      "regions" : [ {
+        "components" : [ {
+          "componentAttributes" : {
+            "detailsTabLabel" : "Details",
+            "discussionsTabLabel" : "Feed",
+            "recordId" : "{!recordId}",
+            "relatedTabLabel" : "Related",
+            "showLegacyActivityComposer" : true,
+            "tab1Type" : "details",
+            "tab2Type" : "none",
+            "tab3Type" : "none",
+            "tab4Type" : "none",
+            "timelineTabLabel" : "Activity"
+          },
+          "componentName" : "forceCommunity:recordHomeTabs",
+          "id" : "68843ffc-9359-4d39-ac5f-d585119e4b14",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "d83b4513-53c3-4712-95b4-5c090682f508",
+        "regionLabel" : "Details",
+        "regionName" : "1",
+        "renditionMap" : { },
+        "type" : "region"
+      }, {
+        "components" : [ {
+          "componentAttributes" : { },
+          "componentName" : "c:testDriveAppointmentFlow",
+          "id" : "971d5129-be79-47cc-9b5d-028911d91da3",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "556eb26b-477c-49b6-a29c-f21ad9d49f9d",
+        "regionLabel" : "🏎️ Schedule Test Drive",
+        "regionName" : "3",
+        "renditionMap" : { },
+        "type" : "region"
+      }, {
+        "id" : "fad768fd-1a3e-4467-9c9e-b5558cd923ca",
+        "regionLabel" : "Re-assign Lead",
+        "regionName" : "934b7",
+        "renditionMap" : { },
+        "type" : "region"
+      }, {
+        "components" : [ {
+          "componentAttributes" : {
+            "relatedListApiName" : "LeadPreferredSellerLead",
+            "relatedListComponentOverride" : "GRID",
+            "width" : "MEDIUM"
+          },
+          "componentName" : "forceCommunity:responsiveRelatedListSingle",
+          "id" : "1d318af5-dd39-4713-9391-0b543ce09aca",
+          "renditionMap" : { },
+          "type" : "component"
+        }, {
+          "componentAttributes" : {
+            "relatedListApiName" : "LeadLineItemLeadRelation",
+            "relatedListComponentOverride" : "GRID",
+            "width" : "MEDIUM"
+          },
+          "componentName" : "forceCommunity:responsiveRelatedListSingle",
+          "id" : "2aade023-ad63-4f30-bebe-348ecbf86457",
+          "renditionMap" : { },
+          "type" : "component"
+        }, {
+          "componentAttributes" : {
+            "relatedListApiName" : "ServiceAppointments",
+            "relatedListComponentOverride" : "GRID",
+            "width" : "MEDIUM"
+          },
+          "componentName" : "forceCommunity:responsiveRelatedListSingle",
+          "id" : "ad4db332-2566-4fde-8a5b-1c24582e45e6",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "6e58ccfa-d95a-4001-a41a-10169c76e004",
+        "regionLabel" : "Related",
+        "regionName" : "2",
+        "renditionMap" : { },
+        "type" : "region"
+      } ],
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "30111255-92f7-4dfe-9e3e-6ee69a580814",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "{!Record._Object}: {!Record._Title}"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "06e2987c-a1ad-4804-80cc-709cb11b6109",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "53848a53-b2d8-43a2-88f5-a58c46ebe5bd",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "detail-00Q"
+}

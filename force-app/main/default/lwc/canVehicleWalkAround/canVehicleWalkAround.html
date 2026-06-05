@@ -1,0 +1,191 @@
+<template>
+
+    <lightning-card class="main-card">
+        
+        <h2 class="slds-card__header-title" slot="title">
+            <lightning-icon icon-name="custom:custom31" size="small" class="slds-var-m-right_small"></lightning-icon>
+            Vehicle Walk Around
+        </h2>
+
+        <!-- Rotation Slider -->
+        <template if:true={isRotationSliderOpen}>        
+            <div class="xcan-rotation-slider can-modal">
+                <lightning-card title="Choose direction of rotation">
+                    <div class="slds-var-m-top_small slds-align_absolute-center">
+                        <lightning-button label="Left" title="Rotation Counter Clockwise" value="-1" onclick={setRotation} icon-name="utility:undo" icon-position="right" class="slds-var-m-around_xx-small"></lightning-button>
+                        <lightning-button label="Right" title="Rotation Clockwise" value="1" onclick={setRotation} icon-name="utility:redo" class="slds-var-m-around_xx-small"></lightning-button>
+                    </div>
+                </lightning-card>
+            </div>
+        </template>
+
+        <lightning-card class="vehicle-card">
+            <div class="vehicle">
+                <div class="vehicle-image">
+                    <img src={vehicleImageBackground} />
+                </div>
+                <!-- Parts -->
+                <template for:each={parts} for:item="part">
+                    <div class="vehicle-part" 
+                        key={part.Id} 
+                        data-is-active={part.isActive} 
+                        data-part-id={part.Id} 
+                        data-part-order={part.Walk_Around_Order__c} 
+                        data-part-inspection-status={part.inspectionStatus} 
+                        onclick={handlePartClick} 
+                        style={part.CSS_properties__c}></div>
+                </template>
+            </div>
+        </lightning-card>
+
+
+        <!-- SLIDER -->
+
+        <div class={sliderClass}>
+            <!-- Title (asset name) -->
+            <h1 class="slds-text-heading_large slds-var-m-bottom_large">{activePart.Name}</h1>
+            <div class="close-button" onclick={handleCloseSlider}><lightning-icon icon-name="utility:close" size="small"></lightning-icon></div>
+                
+            <div class="slds-var-p-bottom_medium">
+                <!-- Image -->
+                <template if:true={activePart.Product2}>
+                    <lightning-avatar 
+                        size="large"   
+                        src={activePart.Product2.Product_Image_URL__c}
+                        initials="" 
+                        fallback-icon-name="standard:asset" 
+                        alternative-text={activePart.Name}
+                        class="slds-var-m-right_small">
+                    </lightning-avatar>
+                </template>
+                <!-- Serial Number -->
+                <lightning-badge label={activePart.SerialNumber}></lightning-badge>
+            </div>
+
+            <!-- Remaining Life -->
+            <template if:true={hasRemainingLife}>
+                <div class="slds-border_top slds-var-p-vertical_medium">
+                    <div class="remaining-life slds-var-p-bottom_medium">
+                        <span class="slds-text-heading_medium slds-var-m-right_small remaining-life__value">{activePart.Remaining_Life__c} %</span>
+                        <span class="slds-text-body_small remaining-life__label"> Remaining Life</span>
+                        <div>
+                            <lightning-progress-bar class="can-progress-bar" value={activePart.Remaining_Life__c} size="large" variant="circular"></lightning-progress-bar>
+                        </div>
+                    </div>
+                    <div class="slds-var-p-vertical_x-small">
+                        <lightning-icon class="slds-var-m-right_x-small" icon-name="utility:download" alternative-text="Installed" size="x-small" title="Installed"></lightning-icon> 
+                        Installed on <lightning-formatted-date-time value={activePart.InstallDate}></lightning-formatted-date-time>
+                    </div>
+                    <div class="">
+                        <lightning-icon class="slds-var-m-right_x-small" icon-name="utility:upload" alternative-text="Installed" size="x-small" title="Installed"></lightning-icon> 
+                        Replacement on <lightning-formatted-date-time value={activePart.Replacement_Date__c}></lightning-formatted-date-time>
+                    </div>
+                    <div class="slds-var-p-horizontal_medium slds-var-m-vertical_small">
+                        <lightning-button-stateful
+                            class="slds-align_absolute-center"
+                            variant="brand"
+                            label-when-off="Add to opportunity"
+                            label-when-on="Added to opportunity"
+                            label-when-hover="Remove"
+                            icon-name-when-off="utility:add"
+                            icon-name-when-on="utility:check"
+                            icon-name-when-hover="utility:close"
+                            selected={activePart.isAdded}
+                            onclick={handleAddOpportunityLine}>
+                        </lightning-button-stateful>
+                    </div>
+                </div>
+            </template>
+
+            <!-- Chart -->
+            <div class="slds-border_top slds-var-p-top_medium" data-has-chart-points={hasChartPoints}>
+                <h2 class="slds-card__header-title">Evolution</h2>
+                <c-chart-js data-id="assetChart" chart-points={chartPoints} point-labels="test"></c-chart-js>
+            </div>
+
+            <!-- Input Measure Field -->
+            <div class="slds-border_top slds-var-p-vertical_medium">
+                <lightning-radio-group name="assetState"
+                          label="Overall state"
+                          options={stateOptions}
+                          value={stateValue}
+                          onchange={handleStateChange}
+                          type="button"></lightning-radio-group>
+                <template if:true={isDebug}>
+                    <lightning-input type="number" name="measureValue" label="Enter tire pressure" value={measureValue} placeholder="type here..." onchange={handleMeasureValueChange} step="0.001"></lightning-input>
+                </template>
+                <div class="slds-var-m-vertical_small">
+                    <lightning-button title="Open Record" label="Open Record" onclick={handleOpenAsset}></lightning-button>
+                    <lightning-button variant="brand" label="Submit" title="Submit pressure" value={pressure} onclick={handleSubmitStateValue} class="slds-var-m-around_xx-small"></lightning-button>
+                </div>
+            </div>
+            <!---->
+
+        </div>
+
+        <template if:true={hasOptyLines}>
+            <div class="slds-var-m-vertical_medium slds-border_top slds-var-p-around_medium">
+                <h2><lightning-icon class="slds-var-m-right_small" icon-name="standard:opportunity" alternative-text="New Opportunity" title="New Opportunity" size="small" ></lightning-icon> New Opportunity</h2>
+                <div class="slds-var-m-vertical_medium">
+                    <template for:each={opportunityLines} for:item="opli">
+                        <p key={opli.assetId}>
+                            <lightning-icon class="slds-var-m-right_small" icon-name="standard:product" alternative-text="Product" title="Product" size="x-small"></lightning-icon>&nbsp;
+                            {opli.Name} &middot; {opli.Quantity} &middot; {opli.TotalPrice}€
+                        </p>
+                    </template>
+                </div>
+                <lightning-button variant="brand" label={createOptyLabel} title="Create" icon-name={createOptyIcon} onclick={createOpportunity} class="slds-var-p-around_medium slds-align_absolute-center"></lightning-button>
+            </div>
+        </template>
+        <template if:false={hasOptyLines}>
+            <div class="can-empty-block"></div>
+        </template>
+        <template if:true={isOptyCreated}>
+            <div class="slds-var-m-vertical_medium slds-border_top slds-var-p-around_medium">
+                <h2 class="slds-text-heading_medium">Opportunity created</h2>
+                ✅ Your opportunity has been succesfully created
+            </div>
+        </template>
+
+        <!-- End Inspection Slider -->
+        <template if:true={isInspectionSliderOpen}>
+            <lightning-card class="can-modal">
+                <h1 class="slds-var-p-horizontal_medium slds-text-heading_medium" slot="title">Your inspection is finished</h1>
+                <p class="slds-var-p-horizontal_medium">
+                    ✅ You may now mark this step as completed.
+                </p>
+                <div class="slds-var-m-top_small slds-align_absolute-center">
+                    <lightning-button label="Restart" title="Restart inspection" onclick={closeSlider} class="slds-var-m-around_xx-small"></lightning-button>
+                    <lightning-button variant="brand" label="Close" title="Close" onclick={closeSlider} class="slds-var-m-around_xx-small"></lightning-button>
+                </div>
+            </lightning-card>
+
+        </template>
+
+        <!-- Select Pricebook -->
+        <template if:true={isPricebookSliderOpen}>        
+            <div class="can-modal can-modal-front">
+                <lightning-card title="Select a pricebook">
+                    <div class="slds-m-around_medium">
+                        <label for="pricebookId">Choose a price book</label>
+                        <select class="slds-select" id="pricebookId"  onchange={handlePricebookChange}>
+                            <option value="x">None</option>
+                            <template for:each={pricebookList} for:item="pb">
+                                <option key={pb.Id} value={pb.Id}>{pb.Name}</option>
+                            </template>
+                        </select>
+                    </div>
+                    <div class="slds-m-around_medium">
+                        <lightning-input type="date" name="closeDate" label="Close Date" value={closeDate} onchange={handleCloseDateChange}></lightning-input>
+                    </div>
+                    <div class="slds-var-m-top_small slds-align_absolute-center">
+                        <lightning-button variant="neutral" label="Close" title="Close" onclick={closePricebookSlider} class="slds-var-m-around_xx-small"></lightning-button>
+                        <lightning-button variant="brand" label="Select" title="Select" onclick={selectPricebook} class="slds-var-m-around_xx-small"></lightning-button>
+                    </div>
+                </lightning-card>
+            </div>
+        </template>
+    
+    </lightning-card>
+    
+</template>

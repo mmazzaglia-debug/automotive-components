@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Einstein Next Best Action (NBA) Demo</masterLabel>
+    <targets>
+        <target>lightning__HomePage</target>
+        <target>lightning__AppPage</target>
+        <target>lightning__RecordPage</target>
+                
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__HomePage,lightning__AppPage,lightning__RecordPage">
+            <property name="title" label="(Formatting 1) Card Title" type="String" default="Next Best Action" description="Title text at the top of the NBA card."/>
+            <property name="header" label="(Formatting 2) Header text" type="String" default="Quarterly Marketing Campaign" description="Brief header text that appears above the body."/>
+            <property name="body" label="(Formatting 3) Body text" type="String" default="Add your contacts to our quarterly marketing campaign to keep them informed on promotions, new products, and other news." description="Primary text that appears on the card between the header and the buttons."/>
+            <property name="imgSrc" label="(Formatting 4) Image URL" type="String" default="https://i.imgur.com/V3tGLfC.jpg" description="URL of the image to display. You can pull from existing web sources or easily upload screenshots or other images using imgur.com."/>
+            <property name="button1Label" label="(Formatting 5) Confirm button label" type="String" default="Accept" description="Text to appear on the top button, which triggers an action (specified below)."/>
+            <property name="button2Label" label="(Formatting 6) Cancel button label" type="String" default="Cancel" description="Text to appear on the bottom button, which declines the NBA."/>
+            <property name="actionType" label="(Action 1) Action Type" type="String" datasource="Open Record,Go to URL,Show Toast Message" default="Show Toast Message" description="Open Record redirects to the record page of the provided ID. Go to URL redirects to the provided URL (internal or external). Show Toast Message displays a green 'success' pop-up message to simulate an action being completed."/>
+            <property name="actionDestination" label="(Action 2) Action Value" type="String" default="Contact(s) successfully added to campaign" description="Depends on Action Type. Provide either a record ID, a URL, or the text to display in a toast message."/>
+            <property name="delay" label="(Action 3) Delay (in miliseconds)" type="Integer" default="500" description="Sometimes you want the system to seem like it's taking some time. Here you can specify a number of miliseconds to delay the action. 500 = 0.5 seconds, 2000 = 2 seconds, etc."/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

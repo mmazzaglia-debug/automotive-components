@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <!-- Lightning Web Components (9 vehicle management components) -->
+    <types>
+        <members>canVehicleView</members>
+        <members>canVehicleWalkAround</members>
+        <members>efDigitalTwin</members>
+        <members>efDigitalTwinMap</members>
+        <members>efDigitalTwinTabFeatures</members>
+        <members>efVehicleOverview</members>
+        <members>efVehicleTimeline</members>
+        <members>recommendedVehicles</members>
+        <members>vehicleGarage</members>
+        <name>LightningComponentBundle</name>
+    </types>
+
+    <!-- Apex Classes (2 Controllers + 2 Test Classes) -->
+    <types>
+        <members>CANVehicleController</members>
+        <members>CANVehicleControllerTest</members>
+        <members>RecommendedVehiclesController</members>
+        <members>RecommendedVehiclesControllerTest</members>
+        <name>ApexClass</name>
+    </types>
+
+    <!-- Custom Objects (4 objects) -->
+    <types>
+        <members>Asset_Telematic__c</members>
+        <members>Asset_Inspection__c</members>
+        <members>Asset_Alert__c</members>
+        <members>Vehicle</members>
+        <name>CustomObject</name>
+    </types>
+
+    <!-- Experience Cloud Site (Electra Dealer Central) -->
+    <types>
+        <members>Electra_Dealer_Central1</members>
+        <name>DigitalExperience</name>
+    </types>
+
+    <!-- Static Resource (canVehicleViews) -->
+    <types>
+        <members>canVehicleViews</members>
+        <name>StaticResource</name>
+    </types>
+
+    <!-- Flow (Test Drive Appointment - runtime_appointmentbooking) -->
+    <types>
+        <members>runtime_appointmentbooking__Flow</members>
+        <name>Flow</name>
+    </types>
+
+    <version>62.0</version>
+</Package>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Recommended Vehicles</masterLabel>
+    <description>Displays random recommended vehicles for the current lead.</description>
+    <targets>
+        <target>lightning__RecordPage</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__RecordPage">
+            <objects>
+                <object>Lead</object>
+            </objects>
+            <property
+                name="maxRecords"
+                type="Integer"
+                label="Maximum Vehicles to Display"
+                description="Used only when custom vehicle fields below are empty"
+                default="3"
+                min="1"
+                max="10"
+            />
+            <property name="vehicle1Name" type="String" label="Vehicle 1 Name" />
+            <property name="vehicle1ImageUrl" type="String" label="Vehicle 1 Image URL" />
+            <property
+                name="vehicle1RecordLink"
+                type="String"
+                label="Vehicle 1 Record Link"
+                description="Paste a full record URL, relative URL, or record Id"
+            />
+            <property name="vehicle2Name" type="String" label="Vehicle 2 Name" />
+            <property name="vehicle2ImageUrl" type="String" label="Vehicle 2 Image URL" />
+            <property
+                name="vehicle2RecordLink"
+                type="String"
+                label="Vehicle 2 Record Link"
+                description="Paste a full record URL, relative URL, or record Id"
+            />
+            <property name="vehicle3Name" type="String" label="Vehicle 3 Name" />
+            <property name="vehicle3ImageUrl" type="String" label="Vehicle 3 Image URL" />
+            <property
+                name="vehicle3RecordLink"
+                type="String"
+                label="Vehicle 3 Record Link"
+                description="Paste a full record URL, relative URL, or record Id"
+            />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

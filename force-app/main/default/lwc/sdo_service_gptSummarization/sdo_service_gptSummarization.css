@@ -1,0 +1,13 @@
+.applyRecText{
+    color:#0171D3;
+    cursor:pointer;
+}
+
+.blueIcon{
+    --sds-c-icon-color-foreground-default: #0171D3;
+}
+
+.edit_icon{
+    --sds-c-icon-color-foreground-default: #e5e5e5;
+    height: var(--lwc-squareIconMediumBoundary,2rem);
+}

@@ -1,0 +1,33 @@
+.rate {
+    float: left;
+    height: 46px;
+}
+
+.rate > label {
+    float: right;
+    width: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 30px;
+    color: #ccc;
+    margin: 0 2.5px;
+}
+
+.rate > label:before {
+    content: '★ ';
+}
+
+.rate > label {
+    float: right;
+    width: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 30px;
+    color: #ccc;
+}
+
+.rate > label.checked {
+    color: var(--slds-c-button-brand-color-background, var(--sds-c-button-brand-color-background, var(--lwc-brandAccessible)));
+}

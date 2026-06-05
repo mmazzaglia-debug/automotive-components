@@ -1,0 +1,98 @@
+<template>
+
+	<lightning-spinner lwc:if={isLoading} alternative-text="Loading..." variant="brand">
+	</lightning-spinner>
+
+	<div class="slds-p-around_small">
+		<div class="slds-form">
+			<div class="slds-form-element slds-form-element stacked">
+				<lightning-record-picker label="Source Location" placeholder="Search Loactions..."
+					object-api-name="Location" onchange={handleSourceChange} required="true">
+				</lightning-record-picker>
+			</div>
+
+			<div class="slds-m-top_small slds-form-element slds-form-element stacked">
+				<lightning-record-picker label="Destination Location" placeholder="Search Loactions..."
+					object-api-name="Location" onchange={handleDestinationChange} required="true" value={destinationId}>
+				</lightning-record-picker>
+			</div>
+
+			<div class="slds-m-top_small slds-form-element slds-form-element stacked">
+				<lightning-input type="datetime" name="needByDate" label="Need By Date"
+					onchange={handleNeedByDateTimeChange} required="true"></lightning-input>
+			</div>
+		</div>
+	</div>
+
+	<div class="productList slds-m-top_small">
+		<div class="slds-p-vertical_small slds-p-right_small" lwc:if={showRequestBtn}>
+			<div class="slds-clearfix">
+				<div class="slds-float_right">
+					<lightning-button variant="brand" label={requestProdButtonLabel} onclick={createProductRequest}
+						disabled={disableRequestProductBtn}>
+					</lightning-button>
+				</div>
+			</div>
+		</div>
+
+		<ul class="slds-has-dividers_bottom-space">
+			<template for:each={productRequestList} for:item="prodRequest">
+				<li class="slds-item" key={prodRequest.sku}>
+					<div class="slds-grid slds-grid_align-spread">
+						<div class="slds-col">
+							<div class="slds-text-heading_small">{prodRequest.sku}</div>
+						</div>
+						<div class="slds-col">
+							<span class="slds-badge slds-badge_lightest">Inventory: {prodRequest.currentInventory}</span>
+						</div>
+					</div>
+					<div class="slds-m-top_xxx-small">
+						{prodRequest.productName}
+					</div>
+					<div class="slds-grid slds-grid_align-spread">
+						<div class="slds-col">
+						</div>
+						<div class="slds-col">
+							<div class="slds-grid slds-grid_align-end quantityEditor slds-m-top_small">
+								<div class="slds-col slds-m-right_small">
+									<lightning-icon data-sku={prodRequest.sku} data-action="decrease" size="small"
+										icon-name="utility:dash" alternative-text="Remove" title="Remove"
+										onclick={changeQuantity}>
+									</lightning-icon>
+								</div>
+								<div class="slds-col slds-m-right_small">
+									<input type="number" data-sku={prodRequest.sku} data-action="update" value={prodRequest.requestQuantity} onchange={changeQuantity}></input>
+								</div>
+								<div class="slds-col">
+									<lightning-icon data-sku={prodRequest.sku} data-action="increase" size="small"
+										icon-name="utility:add" alternative-text="Add" title="Add"
+										onclick={changeQuantity}>
+									</lightning-icon>
+								</div>
+							</div>
+						</div>
+					</div>
+				</li>
+			</template>
+			<li class="slds-item" lwc:if={showProductSearch}>
+				<lightning-record-picker label="Search Product"
+					placeholder="Search Products..." object-api-name="Product2" onchange={handleProductSearchSelect}>
+				</lightning-record-picker>
+			</li>
+		</ul>
+	</div>
+
+
+
+	<div class="slds-m-top_medium slds-grid slds-grid_align-center">
+		<div class="slds-col slds-grow-none">
+			<lightning-button variant="brand" icon-name="utility:scan" label="Scan"
+				title="Open a camera view and look for a barcode to scan" onclick={handleBeginScanClick}>
+			</lightning-button>
+		</div>
+		<div class="slds-col slds-grow-none slds-p-left_medium">
+			<lightning-button variant="brand" icon-name="utility:search" label="Add" onclick={toggleProductSearch}>
+			</lightning-button>
+		</div>
+	</div>
+</template>

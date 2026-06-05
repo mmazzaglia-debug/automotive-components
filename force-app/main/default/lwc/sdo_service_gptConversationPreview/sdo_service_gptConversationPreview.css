@@ -1,0 +1,68 @@
+:host {
+    --sds-c-textarea-sizing-min-height: 80px;
+    --slds-c-textarea-radius-border: 0px 0px 0.25rem 0.25rem;
+    --slds-c-textarea-color-border: white;
+}
+
+.slds-media__figure {
+    flex-shrink: 0;
+    margin-right: var(--lwc-spacingSmall,0.75rem);
+}
+
+.slds-media__body{
+    flex: 1;
+    min-width: 0;
+}
+
+.slds-p-horizontal_medium, .slds-p-horizontal--medium {
+    padding-left: var(--lwc-spacingMedium,1rem);
+    padding-right: var(--lwc-spacingMedium,1rem);
+}
+
+.container{
+    position: relative !important;
+    border-width: 0.5px !important;
+    border-style: solid !important;
+    border-color: rgb(201, 201, 201) !important;
+    border-radius: 0.25rem !important;
+    background-clip: padding-box !important;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1) !important;  
+    margin-bottom: var(--lwc-spacingSmall,0.75rem);
+}
+
+.slds-publisher.slds-is-active{
+    display: block;
+}
+
+.scrt-button-group-row{
+    display: inline-flex;
+}
+
+.slds-is-relative{
+    position: relative;
+}
+
+.scrt-button-group-item{
+    margin-left: var(--lwc-spacingXxSmall, 0.25rem);
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    gap: var(--lwc-spacingXSmall);
+}
+
+.slds-grow{
+    flex-grow: 1;
+}
+
+.messaging-textarea{
+    display: block;
+    border: none;
+    padding: 0px;
+}
+
+.slds-form-element__control {
+    clear: left;
+    position: relative;
+}

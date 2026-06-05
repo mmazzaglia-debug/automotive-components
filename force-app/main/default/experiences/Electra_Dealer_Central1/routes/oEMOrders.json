@@ -1,0 +1,11 @@
+{
+  "activeViewId" : "5b2ec47a-fa41-499b-a479-5a8b2aecbf11",
+  "appPageId" : "1e4d6659-0826-4bf2-a237-43ecbc3624af",
+  "configurationTags" : [ ],
+  "devName" : "Automotive_PLP",
+  "id" : "8a8b1a02-7ab7-4974-a05c-bac4519c86fe",
+  "label" : "OEM Orders",
+  "routeType" : "automotive-plp",
+  "type" : "route",
+  "urlPrefix" : "plp"
+}

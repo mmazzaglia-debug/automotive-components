@@ -1,0 +1,64 @@
+<template>
+    <lightning-card variant="Narrow"  title="Einstein Summarization" icon-name="standard:case_wrap_up">
+
+        <!--get recommendations-->
+        <div if:false={recsApplied}>
+            <div class="slds-media slds-m-left_medium slds-m-right_medium slds-media--center slds-has-flexi-truncate slds-p-bottom_x-small slds-border_bottom">
+                <lightning-icon class="blueIcon slds-p-right_x-small slds-m-left_xx-small" icon-name="utility:sparkles" alternative-text="sparkles" size="x-small" title="x-small size"></lightning-icon>
+                <span onclick={handleClick}><span class="slds-show_inline-block applyRecText" data-aura-rendered-by="29:9215;a">Get Einstein Recommendations</span></span>
+            </div>
+
+            <div class="slds-form-element slds-m-left_medium slds-m-right_medium slds-form-element_edit slds-form-element_readonly slds-hint-parent">
+                <span class="slds-form-element__label">Summary</span>
+                <div class="slds-form-element__control slds-m-bottom_xx-small">
+                    <div class="slds-form-element__static"></div>
+                    <lightning-button-icon disabled="" icon-name="utility:edit"  variant="bare" alternative-text="Edit" title="Edit"></lightning-button-icon>
+                </div>
+            </div>
+
+            <div class="slds-form-element slds-m-left_medium slds-m-right_medium slds-form-element_edit slds-form-element_readonly slds-hint-parent">
+                <span class="slds-form-element__label">Issue</span>
+                <div class="slds-form-element__control slds-m-bottom_xx-small">
+                    <div class="slds-form-element__static"></div>
+                    <lightning-button-icon disabled="" icon-name="utility:edit"  variant="bare" alternative-text="Edit" title="Edit"></lightning-button-icon>
+                </div>
+            </div>
+
+            <div class="slds-form-element slds-m-left_medium slds-m-right_medium slds-form-element_edit slds-form-element_readonly slds-hint-parent">
+                <span class="slds-form-element__label">Resolution</span>
+                <div class="slds-form-element__control slds-m-bottom_xx-small">
+                    <div class="slds-form-element__static"></div>
+                    <lightning-button-icon disabled="" icon-name="utility:edit"  variant="bare" alternative-text="Edit" title="Edit"></lightning-button-icon>
+                </div>
+            </div>
+        </div>
+
+        <!--recommendations applied-->
+        <div if:true={recsApplied}>
+
+            <div if:false={isLoaded} class="slds-is-relative" style="height:180px">
+                <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+            </div>
+
+            <div if:true={isLoaded}>
+                <div class="slds-media slds-m-left_medium slds-m-right_medium slds-media--center slds-has-flexi-truncate slds-p-bottom_x-small slds-border_bottom">
+                    <lightning-icon class="slds-p-right_x-small slds-m-left_xx-small" icon-name="utility:sparkles" alternative-text="sparkles" size="x-small" title="x-small size"></lightning-icon>
+                    <span class="slds-show_inline-block slds-text-color_weak">Einstein Recommendations Applied</span>
+                </div>
+                    
+                <div class="slds-var-m-around_medium">
+                    <lightning-record-form
+                        object-api-name="SDO_Einstein_GPT_Configuration__c"
+                        record-id={gptConfiguration}
+                        columns="1"
+                        mode="edit"
+                        fields={fields}
+                        density="comfy"
+                    >
+                    </lightning-record-form>
+                </div>
+            </div>
+        </div>
+    
+    </lightning-card>
+</template>
