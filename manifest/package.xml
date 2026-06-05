@@ -56,6 +56,7 @@
         <members>Asset.Mileage__c</members>
         <members>Asset.Daily_Mileage__c</members>
         <members>Asset.Replacement_Date__c</members>
+        <members>Asset.Walk_Around_Order__c</members>
         <name>CustomField</name>
     </types>
 
