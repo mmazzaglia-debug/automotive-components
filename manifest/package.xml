@@ -44,6 +44,13 @@
         <name>StaticResource</name>
     </types>
 
+    <!-- Custom Fields -->
+    <types>
+        <members>Product2.Top_View_Image_URL__c</members>
+        <members>Asset.CSS_properties__c</members>
+        <name>CustomField</name>
+    </types>
+
     <!-- Flow (Test Drive Appointment - runtime_appointmentbooking) -->
     <types>
         <members>runtime_appointmentbooking__Flow</members>
