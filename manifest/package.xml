@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-    <!-- Lightning Web Components (9 vehicle management components) -->
+    <!-- Lightning Web Components (10 vehicle management components) -->
     <types>
         <members>canVehicleView</members>
         <members>canVehicleWalkAround</members>
+        <members>chartJs</members>
         <members>efDigitalTwin</members>
         <members>efDigitalTwinMap</members>
         <members>efDigitalTwinTabFeatures</members>
@@ -51,6 +52,7 @@
         <members>Product2.Life_Expectancy__c</members>
         <members>Asset.CSS_properties__c</members>
         <members>Asset.Life_Expectancy__c</members>
+        <members>Asset.Remaining_Life__c</members>
         <name>CustomField</name>
     </types>
 
