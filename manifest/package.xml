@@ -53,6 +53,9 @@
         <members>Asset.CSS_properties__c</members>
         <members>Asset.Life_Expectancy__c</members>
         <members>Asset.Remaining_Life__c</members>
+        <members>Asset.Mileage__c</members>
+        <members>Asset.Daily_Mileage__c</members>
+        <members>Asset.Replacement_Date__c</members>
         <name>CustomField</name>
     </types>
 
