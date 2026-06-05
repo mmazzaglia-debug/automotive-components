@@ -47,7 +47,10 @@
     <!-- Custom Fields -->
     <types>
         <members>Product2.Top_View_Image_URL__c</members>
+        <members>Product2.Product_Image_URL__c</members>
+        <members>Product2.Life_Expectancy__c</members>
         <members>Asset.CSS_properties__c</members>
+        <members>Asset.Life_Expectancy__c</members>
         <name>CustomField</name>
     </types>
 
